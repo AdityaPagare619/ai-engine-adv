@@ -1,0 +1,9 @@
+routes:
+  - path: /admin
+    service: admin
+  - path: /content
+    service: content
+  - path: /asset
+    service: asset
+  - path: /database
+    service: database

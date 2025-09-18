@@ -1,0 +1,229 @@
+services:
+  # Phase 3 Frontend Test Interface
+  phase3-frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: jee_phase3_frontend
+    restart: unless-stopped
+    ports:
+      - "${FRONTEND_PORT:-3000}:80"
+    depends_on:
+      content-processor:
+        condition: service_healthy
+      asset-processor:
+        condition: service_healthy
+    networks:
+      - jee-network
+
+  # API Gateway Service
+  api-gateway:
+    build:
+      context: ./api_gateway
+      dockerfile: Dockerfile
+    container_name: jee_api_gateway
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=${ENVIRONMENT:-development}
+      - PORT=8080
+      - JWT_SECRET=${JWT_SECRET}
+      - JWKS_URI=${JWKS_URI}
+      - REDIS_URL=${REDIS_URL}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      # Service URLs for proxying
+      - ADMIN_SERVICE_URL=http://admin-service:8000
+      - CONTENT_PROCESSOR_URL=http://content-processor:8002
+      - ASSET_PROCESSOR_URL=http://asset-processor:8003
+      - DATABASE_MANAGER_URL=http://database-manager:8004
+    ports:
+      - "${GATEWAY_PORT:-8080}:8080"
+    depends_on:
+      admin-service:
+        condition: service_healthy
+      content-processor:
+        condition: service_healthy
+      asset-processor:
+        condition: service_healthy
+      database-manager:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - jee-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # PostgreSQL Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: jee_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_NAME:-jee_smart_platform}
+      POSTGRES_USER: ${DB_USER:-jee_admin}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-secure_jee_2025}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./database/migrations:/docker-entrypoint-initdb.d
+    networks:
+      - jee-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-jee_admin} -d ${DB_NAME:-jee_smart_platform}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: jee_redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+    volumes:
+      - redisdata:/data
+    networks:
+      - jee-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Admin Management Service
+  admin-service:
+    build:
+      context: ./services/admin-management
+      dockerfile: Dockerfile
+    container_name: jee_admin_service
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_URL=${REDIS_URL}
+      - ENVIRONMENT=${ENVIRONMENT:-development}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    expose:
+      - "8000"
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - jee-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Database Manager Service
+  database-manager:
+    build:
+      context: ./services/database-manager
+      dockerfile: Dockerfile
+    container_name: jee_database_manager
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_URL=${REDIS_URL}
+      - ENVIRONMENT=${ENVIRONMENT:-development}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    expose:
+      - "8000"
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - jee-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Content Processor Service
+  content-processor:
+    build:
+      context: ./services/content-processor
+      dockerfile: Dockerfile
+    container_name: jee_content_processor
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_URL=${REDIS_URL}
+      - UPLOAD_DIR=/data/uploads
+      - ENVIRONMENT=${ENVIRONMENT:-development}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    ports:
+      - "8002:8002"
+    volumes:
+      - ./data/uploads:/data/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - jee-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8002/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Asset Processor Service
+  asset-processor:
+    build:
+      context: ./services/asset-processor
+      dockerfile: Dockerfile
+    container_name: jee_asset_processor
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - UPLOAD_DIR=/data/uploads/assets
+      - ENVIRONMENT=${ENVIRONMENT:-development}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    ports:
+      - "8003:8003"
+    volumes:
+      - ./data/uploads/assets:/data/uploads/assets
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - jee-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8003/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  pgdata:
+  redisdata:
+
+networks:
+  jee-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
