@@ -1,8 +1,22 @@
+# =============================================================================
+# JEE Smart AI Platform - Git Ignore Rules
+# =============================================================================
+
+# Environment & Credentials
+.env
+.env.*
+!.env.template
+!.env.example
+.env.local
+.env.*.local
+
 # Python
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
+*.pyc
+*.pyo
 .Python
 build/
 develop-eggs/
@@ -20,26 +34,31 @@ wheels/
 .installed.cfg
 *.egg
 MANIFEST
-
-# Environment
-.env
-.env.local
-.env.*.local
-.venv
-env/
+.venv/
 venv/
+env/
 ENV/
 env.bak/
 venv.bak/
 
-# IDE
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.eslintcache
+*.tgz
+*.tar.gz
+
+# IDEs
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 
-# OS
+# Operating System
 .DS_Store
 .DS_Store?
 ._*
@@ -47,23 +66,33 @@ venv.bak/
 .Trashes
 ehthumbs.db
 Thumbs.db
+desktop.ini
+Icon?
 
 # Logs
-logs/
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+logs/
+monitoring/logs/
 
-# Database
+# Database & Security
 *.db
 *.sqlite
 *.sqlite3
+*.key
+*.pem
+*.crt
+*.p12
+*.pfx
+security/keys/
+security/certificates/
+backups/database/
+!deployment/docker/nginx/ssl/.gitkeep
 
 # Docker
 .dockerignore
+.docker/
 
-# Testing
+# Testing & Coverage
 .coverage
 .pytest_cache/
 .tox/
@@ -71,16 +100,79 @@ yarn-error.log*
 coverage.xml
 *.cover
 .hypothesis/
+.nyc_output
+htmlcov/
+coverage/
 
-# Project specific
+# Temporary & Cache
+tmp/
+temp/
+*.tmp
+*.temp
+.cache/
+data/temp/
+data/asset-cache/
+data/system-backups/
+
+# Upload & Runtime Data
+uploads/
+*.csv
+*.xlsx
+*.xls
+!*template*.csv
+!*sample*.csv
 data/
 backups/
-uploads/
-temp/
-node_modules/
-dist/
 
-# Security
-*.pem
-*.key
-!deployment/docker/nginx/ssl/.gitkeep
+# Test Files
+test_*.png
+test_*.jpg
+test_*.gif
+test_*.pdf
+test_*.txt
+!test_document.txt
+
+# Assets (exclude large files but keep sample/template ones)
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.webp
+*.pdf
+!sample_*
+!template_*
+!*_sample.*
+!*_template.*
+!Q00001_main.png
+!test_diagram.png
+!test_image.png
+
+# Database dumps & backups
+*.sql.gz
+*.dump
+*.backup
+database/backup-scripts/*.sql
+!database/backup-scripts/backup.sql
+!database/backup-scripts/restore.sql
+
+# Runtime
+pid
+*.pid
+*.seed
+*.pid.lock
+
+# Package files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Local development
+.local/
+local_*
+dev_*
