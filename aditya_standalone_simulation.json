@@ -1,0 +1,180 @@
+{
+  "simulation_summary": {
+    "student_name": "Aditya",
+    "simulation_days": 30,
+    "total_questions_attempted": 188,
+    "total_correct_answers": 10,
+    "overall_accuracy": 0.05319148936170213,
+    "total_study_hours": 27.115270555555558,
+    "avg_daily_questions": 6.266666666666667,
+    "avg_daily_study_time": 0.9038423518518519
+  },
+  "learning_progression": {
+    "week_1_accuracy": 0.043478260869565216,
+    "week_2_accuracy": 0.06521739130434782,
+    "week_3_accuracy": 0.08695652173913043,
+    "week_4_accuracy": 0.021739130434782608,
+    "improvement_rate": -0.007246376811594203,
+    "learning_curve_type": "plateau"
+  },
+  "topic_mastery_analysis": {
+    "motion_1d": {
+      "accuracy": 0.0,
+      "questions_attempted": 6,
+      "mastery_classification": "needs_attention",
+      "final_bkt_mastery": 0.3076504740207246
+    },
+    "units_and_measurements": {
+      "accuracy": 0.0,
+      "questions_attempted": 13,
+      "mastery_classification": "needs_attention",
+      "final_bkt_mastery": 0.3399999999849757
+    },
+    "trigonometry_basic": {
+      "accuracy": 0.2,
+      "questions_attempted": 5,
+      "mastery_classification": "needs_attention",
+      "final_bkt_mastery": 0.7398501703502244
+    },
+    "atomic_structure": {
+      "accuracy": 0.0,
+      "questions_attempted": 11,
+      "mastery_classification": "needs_attention",
+      "final_bkt_mastery": 0.3076922668415788
+    },
+    "quadratic_equations": {
+      "accuracy": 0.09090909090909091,
+      "questions_attempted": 11,
+      "mastery_classification": "needs_attention",
+      "final_bkt_mastery": 0.3088163566237957
+    },
+    "periodic_table": {
+      "accuracy": 0.06896551724137931,
+      "questions_attempted": 29,
+      "mastery_classification": "needs_attention",
+      "final_bkt_mastery": 0.5113122171953107
+    },
+    "laws_of_motion": {
+      "accuracy": 0.0,
+      "questions_attempted": 5,
+      "mastery_classification": "needs_attention",
+      "final_bkt_mastery": 0.3075249426661701
+    },
+    "motion_2d": {
+      "accuracy": 0.5,
+      "questions_attempted": 2,
+      "mastery_classification": "developing",
+      "final_bkt_mastery": 0.6255088195386702
+    },
+    "straight_lines": {
+      "accuracy": 0.0,
+      "questions_attempted": 4,
+      "mastery_classification": "needs_attention",
+      "final_bkt_mastery": 0.3070223617104747
+    },
+    "complex_numbers": {
+      "accuracy": 0.0,
+      "questions_attempted": 6,
+      "mastery_classification": "needs_attention",
+      "final_bkt_mastery": 0.3076504740207246
+    },
+    "work_energy_power": {
+      "accuracy": 0.0,
+      "questions_attempted": 4,
+      "mastery_classification": "needs_attention",
+      "final_bkt_mastery": 0.27061611374407585
+    },
+    "limits": {
+      "accuracy": 0.1111111111111111,
+      "questions_attempted": 18,
+      "mastery_classification": "needs_attention",
+      "final_bkt_mastery": 0.2987470463562019
+    },
+    "chemical_bonding": {
+      "accuracy": 0.09090909090909091,
+      "questions_attempted": 11,
+      "mastery_classification": "needs_attention",
+      "final_bkt_mastery": 0.28158518181511116
+    },
+    "sequences_series": {
+      "accuracy": 0.16666666666666666,
+      "questions_attempted": 6,
+      "mastery_classification": "needs_attention",
+      "final_bkt_mastery": 0.2960817197743558
+    },
+    "circles": {
+      "accuracy": 0.0,
+      "questions_attempted": 7,
+      "mastery_classification": "needs_attention",
+      "final_bkt_mastery": 0.2726492996144707
+    },
+    "calculus_derivatives": {
+      "accuracy": 0.03333333333333333,
+      "questions_attempted": 30,
+      "mastery_classification": "needs_attention",
+      "final_bkt_mastery": 0.2757078986587085
+    },
+    "thermodynamics_basic": {
+      "accuracy": 0.0,
+      "questions_attempted": 7,
+      "mastery_classification": "needs_attention",
+      "final_bkt_mastery": 0.2726492996144707
+    },
+    "hydrocarbons": {
+      "accuracy": 0.0,
+      "questions_attempted": 6,
+      "mastery_classification": "needs_attention",
+      "final_bkt_mastery": 0.27249330321970694
+    },
+    "circular_motion": {
+      "accuracy": 0.0,
+      "questions_attempted": 3,
+      "mastery_classification": "needs_attention",
+      "final_bkt_mastery": 0.26635681086878804
+    },
+    "conic_sections": {
+      "accuracy": 0.0,
+      "questions_attempted": 4,
+      "mastery_classification": "needs_attention",
+      "final_bkt_mastery": 0.27061611374407585
+    }
+  },
+  "bkt_effectiveness": {
+    "topics_with_improvement": 20,
+    "avg_mastery_gain_per_topic": {
+      "motion_1d": 0.03794174567012076,
+      "units_and_measurements": 0.018461538460382745,
+      "trigonometry_basic": 0.13197003407004487,
+      "atomic_structure": 0.02069929698559807,
+      "quadratic_equations": 0.02080148696579961,
+      "periodic_table": 0.014872835075700367,
+      "laws_of_motion": 0.045504988533234016,
+      "motion_2d": 0.27275440976933507,
+      "straight_lines": 0.05675559042761867,
+      "complex_numbers": 0.03794174567012076,
+      "work_energy_power": 0.055154028436018965,
+      "limits": 0.013819280353122326,
+      "chemical_bonding": 0.021053198346828284,
+      "sequences_series": 0.04101361996239263,
+      "circles": 0.03180704280206725,
+      "calculus_derivatives": 0.007523596621956948,
+      "thermodynamics_basic": 0.03180704280206725,
+      "hydrocarbons": 0.037082217203284494,
+      "circular_motion": 0.07211893695626269,
+      "conic_sections": 0.055154028436018965
+    },
+    "total_concepts_learned": 1,
+    "adaptive_learning_success": false
+  },
+  "student_behavioral_insights": {
+    "persistence_demonstrated": false,
+    "learning_from_mistakes": true,
+    "confidence_growth": false,
+    "study_consistency": true
+  },
+  "system_recommendations": [
+    "Implement more foundational content before advanced topics",
+    "Add motivational elements and progress visualization",
+    "Implement prerequisite checking before topic introduction"
+  ]
+}
