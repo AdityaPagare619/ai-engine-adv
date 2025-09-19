@@ -1,0 +1,4 @@
+question_number,question_text,option_1_text,option_2_text,option_3_text,option_4_text,correct_option_number
+1,"What is 2 + 2?","2","3","4","5",3
+2,"What is the capital of France?","London","Berlin","Paris","Madrid",3
+3,"Which planet is closest to the Sun?","Venus","Mercury","Earth","Mars",2

@@ -1,0 +1,378 @@
+/* JEE Smart AI Platform - Phase 3 Test Interface */
+/* Mimics NTA/JEE test interface styling */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.test-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Section */
+.test-header {
+  background: linear-gradient(135deg, #e53935 0%, #d32f2f 100%);
+  color: white;
+  padding: 12px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.exam-info {
+  background: #f8f9fa;
+  padding: 8px 20px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+.subject-info {
+  color: #d32f2f;
+  font-weight: bold;
+}
+
+.time-info {
+  color: #1976d2;
+  font-weight: bold;
+}
+
+/* Main Content Area */
+.test-content {
+  display: flex;
+  flex: 1;
+}
+
+.questions-area {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.question-palette {
+  width: 200px;
+  background: #fafafa;
+  border-left: 1px solid #ddd;
+  padding: 16px;
+}
+
+/* Question Card Styling */
+.question-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  padding: 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.question-header {
+  background: #f8f9fa;
+  padding: 10px 16px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.question-number {
+  font-weight: bold;
+  color: #d32f2f;
+  font-size: 13px;
+}
+
+.question-type {
+  font-size: 11px;
+  color: #666;
+  background: #e3f2fd;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.question-content {
+  padding: 16px;
+}
+
+.question-text {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+.question-text strong {
+  color: #d32f2f;
+}
+
+.question-diagram {
+  margin: 16px 0;
+  text-align: center;
+}
+
+.diagram-placeholder {
+  background: #f0f0f0;
+  border: 2px dashed #ccc;
+  padding: 40px;
+  color: #666;
+  font-style: italic;
+  border-radius: 4px;
+}
+
+/* Options Styling */
+.options-container {
+  padding: 0 16px 16px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  margin: 6px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: white;
+}
+
+.option:hover {
+  background: #f5f5f5;
+  border-color: #1976d2;
+}
+
+.option.selected {
+  background: #e3f2fd;
+  border-color: #1976d2;
+  color: #1976d2;
+}
+
+.option.correct {
+  background: #e8f5e8;
+  border-color: #4caf50;
+  color: #2e7d32;
+}
+
+.option.wrong {
+  background: #ffebee;
+  border-color: #f44336;
+  color: #c62828;
+}
+
+.option-marker {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  font-weight: bold;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.option.selected .option-marker {
+  background: #1976d2;
+  color: white;
+}
+
+.option.correct .option-marker {
+  background: #4caf50;
+  color: white;
+}
+
+.option.wrong .option-marker {
+  background: #f44336;
+  color: white;
+}
+
+.option-text {
+  flex: 1;
+  font-size: 14px;
+}
+
+.correct-indicator {
+  color: #4caf50;
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+/* Answer Explanation */
+.answer-explanation {
+  padding: 16px;
+  background: #f8f9fa;
+  border-top: 1px solid #ddd;
+}
+
+.correct-answer {
+  color: #2e7d32;
+  font-size: 13px;
+}
+
+/* Question Palette */
+.palette-title {
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: #333;
+  font-size: 13px;
+  text-align: center;
+}
+
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.palette-item {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  background: white;
+}
+
+.palette-item:hover {
+  background: #f0f0f0;
+}
+
+.palette-item.current {
+  background: #1976d2;
+  color: white;
+  border-color: #1976d2;
+}
+
+.palette-item.answered {
+  background: #4caf50;
+  color: white;
+  border-color: #4caf50;
+}
+
+.palette-item.marked {
+  background: #ff9800;
+  color: white;
+  border-color: #ff9800;
+}
+
+/* Navigation Controls */
+.navigation-controls {
+  padding: 16px 20px;
+  background: #f8f9fa;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-button {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.nav-button:hover {
+  background: #f0f0f0;
+  border-color: #1976d2;
+}
+
+.nav-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.nav-button.primary {
+  background: #1976d2;
+  color: white;
+  border-color: #1976d2;
+}
+
+.nav-button.primary:hover {
+  background: #1565c0;
+}
+
+/* Loading States */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #f0f0f0;
+  border-top: 3px solid #1976d2;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .test-content {
+    flex-direction: column;
+  }
+  
+  .question-palette {
+    width: auto;
+    border-left: none;
+    border-top: 1px solid #ddd;
+  }
+  
+  .palette-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+/* Print Styles - for test-like appearance */
+@media print {
+  .question-palette,
+  .navigation-controls {
+    display: none;
+  }
+  
+  .test-container {
+    box-shadow: none;
+  }
+  
+  .question-card {
+    break-inside: avoid;
+    margin-bottom: 20px;
+  }
+}
