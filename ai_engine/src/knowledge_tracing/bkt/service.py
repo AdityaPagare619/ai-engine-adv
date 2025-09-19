@@ -12,7 +12,8 @@ async def update_knowledge_state(req: TraceRequest) -> TraceResponse:
         result = await engine.update(
             student_id=req.student_id,
             correct=req.is_correct,
-            response_time_ms=req.response_time_ms
+            response_time_ms=req.response_time_ms,
+            question_id=req.question_id  # Pass question ID for context
         )
         return TraceResponse(**result)
     except Exception as e:
