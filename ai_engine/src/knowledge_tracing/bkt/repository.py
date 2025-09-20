@@ -1,36 +1,52 @@
+from __future__ import annotations
 import logging
-from typing import NamedTuple, Optional, List, Dict, Any
-from datetime import datetime
+from dataclasses import dataclass
+from typing import Optional, List, Dict, Any
+from datetime import datetime, timezone
+
 from .repository_supabase import SupabaseClient
 
 logger = logging.getLogger("bkt_repository")
 
 
-class BKTState(NamedTuple):
-    mastery_probability: float
-    practice_count: int
-
-
-class BKTParams(NamedTuple):
+# ---------- Data Models ----------
+@dataclass
+class BKTParams:
     learn_rate: float
     slip_rate: float
     guess_rate: float
 
 
-class QuestionMetadata(NamedTuple):
+@dataclass
+class BKTState:
+    student_id: str
+    concept_id: str
+    mastery_probability: float
+    practice_count: int = 0
+
+
+@dataclass
+class QuestionMetadata:
     question_id: str
-    difficulty_calibrated: Optional[float]
-    bloom_level: Optional[str]
-    estimated_time_seconds: Optional[int]
-    required_process_skills: Optional[List[str]]
+    difficulty_calibrated: Optional[float] = None
+    bloom_level: Optional[str] = None
+    estimated_time_seconds: Optional[int] = None
+    required_process_skills: Optional[List[str]] = None
 
 
+# ---------- Repository ----------
 class BKTRepository:
-    def __init__(self):
-        self.client = SupabaseClient()
+    """
+    Persists and retrieves BKT parameters, knowledge states, and update logs.
+    Includes contextual adjustments using question metadata.
+    """
 
+    def __init__(self, client: Optional[SupabaseClient] = None):
+        self.client = client or SupabaseClient()
+
+    # ---------- Question Metadata ----------
     def get_question_metadata(self, question_id: str) -> Optional[QuestionMetadata]:
-        """Get question metadata from question_metadata_cache (via Supabase bridge or cache)."""
+        """Get question metadata from question_metadata_cache (via Supabase)."""
         try:
             row = (
                 self.client.table("question_metadata_cache")
@@ -43,7 +59,6 @@ class BKTRepository:
                 .execute()
                 .data
             )
-
             if row:
                 return QuestionMetadata(
                     question_id=row.get("question_id"),
@@ -52,55 +67,12 @@ class BKTRepository:
                     estimated_time_seconds=row.get("estimated_time_seconds"),
                     required_process_skills=row.get("required_process_skills", []),
                 )
-
             return None
         except Exception as e:
-            # Use exception to capture stack trace in logs
             logger.exception(f"Failed to fetch question metadata for {question_id}: {e}")
             return None
 
-    def get_parameters_with_context(
-        self, concept_id: str, question_metadata: Optional[QuestionMetadata] = None
-    ) -> BKTParams:
-        """Get BKT parameters with optional question context for adaptive calibration."""
-        try:
-            base_params = self.get_parameters(concept_id)
-
-            # If no question metadata provided, return base params
-            if not question_metadata:
-                return base_params
-
-            # Adjust parameters based on question difficulty and Bloom's level
-            difficulty = 0.0
-            if question_metadata.difficulty_calibrated is not None:
-                try:
-                    difficulty = float(question_metadata.difficulty_calibrated)
-                except (ValueError, TypeError):
-                    difficulty = 0.0
-
-            # Increase slip rate for harder questions (bounded)
-            adjusted_slip = min(0.4, base_params.slip_rate + (max(0.0, difficulty) * 0.05))
-
-            # Bloom-level adjustments for guess rate
-            bloom_adjustments: Dict[str, float] = {
-                "Remember": -0.05,   # less guessing on memory tasks
-                "Understand": 0.0,
-                "Apply": 0.02,
-                "Analyze": 0.05,
-                "Evaluate": 0.08,
-                "Create": 0.1,
-            }
-            bloom_adj = bloom_adjustments.get(question_metadata.bloom_level, 0.0)
-            adjusted_guess = max(0.05, min(0.4, base_params.guess_rate + bloom_adj))
-
-            # Keep learn_rate unchanged for now (could be extended later)
-            return BKTParams(base_params.learn_rate, adjusted_slip, adjusted_guess)
-
-        except Exception as e:
-            logger.exception(f"Failed to get contextual parameters for {concept_id}: {e}")
-            # Safe fallback
-            return BKTParams(learn_rate=0.3, slip_rate=0.1, guess_rate=0.2)
-
+    # ---------- Parameters ----------
     def get_parameters(self, concept_id: str) -> BKTParams:
         """Fetch stored BKT parameters for a concept; fall back to safe defaults if unavailable."""
         try:
@@ -112,22 +84,57 @@ class BKTRepository:
                 .execute()
                 .data
             )
-
             if row:
-                # Use .get with defaults to be robust to schema changes
                 return BKTParams(
                     learn_rate=float(row.get("learn_rate", 0.3)),
                     slip_rate=float(row.get("slip_rate", 0.1)),
                     guess_rate=float(row.get("guess_rate", 0.2)),
                 )
-
             return BKTParams(learn_rate=0.3, slip_rate=0.1, guess_rate=0.2)
         except Exception as e:
             logger.exception(f"Failed to fetch BKT parameters for {concept_id}: {e}")
             return BKTParams(learn_rate=0.3, slip_rate=0.1, guess_rate=0.2)
 
+    def get_parameters_with_context(
+        self, concept_id: str, question_metadata: Optional[QuestionMetadata] = None
+    ) -> BKTParams:
+        """Get BKT parameters with optional question context for adaptive calibration."""
+        try:
+            base_params = self.get_parameters(concept_id)
+
+            if not question_metadata:
+                return base_params
+
+            # Difficulty adjustment
+            difficulty = 0.0
+            if question_metadata.difficulty_calibrated is not None:
+                try:
+                    difficulty = float(question_metadata.difficulty_calibrated)
+                except (ValueError, TypeError):
+                    difficulty = 0.0
+
+            adjusted_slip = min(0.4, base_params.slip_rate + (max(0.0, difficulty) * 0.05))
+
+            bloom_adjustments: Dict[str, float] = {
+                "Remember": -0.05,
+                "Understand": 0.0,
+                "Apply": 0.02,
+                "Analyze": 0.05,
+                "Evaluate": 0.08,
+                "Create": 0.1,
+            }
+            bloom_adj = bloom_adjustments.get(question_metadata.bloom_level, 0.0)
+            adjusted_guess = max(0.05, min(0.4, base_params.guess_rate + bloom_adj))
+
+            return BKTParams(base_params.learn_rate, adjusted_slip, adjusted_guess)
+
+        except Exception as e:
+            logger.exception(f"Failed to get contextual parameters for {concept_id}: {e}")
+            return BKTParams(learn_rate=0.3, slip_rate=0.1, guess_rate=0.2)
+
+    # ---------- State ----------
     def get_state(self, student_id: str, concept_id: str) -> BKTState:
-        """Fetch a student's BKT state for a specific concept, return sensible defaults if missing."""
+        """Fetch a student's BKT state for a concept, return sensible defaults if missing."""
         try:
             row = (
                 self.client.table("bkt_knowledge_states")
@@ -139,60 +146,104 @@ class BKTRepository:
                 .data
             )
             if row:
-                mastery = float(row.get("mastery_probability", 0.5))
-                practice_count = int(row.get("practice_count", 0))
-                return BKTState(mastery_probability=mastery, practice_count=practice_count)
+                return BKTState(
+                    student_id=student_id,
+                    concept_id=concept_id,
+                    mastery_probability=float(row.get("mastery_probability", 0.5)),
+                    practice_count=int(row.get("practice_count", 0)),
+                )
             else:
-                return BKTState(mastery_probability=0.5, practice_count=0)
+                return BKTState(
+                    student_id=student_id,
+                    concept_id=concept_id,
+                    mastery_probability=0.5,
+                    practice_count=0,
+                )
         except Exception as e:
             logger.exception(f"Failed to fetch BKT state for {student_id}, {concept_id}: {e}")
-            return BKTState(mastery_probability=0.5, practice_count=0)
+            return BKTState(student_id=student_id, concept_id=concept_id, mastery_probability=0.5, practice_count=0)
 
     def save_state(self, student_id: str, concept_id: str, mastery: float) -> None:
-        """Upsert the student's knowledge state (increments practice_count)."""
+        """Update or insert the student's knowledge state (increments practice_count)."""
         try:
-            state = self.get_state(student_id, concept_id)
-            now = datetime.utcnow().isoformat()
-            self.client.table("bkt_knowledge_states").upsert(
-                {
+            # Check if state exists
+            try:
+                existing = self.client.table("bkt_knowledge_states")\
+                    .select("practice_count")\
+                    .eq("student_id", student_id)\
+                    .eq("concept_id", concept_id)\
+                    .single()\
+                    .execute()
+                
+                # Update existing record
+                if existing.data:
+                    current_count = int(existing.data.get("practice_count", 0))
+                    self.client.table("bkt_knowledge_states")\
+                        .update({
+                            "mastery_probability": float(mastery),
+                            "practice_count": current_count + 1,
+                            "last_practiced": datetime.now(timezone.utc).isoformat(),
+                            "updated_at": datetime.now(timezone.utc).isoformat(),
+                        })\
+                        .eq("student_id", student_id)\
+                        .eq("concept_id", concept_id)\
+                        .execute()
+                else:
+                    raise ValueError("No existing record found")
+                    
+            except Exception:
+                # Insert new record if it doesn't exist
+                payload = {
                     "student_id": student_id,
                     "concept_id": concept_id,
-                    "mastery_probability": mastery,
-                    "practice_count": state.practice_count + 1,
-                    "last_updated": now,
+                    "mastery_probability": float(mastery),
+                    "practice_count": 1,
+                    "last_practiced": datetime.now(timezone.utc).isoformat(),
+                    "created_at": datetime.now(timezone.utc).isoformat(),
+                    "updated_at": datetime.now(timezone.utc).isoformat(),
                 }
-            ).execute()
+                self.client.table("bkt_knowledge_states").insert(payload).execute()
+                
         except Exception as e:
             logger.exception(f"Failed to save BKT state for {student_id}, {concept_id}: {e}")
-            # Re-raise to let calling code decide how to react
             raise
 
     def get_practice_count(self, student_id: str, concept_id: str) -> int:
+        """Return practice count only (convenience method)."""
         return self.get_state(student_id, concept_id).practice_count
 
+    # ---------- Logging ----------
     def log_update(
         self,
         student_id: str,
         concept_id: str,
-        prev: float,
-        new: float,
-        correct: bool,
-        response_time_ms: int,
+        previous_mastery: float,
+        new_mastery: float,
+        is_correct: bool,
+        response_time_ms: Optional[int] = None,
+        *,
+        question_id: Optional[str] = None,
+        params_used: Optional[Dict[str, float]] = None,
+        engine_version: str = "v1.0"
     ) -> None:
-        """Log each BKT update in bkt_update_logs for audit / analytics."""
+        """
+        Log each BKT update in bkt_update_logs for audit/analytics.
+        Fail-safe: logging failure must not interrupt the learning flow.
+        """
         try:
-            now = datetime.utcnow().isoformat()
-            self.client.table("bkt_update_logs").insert(
-                {
-                    "student_id": student_id,
-                    "concept_id": concept_id,
-                    "previous_mastery": prev,
-                    "new_mastery": new,
-                    "is_correct": correct,
-                    "response_time_ms": response_time_ms,
-                    "timestamp": now,
-                }
-            ).execute()
+            payload = {
+                "student_id": student_id,
+                "concept_id": concept_id,
+                "previous_mastery": float(previous_mastery),
+                "new_mastery": float(new_mastery),
+                "is_correct": bool(is_correct),
+                "response_time_ms": int(response_time_ms) if response_time_ms is not None else None,
+                "question_id": question_id,
+                "params_used": params_used or {},  # default to {}
+                "engine_version": engine_version,
+                "timestamp": datetime.now(timezone.utc).isoformat(),
+            }
+            self.client.table("bkt_update_logs").insert(payload).execute()
         except Exception as e:
             logger.exception(f"Failed to log BKT update for {student_id}, {concept_id}: {e}")
-            # don't raise; logging failure shouldn't break learning flow
+            # Do not raise; preserve learning flow

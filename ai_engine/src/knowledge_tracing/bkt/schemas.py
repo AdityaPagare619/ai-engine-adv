@@ -1,19 +1,46 @@
-from pydantic import BaseModel, Field
-from typing import Optional
+# ai_engine/src/knowledge_tracing/bkt/schemas.py
+from pydantic import BaseModel, Field, validator
+from typing import Optional, Dict, Any
 
 class TraceRequest(BaseModel):
     student_id: str = Field(..., description="UUID of the student")
     concept_id: str = Field(..., description="Unique concept ID")
-    question_id: Optional[str] = Field(None, description="Question ID for context")
+    question_id: Optional[str] = Field(None, description="Question ID providing context")
     is_correct: bool = Field(..., description="Whether the answer was correct")
-    response_time_ms: Optional[int] = Field(None, description="Response time in milliseconds")
-    difficulty_level: Optional[str] = Field(None, description="Question difficulty level")
-    bloom_level: Optional[str] = Field(None, description="Bloom taxonomy level")
+    response_time_ms: Optional[int] = Field(None, ge=0, description="Response time in milliseconds")
+
+    # Optional override/context hints (for logging/analysis; not required for core math)
+    difficulty_level: Optional[str] = Field(None, description="Editorial difficulty label, if any")
+    bloom_level: Optional[str] = Field(None, description="Bloom taxonomy level, if any")
+
+    @validator("student_id", "concept_id")
+    def non_empty(cls, v: str):
+        assert isinstance(v, str) and len(v) > 0, "must be non-empty"
+        return v
 
 class TraceResponse(BaseModel):
     previous_mastery: float = Field(..., ge=0.0, le=1.0)
+    posterior_mastery: float = Field(..., ge=0.0, le=1.0)
     new_mastery: float = Field(..., ge=0.0, le=1.0)
-    confidence: float = Field(..., ge=0.0, le=1.0)
-    learning_occurred: bool
-    explanation: dict = Field(default_factory=dict, description="Detailed explanation of the update")
-    question_context: Optional[dict] = Field(None, description="Question metadata used")
+    p_correct_pred: float = Field(..., ge=0.0, le=1.0)
+
+    adjusted_params: Dict[str, float] = Field(
+        ..., description="Final feasible learn_rate, slip_rate, guess_rate used for update"
+    )
+    constraint_violations: list = Field(default_factory=list)
+    explanation: Dict[str, Any] = Field(default_factory=dict)
+
+class EvaluateWindowRequest(BaseModel):
+    concept_id: Optional[str] = Field(None, description="Limit evaluation to this concept")
+    start_ts: Optional[str] = Field(None, description="ISO start time filter")
+    end_ts: Optional[str] = Field(None, description="ISO end time filter")
+    # Future: filters by cohort, subject, ability bands
+
+class EvaluateWindowResponse(BaseModel):
+    next_step_auc: float = Field(..., ge=0.0, le=1.0)
+    next_step_accuracy: float = Field(..., ge=0.0, le=1.0)
+    brier_score: float = Field(..., ge=0.0, le=1.0)
+    calibration_error: float = Field(..., ge=0.0, le=1.0)
+    trajectory_validity: float = Field(..., ge=0.0, le=1.0)
+    recommendation: str
+    details: Dict[str, Any] = Field(default_factory=dict)

@@ -14,13 +14,18 @@ from contextlib import asynccontextmanager
 import structlog
 import asyncpg
 import redis
+from dotenv import load_dotenv
 
 # Add parent directories to path for imports
 sys.path.append(os.path.join(os.path.dirname(__file__), "../.."))
 
-# Database connection
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://jee_admin:secure_jee_2025@postgres:5432/jee_smart_platform")
-REDIS_URL = os.getenv("REDIS_URL", "redis://:redis_secure_2025@redis:6379/0")
+# Load environment variables from project root
+project_root = os.path.join(os.path.dirname(__file__), "../..")
+load_dotenv(os.path.join(project_root, ".env"))
+
+# Database connection - use environment variables
+DATABASE_URL = os.getenv("POSTGRES_URL", os.getenv("DATABASE_URL", "postgresql://jee_admin:securepassword@localhost:5432/jee_smart_platform"))
+REDIS_URL = os.getenv("REDIS_URL", "redis://:redis_secure_2025@localhost:6379/0")
 
 # Global connections
 db_pool = None
@@ -36,13 +41,21 @@ async def lifespan(app: FastAPI):
 
     try:
         # Initialize async database pool
-        db_pool = await asyncpg.create_pool(DATABASE_URL, min_size=2, max_size=10)
-        print("✅ Database pool created")
+        try:
+            db_pool = await asyncpg.create_pool(DATABASE_URL, min_size=2, max_size=10)
+            print("✅ Database pool created")
+        except Exception as db_error:
+            print(f"⚠️ Database connection failed, running without PostgreSQL: {db_error}")
+            db_pool = None
 
         # Initialize Redis
-        redis_client = redis.from_url(REDIS_URL, decode_responses=True)
-        redis_client.ping()
-        print("✅ Redis connection established")
+        try:
+            redis_client = redis.from_url(REDIS_URL, decode_responses=True)
+            redis_client.ping()
+            print("✅ Redis connection established")
+        except Exception as redis_error:
+            print(f"⚠️ Redis connection failed, running without Redis: {redis_error}")
+            redis_client = None
 
     except Exception as e:
         print(f"❌ Startup failed: {e}")
@@ -396,7 +409,7 @@ if __name__ == "__main__":
     uvicorn.run(
         "app:app",
         host="0.0.0.0",
-        port=8001,
+        port=8000,
         workers=1,
         log_level="info",
         reload=True

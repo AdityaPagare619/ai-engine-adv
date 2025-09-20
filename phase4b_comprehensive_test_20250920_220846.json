@@ -1,0 +1,553 @@
+{
+  "start_time": "2025-09-20T22:08:44.650935",
+  "component_tests": {
+    "time_allocator": {
+      "status": "success",
+      "test_cases": 16,
+      "sample_results": [
+        {
+          "stress_level": 0.0,
+          "fatigue_level": 0.0,
+          "allocated_time_ms": 15554,
+          "factor": 0.5185,
+          "breakdown": {
+            "stress_factor": 1.0,
+            "fatigue_factor": 1.0,
+            "mastery_factor": 0.85,
+            "difficulty_factor": 0.6,
+            "session_factor": 1.0167,
+            "clamped_factor": 0.5185
+          }
+        },
+        {
+          "stress_level": 0.0,
+          "fatigue_level": 0.2,
+          "allocated_time_ms": 16488,
+          "factor": 0.5496,
+          "breakdown": {
+            "stress_factor": 1.0,
+            "fatigue_factor": 1.06,
+            "mastery_factor": 0.85,
+            "difficulty_factor": 0.6,
+            "session_factor": 1.0167,
+            "clamped_factor": 0.5496
+          }
+        },
+        {
+          "stress_level": 0.0,
+          "fatigue_level": 0.5,
+          "allocated_time_ms": 17888,
+          "factor": 0.5963,
+          "breakdown": {
+            "stress_factor": 1.0,
+            "fatigue_factor": 1.15,
+            "mastery_factor": 0.85,
+            "difficulty_factor": 0.6,
+            "session_factor": 1.0167,
+            "clamped_factor": 0.5963
+          }
+        },
+        {
+          "stress_level": 0.0,
+          "fatigue_level": 0.8,
+          "allocated_time_ms": 19288,
+          "factor": 0.6429,
+          "breakdown": {
+            "stress_factor": 1.0,
+            "fatigue_factor": 1.24,
+            "mastery_factor": 0.85,
+            "difficulty_factor": 0.6,
+            "session_factor": 1.0167,
+            "clamped_factor": 0.6429
+          }
+        },
+        {
+          "stress_level": 0.3,
+          "fatigue_level": 0.0,
+          "allocated_time_ms": 17888,
+          "factor": 0.5963,
+          "breakdown": {
+            "stress_factor": 1.15,
+            "fatigue_factor": 1.0,
+            "mastery_factor": 0.85,
+            "difficulty_factor": 0.6,
+            "session_factor": 1.0167,
+            "clamped_factor": 0.5963
+          }
+        }
+      ],
+      "performance_1000_allocations_sec": 0.014165163040161133,
+      "avg_allocation_time_ms": 0.014165163040161133
+    },
+    "cognitive_load": {
+      "status": "error",
+      "error": "'LoadAssessment' object has no attribute 'components'"
+    },
+    "stress_detection": {
+      "status": "success",
+      "patterns_tested": 4,
+      "pattern_results": [
+        {
+          "pattern": "calm_student",
+          "avg_stress_level": 0.175,
+          "max_stress_level": 0.4,
+          "stress_progression": [
+            0.0,
+            0.4,
+            0.3,
+            0.0
+          ],
+          "final_intervention": null
+        },
+        {
+          "pattern": "struggling_student",
+          "avg_stress_level": 0.28750000000000003,
+          "max_stress_level": 0.4,
+          "stress_progression": [
+            0.4,
+            0.4,
+            0.15,
+            0.2
+          ],
+          "final_intervention": "mild"
+        },
+        {
+          "pattern": "stressed_student",
+          "avg_stress_level": 0.2625,
+          "max_stress_level": 0.35,
+          "stress_progression": [
+            0.35,
+            0.25,
+            0.2,
+            0.25
+          ],
+          "final_intervention": "mild"
+        },
+        {
+          "pattern": "improving_student",
+          "avg_stress_level": 0.13749999999999998,
+          "max_stress_level": 0.25,
+          "stress_progression": [
+            0.25,
+            0.1,
+            0.1,
+            0.1
+          ],
+          "final_intervention": null
+        }
+      ]
+    },
+    "enhanced_bkt": {
+      "status": "success",
+      "students_tested": 4,
+      "student_progressions": [
+        {
+          "student_id": "student_001",
+          "skill_level": "beginner",
+          "final_mastery": 0.9997220750444717,
+          "mastery_growth": 0.9497220750444717,
+          "progression": [
+            {
+              "question": 1,
+              "difficulty": 0.3,
+              "correct": false,
+              "mastery_before": 0.05,
+              "mastery_after": 0.4044776119402985,
+              "student_state": "learning",
+              "recommended_difficulty": "foundation"
+            },
+            {
+              "question": 2,
+              "difficulty": 0.32999999999999996,
+              "correct": false,
+              "mastery_before": 0.4044776119402985,
+              "mastery_after": 0.4530678851174935,
+              "student_state": "struggling",
+              "recommended_difficulty": "foundation"
+            },
+            {
+              "question": 3,
+              "difficulty": 0.36,
+              "correct": true,
+              "mastery_before": 0.4530678851174935,
+              "mastery_after": 0.8278405588658312,
+              "student_state": "struggling",
+              "recommended_difficulty": "foundation"
+            },
+            {
+              "question": 4,
+              "difficulty": 0.39,
+              "correct": false,
+              "mastery_before": 0.8278405588658312,
+              "mastery_after": 0.6443260834411385,
+              "student_state": "learning",
+              "recommended_difficulty": "foundation"
+            },
+            {
+              "question": 5,
+              "difficulty": 0.42,
+              "correct": true,
+              "mastery_before": 0.6443260834411385,
+              "mastery_after": 0.9022253209058585,
+              "student_state": "struggling",
+              "recommended_difficulty": "foundation"
+            }
+          ]
+        },
+        {
+          "student_id": "student_002",
+          "skill_level": "intermediate",
+          "final_mastery": 0.9772645279837058,
+          "mastery_growth": 0.9272645279837057,
+          "progression": [
+            {
+              "question": 1,
+              "difficulty": 0.3,
+              "correct": false,
+              "mastery_before": 0.05,
+              "mastery_after": 0.4044776119402985,
+              "student_state": "learning",
+              "recommended_difficulty": "foundation"
+            },
+            {
+              "question": 2,
+              "difficulty": 0.32999999999999996,
+              "correct": false,
+              "mastery_before": 0.4044776119402985,
+              "mastery_after": 0.4530678851174935,
+              "student_state": "struggling",
+              "recommended_difficulty": "foundation"
+            },
+            {
+              "question": 3,
+              "difficulty": 0.36,
+              "correct": false,
+              "mastery_before": 0.4530678851174935,
+              "mastery_after": 0.4634905631612648,
+              "student_state": "struggling",
+              "recommended_difficulty": "foundation"
+            },
+            {
+              "question": 4,
+              "difficulty": 0.39,
+              "correct": true,
+              "mastery_before": 0.4634905631612648,
+              "mastery_after": 0.8329482018759732,
+              "student_state": "struggling",
+              "recommended_difficulty": "foundation"
+            },
+            {
+              "question": 5,
+              "difficulty": 0.42,
+              "correct": false,
+              "mastery_before": 0.8329482018759732,
+              "mastery_after": 0.7496533816883759,
+              "student_state": "struggling",
+              "recommended_difficulty": "foundation"
+            }
+          ]
+        },
+        {
+          "student_id": "student_003",
+          "skill_level": "advanced",
+          "final_mastery": 0.95,
+          "mastery_growth": 0.8999999999999999,
+          "progression": [
+            {
+              "question": 1,
+              "difficulty": 0.3,
+              "correct": true,
+              "mastery_before": 0.05,
+              "mastery_after": 0.48181818181818187,
+              "student_state": "learning",
+              "recommended_difficulty": "advanced"
+            },
+            {
+              "question": 2,
+              "difficulty": 0.32999999999999996,
+              "correct": false,
+              "mastery_before": 0.48181818181818187,
+              "mastery_after": 0.470353982300885,
+              "student_state": "mastering",
+              "recommended_difficulty": "building"
+            },
+            {
+              "question": 3,
+              "difficulty": 0.36,
+              "correct": true,
+              "mastery_before": 0.470353982300885,
+              "mastery_after": 0.8362517099863201,
+              "student_state": "learning",
+              "recommended_difficulty": "intermediate"
+            },
+            {
+              "question": 4,
+              "difficulty": 0.39,
+              "correct": false,
+              "mastery_before": 0.8362517099863201,
+              "mastery_after": 0.6530913607507591,
+              "student_state": "progressing",
+              "recommended_difficulty": "building"
+            },
+            {
+              "question": 5,
+              "difficulty": 0.42,
+              "correct": true,
+              "mastery_before": 0.6530913607507591,
+              "mastery_after": 0.9054162868102382,
+              "student_state": "learning",
+              "recommended_difficulty": "intermediate"
+            }
+          ]
+        },
+        {
+          "student_id": "student_004",
+          "skill_level": "struggling",
+          "final_mastery": 0.7319600819625839,
+          "mastery_growth": 0.6819600819625838,
+          "progression": [
+            {
+              "question": 1,
+              "difficulty": 0.3,
+              "correct": false,
+              "mastery_before": 0.05,
+              "mastery_after": 0.4044776119402985,
+              "student_state": "learning",
+              "recommended_difficulty": "foundation"
+            },
+            {
+              "question": 2,
+              "difficulty": 0.32999999999999996,
+              "correct": false,
+              "mastery_before": 0.4044776119402985,
+              "mastery_after": 0.4530678851174935,
+              "student_state": "struggling",
+              "recommended_difficulty": "foundation"
+            },
+            {
+              "question": 3,
+              "difficulty": 0.36,
+              "correct": true,
+              "mastery_before": 0.4530678851174935,
+              "mastery_after": 0.8278405588658312,
+              "student_state": "struggling",
+              "recommended_difficulty": "foundation"
+            },
+            {
+              "question": 4,
+              "difficulty": 0.39,
+              "correct": false,
+              "mastery_before": 0.8278405588658312,
+              "mastery_after": 0.6443260834411385,
+              "student_state": "learning",
+              "recommended_difficulty": "foundation"
+            },
+            {
+              "question": 5,
+              "difficulty": 0.42,
+              "correct": false,
+              "mastery_before": 0.6443260834411385,
+              "mastery_after": 0.5798934750970247,
+              "student_state": "struggling",
+              "recommended_difficulty": "foundation"
+            }
+          ]
+        }
+      ]
+    },
+    "api_manager": {
+      "status": "success",
+      "test_results": {
+        "total_keys": 4,
+        "active_keys": 4,
+        "key_rotation_works": true,
+        "usage_tracking": {
+          "total_keys": 4,
+          "active_keys": 4,
+          "keys": [
+            {
+              "key_id": "key_1_...FNFE",
+              "usage": "0/50",
+              "usage_percentage": 0.0,
+              "is_disabled": false,
+              "backoff_until": null
+            },
+            {
+              "key_id": "key_2_...MjOg",
+              "usage": "0/50",
+              "usage_percentage": 0.0,
+              "is_disabled": false,
+              "backoff_until": null
+            },
+            {
+              "key_id": "key_3_...HGpM",
+              "usage": "0/50",
+              "usage_percentage": 0.0,
+              "is_disabled": false,
+              "backoff_until": null
+            },
+            {
+              "key_id": "key_4_...Nci4",
+              "usage": "0/50",
+              "usage_percentage": 0.0,
+              "is_disabled": false,
+              "backoff_until": null
+            }
+          ]
+        }
+      }
+    }
+  },
+  "integration_tests": {
+    "workflow": {
+      "status": "success",
+      "students_tested": 2,
+      "workflow_results": [
+        {
+          "student_id": "student_001",
+          "skill_level": "beginner",
+          "session_results": [
+            {
+              "question": 1,
+              "mastery_before": 0.9997220750444717,
+              "mastery_after": 0.999947878206378,
+              "cognitive_load": 2.56,
+              "allocated_time_ms": 15000,
+              "response_time_ms": 10142,
+              "correct": true,
+              "stress_level": 0.1,
+              "fatigue_level": 0.1
+            },
+            {
+              "question": 2,
+              "mastery_before": 0.999947878206378,
+              "mastery_after": 0.9999902267816476,
+              "cognitive_load": 2.808,
+              "allocated_time_ms": 15000,
+              "response_time_ms": 13181,
+              "correct": true,
+              "stress_level": 0.1,
+              "fatigue_level": 0.2
+            },
+            {
+              "question": 3,
+              "mastery_before": 0.9999902267816476,
+              "mastery_after": 0.9999981675081269,
+              "cognitive_load": 2.808,
+              "allocated_time_ms": 15000,
+              "response_time_ms": 16674,
+              "correct": true,
+              "stress_level": 0.1,
+              "fatigue_level": 0.30000000000000004
+            },
+            {
+              "question": 4,
+              "mastery_before": 0.9999981675081269,
+              "mastery_after": 0.9999996564073015,
+              "cognitive_load": 2.701,
+              "allocated_time_ms": 15000,
+              "response_time_ms": 14532,
+              "correct": true,
+              "stress_level": 0.1,
+              "fatigue_level": 0.4
+            },
+            {
+              "question": 5,
+              "mastery_before": 0.9999996564073015,
+              "mastery_after": 0.9999999355763525,
+              "cognitive_load": 2.575,
+              "allocated_time_ms": 15000,
+              "response_time_ms": 5738,
+              "correct": true,
+              "stress_level": 0.1,
+              "fatigue_level": 0.5
+            }
+          ],
+          "final_mastery": 0.9999999355763525,
+          "avg_stress": 0.1,
+          "total_learning_time_ms": 60267
+        },
+        {
+          "student_id": "student_002",
+          "skill_level": "intermediate",
+          "session_results": [
+            {
+              "question": 1,
+              "mastery_before": 0.9772645279837058,
+              "mastery_after": 0.995663148726367,
+              "cognitive_load": 2.739,
+              "allocated_time_ms": 15000,
+              "response_time_ms": 14437,
+              "correct": true,
+              "stress_level": 0.1,
+              "fatigue_level": 0.1
+            },
+            {
+              "question": 2,
+              "mastery_before": 0.995663148726367,
+              "mastery_after": 0.9991841868409403,
+              "cognitive_load": 2.225,
+              "allocated_time_ms": 15000,
+              "response_time_ms": 10611,
+              "correct": true,
+              "stress_level": 0.1,
+              "fatigue_level": 0.2
+            },
+            {
+              "question": 3,
+              "mastery_before": 0.9991841868409403,
+              "mastery_after": 0.9998469413822504,
+              "cognitive_load": 2.222,
+              "allocated_time_ms": 15000,
+              "response_time_ms": 10708,
+              "correct": true,
+              "stress_level": 0.1,
+              "fatigue_level": 0.30000000000000004
+            },
+            {
+              "question": 4,
+              "mastery_before": 0.9998469413822504,
+              "mastery_after": 0.9999712982143802,
+              "cognitive_load": 2.42,
+              "allocated_time_ms": 15000,
+              "response_time_ms": 10337,
+              "correct": true,
+              "stress_level": 0.1,
+              "fatigue_level": 0.4
+            },
+            {
+              "question": 5,
+              "mastery_before": 0.9999712982143802,
+              "mastery_after": 0.999994618299348,
+              "cognitive_load": 2.42,
+              "allocated_time_ms": 15000,
+              "response_time_ms": 6048,
+              "correct": true,
+              "stress_level": 0.1,
+              "fatigue_level": 0.5
+            }
+          ],
+          "final_mastery": 0.999994618299348,
+          "avg_stress": 0.1,
+          "total_learning_time_ms": 52141
+        }
+      ]
+    }
+  },
+  "performance_metrics": {},
+  "end_to_end_simulation": {},
+  "errors": [],
+  "recommendations": [
+    "\ud83d\udfe1 Most components working - Address failing components before production",
+    "\u2705 Integration workflow successful - Components work well together"
+  ],
+  "summary": {
+    "total_components": 5,
+    "successful_components": 4,
+    "success_rate": 0.8,
+    "integration_success": true,
+    "overall_status": "partial",
+    "end_time": "2025-09-20T22:08:46.240398",
+    "total_test_duration": "0:00:01.589463"
+  }
+}

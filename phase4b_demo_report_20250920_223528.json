@@ -1,0 +1,459 @@
+{
+  "demo_metadata": {
+    "timestamp": "2025-09-20T22:35:28.460830",
+    "students_tested": 3,
+    "questions_per_student": 5,
+    "total_interactions": 15
+  },
+  "student_summaries": {
+    "alice_perfectionist": {
+      "student_id": "alice_perfectionist",
+      "session_summary": {
+        "total_questions": 5,
+        "accuracy": 0.2,
+        "total_learning_gain": 0.532,
+        "avg_stress_level": 0.2,
+        "avg_cognitive_load": 3.06,
+        "session_duration_minutes": 2.1
+      },
+      "mastery_progression": {
+        "algebra_basics": {
+          "start_mastery": 0.05,
+          "end_mastery": 0.336,
+          "improvement": 0.286
+        },
+        "geometry_fundamentals": {
+          "start_mastery": 0.08,
+          "end_mastery": 0.326,
+          "improvement": 0.246
+        }
+      },
+      "ai_performance_analysis": {
+        "time_allocation_accuracy": 0.52,
+        "stress_detection_accuracy": 0.81,
+        "learning_progression_effectiveness": 0.6,
+        "overall_ai_performance": 0.643
+      }
+    },
+    "bob_laid_back": {
+      "student_id": "bob_laid_back",
+      "session_summary": {
+        "total_questions": 5,
+        "accuracy": 0.2,
+        "total_learning_gain": 0.532,
+        "avg_stress_level": 0.12,
+        "avg_cognitive_load": 3.2,
+        "session_duration_minutes": 1.0
+      },
+      "mastery_progression": {
+        "algebra_basics": {
+          "start_mastery": 0.05,
+          "end_mastery": 0.336,
+          "improvement": 0.286
+        },
+        "geometry_fundamentals": {
+          "start_mastery": 0.08,
+          "end_mastery": 0.326,
+          "improvement": 0.246
+        }
+      },
+      "ai_performance_analysis": {
+        "time_allocation_accuracy": 0.7,
+        "stress_detection_accuracy": 0.912,
+        "learning_progression_effectiveness": 0.6,
+        "overall_ai_performance": 0.737
+      }
+    },
+    "carol_balanced": {
+      "student_id": "carol_balanced",
+      "session_summary": {
+        "total_questions": 5,
+        "accuracy": 0.2,
+        "total_learning_gain": 0.597,
+        "avg_stress_level": 0.22,
+        "avg_cognitive_load": 3.01,
+        "session_duration_minutes": 1.5
+      },
+      "mastery_progression": {
+        "algebra_basics": {
+          "start_mastery": 0.05,
+          "end_mastery": 0.345,
+          "improvement": 0.295
+        },
+        "geometry_fundamentals": {
+          "start_mastery": 0.08,
+          "end_mastery": 0.382,
+          "improvement": 0.302
+        }
+      },
+      "ai_performance_analysis": {
+        "time_allocation_accuracy": 0.796,
+        "stress_detection_accuracy": 0.759,
+        "learning_progression_effectiveness": 0.4,
+        "overall_ai_performance": 0.652
+      }
+    }
+  },
+  "all_interactions": [
+    {
+      "timestamp": "2025-09-20T22:35:20.920947",
+      "student_id": "alice_perfectionist",
+      "question_id": "q1",
+      "topic": "algebra_basics",
+      "difficulty": 0.3,
+      "cognitive_load": 3.053,
+      "allocated_time_ms": 16485,
+      "actual_time_ms": 26938.265577905357,
+      "correct": "True",
+      "stress_level": 0.0,
+      "mastery_before": 0.05,
+      "mastery_after": 0.48181818181818187,
+      "student_state": "learning",
+      "recommendations": {
+        "immediate_actions": [],
+        "content_adjustments": [],
+        "pacing_adjustments": [],
+        "intervention_suggestions": []
+      }
+    },
+    {
+      "timestamp": "2025-09-20T22:35:21.425204",
+      "student_id": "alice_perfectionist",
+      "question_id": "q2",
+      "topic": "algebra_basics",
+      "difficulty": 0.5,
+      "cognitive_load": 3.12,
+      "allocated_time_ms": 15000,
+      "actual_time_ms": 18207.390244932125,
+      "correct": "False",
+      "stress_level": 0.4,
+      "mastery_before": 0.48181818181818187,
+      "mastery_after": 0.4097633136094675,
+      "student_state": "mastering",
+      "recommendations": {
+        "immediate_actions": [
+          "\u26a0\ufe0f Monitor closely - moderate stress detected"
+        ],
+        "content_adjustments": [
+          "\ud83d\ude80 Ready for advanced challenges"
+        ],
+        "pacing_adjustments": [
+          "Increase time allocation by 20%",
+          "Consider accelerated progression"
+        ],
+        "intervention_suggestions": []
+      }
+    },
+    {
+      "timestamp": "2025-09-20T22:35:21.927533",
+      "student_id": "alice_perfectionist",
+      "question_id": "q3",
+      "topic": "geometry_fundamentals",
+      "difficulty": 0.4,
+      "cognitive_load": 2.972,
+      "allocated_time_ms": 18507,
+      "actual_time_ms": 12822.786429456011,
+      "correct": "False",
+      "stress_level": 0.15,
+      "mastery_before": 0.08,
+      "mastery_after": 0.3119658119658119,
+      "student_state": "learning",
+      "recommendations": {
+        "immediate_actions": [],
+        "content_adjustments": [],
+        "pacing_adjustments": [],
+        "intervention_suggestions": []
+      }
+    },
+    {
+      "timestamp": "2025-09-20T22:35:22.430119",
+      "student_id": "alice_perfectionist",
+      "question_id": "q4",
+      "topic": "algebra_basics",
+      "difficulty": 0.7,
+      "cognitive_load": 3.142,
+      "allocated_time_ms": 21285,
+      "actual_time_ms": 32485.88734097314,
+      "correct": "False",
+      "stress_level": 0.3,
+      "mastery_before": 0.4097633136094675,
+      "mastery_after": 0.33565132223310484,
+      "student_state": "learning",
+      "recommendations": {
+        "immediate_actions": [],
+        "content_adjustments": [],
+        "pacing_adjustments": [
+          "Provide encouragement - mild stress detected"
+        ],
+        "intervention_suggestions": []
+      }
+    },
+    {
+      "timestamp": "2025-09-20T22:35:22.932420",
+      "student_id": "alice_perfectionist",
+      "question_id": "q5",
+      "topic": "geometry_fundamentals",
+      "difficulty": 0.6,
+      "cognitive_load": 3.038,
+      "allocated_time_ms": 20452,
+      "actual_time_ms": 35195.33623110961,
+      "correct": "False",
+      "stress_level": 0.15,
+      "mastery_before": 0.3119658119658119,
+      "mastery_after": 0.3263598326359832,
+      "student_state": "struggling",
+      "recommendations": {
+        "immediate_actions": [],
+        "content_adjustments": [
+          "\ud83d\udcda Provide foundation-level questions and hints"
+        ],
+        "pacing_adjustments": [],
+        "intervention_suggestions": [
+          "Offer worked examples before next question"
+        ]
+      }
+    },
+    {
+      "timestamp": "2025-09-20T22:35:23.436972",
+      "student_id": "bob_laid_back",
+      "question_id": "q1",
+      "topic": "algebra_basics",
+      "difficulty": 0.3,
+      "cognitive_load": 3.053,
+      "allocated_time_ms": 16485,
+      "actual_time_ms": 16933.68772651196,
+      "correct": "True",
+      "stress_level": 0.0,
+      "mastery_before": 0.05,
+      "mastery_after": 0.48181818181818187,
+      "student_state": "learning",
+      "recommendations": {
+        "immediate_actions": [],
+        "content_adjustments": [],
+        "pacing_adjustments": [],
+        "intervention_suggestions": []
+      }
+    },
+    {
+      "timestamp": "2025-09-20T22:35:23.938928",
+      "student_id": "bob_laid_back",
+      "question_id": "q2",
+      "topic": "algebra_basics",
+      "difficulty": 0.5,
+      "cognitive_load": 3.12,
+      "allocated_time_ms": 15000,
+      "actual_time_ms": 7953.009640458423,
+      "correct": "False",
+      "stress_level": 0.0,
+      "mastery_before": 0.48181818181818187,
+      "mastery_after": 0.4097633136094675,
+      "student_state": "mastering",
+      "recommendations": {
+        "immediate_actions": [],
+        "content_adjustments": [
+          "\ud83d\ude80 Ready for advanced challenges"
+        ],
+        "pacing_adjustments": [
+          "Consider accelerated progression"
+        ],
+        "intervention_suggestions": []
+      }
+    },
+    {
+      "timestamp": "2025-09-20T22:35:24.441402",
+      "student_id": "bob_laid_back",
+      "question_id": "q3",
+      "topic": "geometry_fundamentals",
+      "difficulty": 0.4,
+      "cognitive_load": 3.532,
+      "allocated_time_ms": 15423,
+      "actual_time_ms": 9029.313776598745,
+      "correct": "False",
+      "stress_level": 0.1,
+      "mastery_before": 0.08,
+      "mastery_after": 0.3119658119658119,
+      "student_state": "learning",
+      "recommendations": {
+        "immediate_actions": [],
+        "content_adjustments": [],
+        "pacing_adjustments": [],
+        "intervention_suggestions": []
+      }
+    },
+    {
+      "timestamp": "2025-09-20T22:35:24.945160",
+      "student_id": "bob_laid_back",
+      "question_id": "q4",
+      "topic": "algebra_basics",
+      "difficulty": 0.7,
+      "cognitive_load": 3.212,
+      "allocated_time_ms": 20790,
+      "actual_time_ms": 13152.14884197554,
+      "correct": "False",
+      "stress_level": 0.25,
+      "mastery_before": 0.4097633136094675,
+      "mastery_after": 0.33565132223310484,
+      "student_state": "learning",
+      "recommendations": {
+        "immediate_actions": [],
+        "content_adjustments": [],
+        "pacing_adjustments": [
+          "Provide encouragement - mild stress detected"
+        ],
+        "intervention_suggestions": []
+      }
+    },
+    {
+      "timestamp": "2025-09-20T22:35:25.446658",
+      "student_id": "bob_laid_back",
+      "question_id": "q5",
+      "topic": "geometry_fundamentals",
+      "difficulty": 0.6,
+      "cognitive_load": 3.108,
+      "allocated_time_ms": 20007,
+      "actual_time_ms": 15567.506702079558,
+      "correct": "False",
+      "stress_level": 0.25,
+      "mastery_before": 0.3119658119658119,
+      "mastery_after": 0.3263598326359832,
+      "student_state": "struggling",
+      "recommendations": {
+        "immediate_actions": [],
+        "content_adjustments": [
+          "\ud83d\udcda Provide foundation-level questions and hints"
+        ],
+        "pacing_adjustments": [
+          "Provide encouragement - mild stress detected"
+        ],
+        "intervention_suggestions": [
+          "Offer worked examples before next question"
+        ]
+      }
+    },
+    {
+      "timestamp": "2025-09-20T22:35:25.950450",
+      "student_id": "carol_balanced",
+      "question_id": "q1",
+      "topic": "algebra_basics",
+      "difficulty": 0.3,
+      "cognitive_load": 3.053,
+      "allocated_time_ms": 16485,
+      "actual_time_ms": 17989.880743336325,
+      "correct": "False",
+      "stress_level": 0.4,
+      "mastery_before": 0.05,
+      "mastery_after": 0.4044776119402985,
+      "student_state": "learning",
+      "recommendations": {
+        "immediate_actions": [
+          "\u26a0\ufe0f Monitor closely - moderate stress detected"
+        ],
+        "content_adjustments": [],
+        "pacing_adjustments": [
+          "Increase time allocation by 20%"
+        ],
+        "intervention_suggestions": []
+      }
+    },
+    {
+      "timestamp": "2025-09-20T22:35:26.452527",
+      "student_id": "carol_balanced",
+      "question_id": "q2",
+      "topic": "algebra_basics",
+      "difficulty": 0.5,
+      "cognitive_load": 2.643,
+      "allocated_time_ms": 16527,
+      "actual_time_ms": 20999.3881013159,
+      "correct": "False",
+      "stress_level": 0.4,
+      "mastery_before": 0.4044776119402985,
+      "mastery_after": 0.3837157987643425,
+      "student_state": "struggling",
+      "recommendations": {
+        "immediate_actions": [
+          "\u26a0\ufe0f Monitor closely - moderate stress detected"
+        ],
+        "content_adjustments": [
+          "\ud83d\udcda Provide foundation-level questions and hints"
+        ],
+        "pacing_adjustments": [
+          "Increase time allocation by 20%"
+        ],
+        "intervention_suggestions": [
+          "Offer worked examples before next question"
+        ]
+      }
+    },
+    {
+      "timestamp": "2025-09-20T22:35:26.953875",
+      "student_id": "carol_balanced",
+      "question_id": "q3",
+      "topic": "geometry_fundamentals",
+      "difficulty": 0.4,
+      "cognitive_load": 2.972,
+      "allocated_time_ms": 18507,
+      "actual_time_ms": 9406.551743525728,
+      "correct": "True",
+      "stress_level": 0.1,
+      "mastery_before": 0.08,
+      "mastery_after": 0.459731543624161,
+      "student_state": "learning",
+      "recommendations": {
+        "immediate_actions": [],
+        "content_adjustments": [],
+        "pacing_adjustments": [],
+        "intervention_suggestions": []
+      }
+    },
+    {
+      "timestamp": "2025-09-20T22:35:27.455433",
+      "student_id": "carol_balanced",
+      "question_id": "q4",
+      "topic": "algebra_basics",
+      "difficulty": 0.7,
+      "cognitive_load": 3.24,
+      "allocated_time_ms": 20975,
+      "actual_time_ms": 22780.82152780068,
+      "correct": "False",
+      "stress_level": 0.1,
+      "mastery_before": 0.3837157987643425,
+      "mastery_after": 0.3453442188879082,
+      "student_state": "struggling",
+      "recommendations": {
+        "immediate_actions": [],
+        "content_adjustments": [
+          "\ud83d\udcda Provide foundation-level questions and hints"
+        ],
+        "pacing_adjustments": [],
+        "intervention_suggestions": [
+          "Offer worked examples before next question"
+        ]
+      }
+    },
+    {
+      "timestamp": "2025-09-20T22:35:27.959050",
+      "student_id": "carol_balanced",
+      "question_id": "q5",
+      "topic": "geometry_fundamentals",
+      "difficulty": 0.6,
+      "cognitive_load": 3.158,
+      "allocated_time_ms": 17760,
+      "actual_time_ms": 19213.339723342746,
+      "correct": "False",
+      "stress_level": 0.1,
+      "mastery_before": 0.459731543624161,
+      "mastery_after": 0.381562099871959,
+      "student_state": "mastering",
+      "recommendations": {
+        "immediate_actions": [],
+        "content_adjustments": [
+          "\ud83d\ude80 Ready for advanced challenges"
+        ],
+        "pacing_adjustments": [
+          "Consider accelerated progression"
+        ],
+        "intervention_suggestions": []
+      }
+    }
+  ]
+}

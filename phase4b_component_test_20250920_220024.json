@@ -1,0 +1,69 @@
+{
+  "timestamp": "2025-09-20T22:00:24.628593",
+  "summary": {
+    "total_components_tested": 7,
+    "available_components": 5,
+    "error_components": 2,
+    "missing_components": 0,
+    "integration_test_passed": true
+  },
+  "component_details": {
+    "time_allocator": {
+      "status": "available",
+      "test_result": {
+        "allocated_time_ms": 29371,
+        "factor": 0.9791,
+        "breakdown": {
+          "stress_factor": 1.15,
+          "fatigue_factor": 1.06,
+          "mastery_factor": 0.79,
+          "difficulty_factor": 1.0,
+          "session_factor": 1.0167,
+          "clamped_factor": 0.9791
+        }
+      }
+    },
+    "cognitive_load": {
+      "status": "available",
+      "test_result": {
+        "total_load": 2.587,
+        "overload_risk": 0.161,
+        "recommendations": [
+          "Increase schema activation prompts"
+        ]
+      }
+    },
+    "stress_detection": {
+      "status": "available",
+      "test_result": {
+        "stress_level": 0.0,
+        "confidence": 0.2,
+        "indicators": [],
+        "intervention": null
+      }
+    },
+    "bkt_system": {
+      "status": "error",
+      "error": "update_mastery() got an unexpected keyword argument 'response_time_ms'"
+    },
+    "pressure_selection": {
+      "status": "available"
+    },
+    "api_manager": {
+      "status": "error",
+      "error": "cannot import name 'genai' from 'google' (unknown location)"
+    },
+    "database_migration": {
+      "status": "available",
+      "test_result": {
+        "file_exists": true,
+        "content_length": 1499,
+        "tables_defined": 3
+      }
+    }
+  },
+  "recommendations": [
+    "Fix component errors before proceeding with full Phase 4B testing",
+    "Ready for comprehensive Phase 4B integration testing"
+  ]
+}
