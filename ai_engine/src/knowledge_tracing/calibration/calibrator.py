@@ -3,67 +3,60 @@ from __future__ import annotations
 import torch
 import numpy as np
 import logging
-from typing import Optional, Tuple
+from typing import Optional, Tuple, Dict
 
 logger = logging.getLogger("calibrator")
 
 class TemperatureScalingCalibrator:
     """
-    Temperature scaling calibrator for neural network logits.
-    Fits temperature parameter to validation logits and labels
-    to improve probability calibration.
+    Maintains temperature parameters segmented by (exam_code, subject)
+    to avoid cross-exam/subject miscalibration.
     """
-
     def __init__(self):
-        self.temperature = torch.nn.Parameter(torch.ones(1))
-        self.fitted = False
+        self._temps: Dict[Tuple[str, str], torch.nn.Parameter] = {}
+        self._fitted: Dict[Tuple[str, str], bool] = {}
 
-    def _nll(self, scaled_logits: torch.Tensor, labels: torch.Tensor) -> torch.Tensor:
-        """
-        Compute negative log-likelihood loss (cross-entropy).
-        """
-        log_probs = torch.nn.functional.log_softmax(scaled_logits, dim=1)
-        loss = torch.nn.functional.nll_loss(log_probs, labels)
-        return loss
+    def _key(self, exam_code: str, subject: str) -> Tuple[str, str]:
+        return (exam_code or "JEE_Mains", subject or "generic")
 
-    def fit(self, logits: torch.Tensor, labels: torch.Tensor, max_iter: int = 50, lr: float = 0.01, verbose: bool = False):
-        """
-        Optimize temperature using gradient descent.
+    def get_temperature(self, exam_code: str, subject: str) -> float:
+        key = self._key(exam_code, subject)
+        if key not in self._temps:
+            self._temps[key] = torch.nn.Parameter(torch.ones(1))
+            self._fitted[key] = False
+        return float(self._temps[key].item())
 
-        Args:
-            logits: raw logits (N x C)
-            labels: true labels (N,)
-        """
-        optimizer = torch.optim.LBFGS([self.temperature], lr=lr, max_iter=max_iter)
+    def fit(self, logits: torch.Tensor, labels: torch.Tensor, exam_code: str, subject: str,
+            max_iter: int = 50, lr: float = 0.01, verbose: bool = False) -> float:
+        key = self._key(exam_code, subject)
+        if key not in self._temps:
+            self._temps[key] = torch.nn.Parameter(torch.ones(1))
+            self._fitted[key] = False
+
+        temp = self._temps[key]
+        optimizer = torch.optim.LBFGS([temp], lr=lr, max_iter=max_iter)
 
         def closure():
             optimizer.zero_grad()
-            scaled_logits = logits / self.temperature
-            loss = self._nll(scaled_logits, labels)
+            scaled = logits / temp
+            loss = torch.nn.functional.cross_entropy(scaled, labels)
             loss.backward()
             if verbose:
-                logger.info(f"Loss {loss.item()} Temperature {self.temperature.item()}")
+                logger.info(f"[Calib] {key} loss={loss.item():.6f} T={temp.item():.4f}")
             return loss
 
         optimizer.step(closure)
-        self.fitted = True
-        logger.info(f"Fitted temperature scaler: {self.temperature.item():.4f}")
+        self._fitted[key] = True
+        logger.info(f"[Calib] Fitted temperature {key}: {temp.item():.4f}")
+        return float(temp.item())
 
-    def calibrate(self, logits: torch.Tensor) -> torch.Tensor:
-        """
-        Apply temperature scaled softmax probabilities.
-
-        Args:
-            logits: raw logits (N x C)
-
-        Returns:
-            calibrated probabilities (N x C)
-        """
-        if not self.fitted:
-            logger.warning("TemperatureScalingCalibrator calibrate called before fit.")
+    def calibrate(self, logits: torch.Tensor, exam_code: str, subject: str) -> torch.Tensor:
+        key = self._key(exam_code, subject)
+        if key not in self._temps or not self._fitted.get(key, False):
+            logger.warning(f"[Calib] Using uncalibrated softmax for {key}")
             return torch.softmax(logits, dim=1)
-        scaled_logits = logits / self.temperature
-        return torch.softmax(scaled_logits, dim=1)
+        T = self._temps[key]
+        return torch.softmax(logits / T, dim=1)
 
     def expected_calibration_error(self, probs: torch.Tensor, labels: torch.Tensor, n_bins: int = 10) -> float:
         """
@@ -91,3 +84,5 @@ class TemperatureScalingCalibrator:
                 avg_confidence_in_bin = confidences[in_bin].mean()
                 ece += torch.abs(avg_confidence_in_bin - accuracy_in_bin) * prop_in_bin
         return ece.item()
+
+CALIBRATOR_REGISTRY = TemperatureScalingCalibrator()

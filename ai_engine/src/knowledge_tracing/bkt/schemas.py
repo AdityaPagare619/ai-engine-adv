@@ -1,5 +1,5 @@
 # ai_engine/src/knowledge_tracing/bkt/schemas.py
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 from typing import Optional, Dict, Any
 
 class TraceRequest(BaseModel):
@@ -12,11 +12,22 @@ class TraceRequest(BaseModel):
     # Optional override/context hints (for logging/analysis; not required for core math)
     difficulty_level: Optional[str] = Field(None, description="Editorial difficulty label, if any")
     bloom_level: Optional[str] = Field(None, description="Bloom taxonomy level, if any")
+    
+    # Added fields for intervention system
+    difficulty: float = Field(0.5, ge=0.0, le=1.0, description="Question difficulty from 0 to 1")
+    time_pressure: float = Field(0.0, ge=0.0, le=1.0, description="Time pressure level from 0 to 1")
 
-    @validator("student_id", "concept_id")
+    @field_validator("student_id", "concept_id")
+    @classmethod
     def non_empty(cls, v: str):
         assert isinstance(v, str) and len(v) > 0, "must be non-empty"
         return v
+
+class InterventionData(BaseModel):
+    strategy: str = Field(..., description="Name of the intervention strategy")
+    level: str = Field(..., description="Level of intervention (NONE, MILD, MODERATE, STRONG, CRITICAL)")
+    recommendations: list = Field(..., description="List of specific recommendations")
+    success_probability: float = Field(..., ge=0.0, le=1.0, description="Estimated probability of intervention success")
 
 class TraceResponse(BaseModel):
     previous_mastery: float = Field(..., ge=0.0, le=1.0)
@@ -29,6 +40,7 @@ class TraceResponse(BaseModel):
     )
     constraint_violations: list = Field(default_factory=list)
     explanation: Dict[str, Any] = Field(default_factory=dict)
+    intervention: Optional[InterventionData] = Field(None, description="Intervention data if performance decline detected")
 
 class EvaluateWindowRequest(BaseModel):
     concept_id: Optional[str] = Field(None, description="Limit evaluation to this concept")

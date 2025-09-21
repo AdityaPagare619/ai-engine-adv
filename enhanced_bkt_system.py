@@ -2,13 +2,26 @@
 """
 Enhanced BKT System with Pedagogical Intelligence
 Addresses the 5.3% success rate issue with smart teaching methods
+Integrates prerequisite knowledge management for improved learning paths
 """
 
 import random
 import json
+import logging
+import os
+import sys
 from typing import Dict, List, Any, Optional
 from dataclasses import dataclass
 from enum import Enum
+
+# Add the ai_engine source to Python path if not already there
+sys.path.append(os.path.join(os.path.dirname(__file__), 'ai_engine', 'src'))
+
+# Import prerequisite knowledge management
+from ai_engine.src.knowledge_tracing.prerequisite.manager import PrerequisiteManager
+from ai_engine.src.knowledge_tracing.prerequisite.dependency_graph import PrerequisiteAnalysisResult
+
+logger = logging.getLogger("enhanced_bkt")
 
 class DifficultyLevel(Enum):
     FOUNDATION = "foundation"      # 0.2-0.4 difficulty
@@ -27,11 +40,12 @@ class MotivationalFeedback:
     message: str
     encouragement_level: float  # 0.0 to 1.0
     next_action: str
+    prerequisite_suggestion: Optional[Dict[str, Any]] = None
 
 class PedagogicalBKT:
-    """Enhanced BKT with teaching intelligence"""
+    """Enhanced BKT with teaching intelligence and prerequisite knowledge management"""
     
-    def __init__(self):
+    def __init__(self, mastery_threshold: float = 0.75):
         # Core BKT parameters (more forgiving for beginners)
         self.bkt_params = {
             'foundation': {
@@ -65,63 +79,106 @@ class PedagogicalBKT:
         self.motivation_levels = {}
         self.recent_performance = {}
         self.learning_streaks = {}
+        self.mastery_threshold = mastery_threshold
+        
+        # Initialize student state with attempts tracking
+        self.state = {
+            'attempts': {},
+            'mastery': {},
+            'difficulty_history': {}
+        }
+        
+        # Initialize prerequisite knowledge manager
+        self.prerequisite_manager = PrerequisiteManager(mastery_threshold=mastery_threshold * 0.8)
+        self.concept_masteries = {}
         
     def get_student_state(self, student_id: str, topic: str) -> StudentState:
-        """Determine current student emotional/learning state"""
+        """Determine student state based on recent performance"""
         key = f"{student_id}_{topic}"
-        recent_accuracy = self.get_recent_accuracy(student_id, topic)
         
-        if recent_accuracy < 0.3:
+        if key not in self.student_states:
+            return StudentState.LEARNING  # Default state
+            
+        state = self.student_states[key]
+        
+        if state['attempts'] < 3:
+            return StudentState.LEARNING  # Not enough data
+            
+        accuracy = state['correct'] / state['attempts'] if state['attempts'] > 0 else 0
+        
+        if accuracy < 0.3:
             return StudentState.STRUGGLING
-        elif recent_accuracy < 0.6:
+        elif accuracy < 0.6:
             return StudentState.LEARNING
-        elif recent_accuracy < 0.8:
+        elif accuracy < 0.8:
             return StudentState.PROGRESSING
         else:
             return StudentState.MASTERING
-    
-    def get_recent_accuracy(self, student_id: str, topic: str) -> float:
-        """Get accuracy from last 5-10 questions"""
-        key = f"{student_id}_{topic}"
-        if key not in self.recent_performance:
-            return 0.5  # Neutral starting point
-        
-        recent_attempts = self.recent_performance[key][-10:]  # Last 10 attempts
-        if not recent_attempts:
-            return 0.5
-        
-        correct_count = sum(1 for attempt in recent_attempts if attempt['correct'])
-        return correct_count / len(recent_attempts)
-    
-    def select_optimal_difficulty(self, student_id: str, topic: str, current_mastery: float) -> DifficultyLevel:
-        """Smart difficulty selection based on student state"""
+            
+    def select_optimal_difficulty(self, student_id: str, topic: str, mastery: float) -> DifficultyLevel:
+        """Select optimal difficulty level based on student state and mastery"""
         student_state = self.get_student_state(student_id, topic)
-        recent_accuracy = self.get_recent_accuracy(student_id, topic)
         
-        # STRUGGLING students need easier questions
+        # Check prerequisite readiness
+        prerequisite_analysis = self.prerequisite_manager.analyze_concept_readiness(topic)
+        prerequisite_factor = 1.0
+        
+        if not prerequisite_analysis.ready_to_learn:
+            # Reduce difficulty if prerequisites aren't mastered
+            prerequisite_factor = max(0.6, prerequisite_analysis.overall_readiness)
+        
+        # Base difficulty selection on student state
         if student_state == StudentState.STRUGGLING:
-            return DifficultyLevel.FOUNDATION
-        
-        # LEARNING students need careful progression
+            # For struggling students, start with foundation level
+            if mastery < 0.3:
+                return DifficultyLevel.FOUNDATION
+            else:
+                return DifficultyLevel.BUILDING
+                
         elif student_state == StudentState.LEARNING:
-            if recent_accuracy > 0.4:
+            # For learning students, adapt based on mastery
+            if mastery < 0.4:
+                return DifficultyLevel.FOUNDATION
+            else:
+                return DifficultyLevel.BUILDING
+                
+        elif student_state == StudentState.PROGRESSING:
+            # For progressing students, challenge appropriately
+            if mastery < 0.6:
                 return DifficultyLevel.BUILDING
             else:
-                return DifficultyLevel.FOUNDATION
-        
-        # PROGRESSING students can handle medium challenges
-        elif student_state == StudentState.PROGRESSING:
-            if current_mastery > 0.6:
+                return DifficultyLevel.INTERMEDIATE
+                
+        else:  # MASTERING
+            # For mastering students, provide advanced content
+            if mastery < 0.8:
                 return DifficultyLevel.INTERMEDIATE
             else:
-                return DifficultyLevel.BUILDING
+                return DifficultyLevel.ADVANCED
+                
+    def should_take_break(self, student_id: str, topic: str) -> bool:
+        """Determine if student should take a break based on performance pattern"""
+        key = f"{student_id}_{topic}"
         
-        # MASTERING students need advanced challenges
-        else:
-            return DifficultyLevel.ADVANCED
-    
+        if key not in self.recent_performance:
+            return False
+            
+        recent = self.recent_performance[key]
+        
+        # Check for consistent decline in performance
+        if len(recent) >= 5:
+            # Check last 5 attempts
+            last_five = recent[-5:]
+            correct_count = sum(1 for item in last_five if item['correct'])
+            
+            # If success rate is low and declining, suggest a break
+            if correct_count <= 1:
+                return True
+                
+        return False
+        
     def provide_motivational_feedback(self, student_id: str, topic: str, is_correct: bool) -> MotivationalFeedback:
-        """Provide encouraging, specific feedback"""
+        """Provide encouraging, specific feedback with prerequisite suggestions"""
         student_state = self.get_student_state(student_id, topic)
         key = f"{student_id}_{topic}"
         
@@ -134,19 +191,35 @@ class PedagogicalBKT:
             streak['correct'] += 1
         streak['total'] += 1
         
+        # Check for prerequisite gaps
+        prerequisite_suggestion = None
+        if not is_correct and student_state in [StudentState.STRUGGLING, StudentState.LEARNING]:
+            # Check if there are prerequisite gaps
+            gaps = self.prerequisite_manager.get_prerequisite_gaps(topic)
+            if gaps:
+                top_gap = gaps[0]  # Most impactful gap
+                prerequisite_suggestion = {
+                    "concept_id": top_gap["concept_id"],
+                    "concept_name": top_gap["concept_name"],
+                    "message": f"You might want to review {top_gap['concept_name']} first to help with this concept."
+                }
+                next_action = "review_prerequisite"
+        
         # Generate contextual feedback
         if student_state == StudentState.STRUGGLING:
             if is_correct:
                 return MotivationalFeedback(
                     message=f"🎉 Great job! You're getting it! Keep practicing {topic}",
                     encouragement_level=0.9,
-                    next_action="Continue with similar difficulty"
+                    next_action="Continue with similar difficulty",
+                    prerequisite_suggestion=prerequisite_suggestion
                 )
             else:
                 return MotivationalFeedback(
                     message=f"💪 Don't worry, {topic} is challenging. Let's try a simpler approach",
                     encouragement_level=0.7,
-                    next_action="Provide foundation questions and hints"
+                    next_action="Provide foundation questions and hints" if not prerequisite_suggestion else "review_prerequisite",
+                    prerequisite_suggestion=prerequisite_suggestion
                 )
         
         elif student_state == StudentState.LEARNING:
@@ -154,13 +227,15 @@ class PedagogicalBKT:
                 return MotivationalFeedback(
                     message=f"✨ Excellent progress in {topic}! You're building strong foundations",
                     encouragement_level=0.8,
-                    next_action="Gradually increase difficulty"
+                    next_action="Gradually increase difficulty",
+                    prerequisite_suggestion=prerequisite_suggestion
                 )
             else:
                 return MotivationalFeedback(
                     message=f"🤔 Almost there! Review the concept and try again",
                     encouragement_level=0.6,
-                    next_action="Provide worked example"
+                    next_action="Provide worked example" if not prerequisite_suggestion else "review_prerequisite",
+                    prerequisite_suggestion=prerequisite_suggestion
                 )
         
         elif student_state == StudentState.PROGRESSING:
@@ -168,13 +243,15 @@ class PedagogicalBKT:
                 return MotivationalFeedback(
                     message=f"🚀 Outstanding! You're mastering {topic}",
                     encouragement_level=0.9,
-                    next_action="Introduce advanced concepts"
+                    next_action="Introduce advanced concepts",
+                    prerequisite_suggestion=prerequisite_suggestion
                 )
             else:
                 return MotivationalFeedback(
                     message=f"📚 Good effort! This was a challenging question",
                     encouragement_level=0.7,
-                    next_action="Review specific subtopic"
+                    next_action="Review specific subtopic" if not prerequisite_suggestion else "review_prerequisite",
+                    prerequisite_suggestion=prerequisite_suggestion
                 )
         
         else:  # MASTERING
@@ -182,42 +259,20 @@ class PedagogicalBKT:
                 return MotivationalFeedback(
                     message=f"🏆 Perfect! You've mastered {topic}. Ready for new challenges?",
                     encouragement_level=1.0,
-                    next_action="Introduce new topic or advanced applications"
+                    next_action="Introduce new topic or advanced applications",
+                    prerequisite_suggestion=prerequisite_suggestion
                 )
             else:
                 return MotivationalFeedback(
                     message=f"🎯 Even experts make mistakes! Great learning opportunity",
                     encouragement_level=0.8,
-                    next_action="Analyze the error and learn from it"
+                    next_action="Analyze the error and learn from it" if not prerequisite_suggestion else "review_prerequisite",
+                    prerequisite_suggestion=prerequisite_suggestion
                 )
-    
-    def should_take_break(self, student_id: str, topic: str) -> bool:
-        """Detect when student needs a break"""
-        key = f"{student_id}_{topic}"
-        if key not in self.recent_performance:
-            return False
-        
-        recent_attempts = self.recent_performance[key][-5:]  # Last 5 attempts
-        if len(recent_attempts) < 5:
-            return False
-        
-        # Check for consecutive failures
-        consecutive_wrong = sum(1 for attempt in recent_attempts[-3:] if not attempt['correct'])
-        if consecutive_wrong >= 3:
-            return True
-        
-        # Check for declining performance
-        first_half_accuracy = sum(1 for attempt in recent_attempts[:3] if attempt['correct']) / 3
-        second_half_accuracy = sum(1 for attempt in recent_attempts[3:] if attempt['correct']) / 2
-        
-        if first_half_accuracy - second_half_accuracy > 0.5:  # Performance dropped significantly
-            return True
-        
-        return False
-    
+                
     def update_mastery(self, student_id: str, topic: str, is_correct: bool, difficulty: float, 
                       response_time_ms: Optional[int] = None, confidence_score: Optional[float] = None) -> Dict[str, Any]:
-        """Enhanced BKT update with pedagogical intelligence"""
+        """Enhanced BKT update with pedagogical intelligence and prerequisite knowledge integration"""
         key = f"{student_id}_{topic}"
         
         # Get appropriate BKT parameters based on difficulty
@@ -277,10 +332,14 @@ class PedagogicalBKT:
             new_mastery = max(new_mastery, previous_mastery * 0.9)
         
         # Update state
+        if 'attempts' not in state:
+            state['attempts'] = 0
+            state['correct'] = 0
+            
         state['mastery'] = new_mastery
         state['attempts'] += 1
         if is_correct:
-            state['correct'] += 1
+            state['correct'] = state.get('correct', 0) + 1
         
         # Track recent performance
         if key not in self.recent_performance:
@@ -297,7 +356,15 @@ class PedagogicalBKT:
         if len(self.recent_performance[key]) > 20:
             self.recent_performance[key] = self.recent_performance[key][-20:]
         
-        return {
+        # Update concept masteries for prerequisite system
+        self.concept_masteries[topic] = new_mastery
+        self.prerequisite_manager.sync_mastery_from_bkt(self.concept_masteries)
+        
+        # Check prerequisite readiness
+        prerequisite_analysis = self.prerequisite_manager.analyze_concept_readiness(topic)
+        
+        # Prepare response with enhanced information
+        response = {
             'previous_mastery': previous_mastery,
             'new_mastery': new_mastery,
             'learning_occurred': new_mastery > previous_mastery + 0.01,
@@ -309,12 +376,106 @@ class PedagogicalBKT:
             'motivational_feedback': self.provide_motivational_feedback(student_id, topic, is_correct),
             'needs_break': self.should_take_break(student_id, topic)
         }
+        
+        # Add prerequisite information
+        response['prerequisite_readiness'] = {
+            'ready_to_learn': prerequisite_analysis.ready_to_learn,
+            'overall_readiness': prerequisite_analysis.overall_readiness,
+            'gaps_count': len(prerequisite_analysis.prerequisite_gaps),
+            'recommended_concepts': prerequisite_analysis.recommended_concepts[:3]  # Top 3 recommendations
+        }
+        
+        return response
+        
+    def get_learning_path(self, topic: str) -> List[str]:
+        """
+        Get optimal learning path to reach target concept
+        
+        Args:
+            topic: Target concept to learn
+            
+        Returns:
+            List of concept IDs in recommended learning order
+        """
+        return self.prerequisite_manager.get_optimal_learning_path(topic)
+        
+    def recommend_next_concepts(self, current_topic: str, count: int = 3) -> List[str]:
+        """
+        Recommend next concepts after current concept
+        
+        Args:
+            current_topic: Current concept
+            count: Number of recommendations
+            
+        Returns:
+            List of recommended concept IDs
+        """
+        return self.prerequisite_manager.recommend_next_concepts(current_topic, count)
+        
+    def load_concept_structure(self, concepts_data: List[Dict]) -> None:
+        """
+        Load concept structure from database or configuration
+        
+        Args:
+            concepts_data: List of concept dictionaries with structure
+        """
+        self.prerequisite_manager.load_concept_structure(concepts_data)
 
 class ImprovedSimulation:
     """Test the enhanced BKT system"""
     
     def __init__(self):
         self.enhanced_bkt = PedagogicalBKT()
+        
+        # Load sample concept structure
+        self.load_sample_concepts()
+        
+    def load_sample_concepts(self):
+        """Load sample concept structure for testing"""
+        concepts_data = [
+            {
+                "concept_id": "algebra_basics",
+                "name": "Algebra Basics",
+                "difficulty": 0.4,
+                "prerequisites": []
+            },
+            {
+                "concept_id": "linear_equations",
+                "name": "Linear Equations",
+                "difficulty": 0.5,
+                "prerequisites": [
+                    {"concept_id": "algebra_basics", "weight": 0.9}
+                ]
+            },
+            {
+                "concept_id": "quadratic_equations",
+                "name": "Quadratic Equations",
+                "difficulty": 0.7,
+                "prerequisites": [
+                    {"concept_id": "linear_equations", "weight": 0.8},
+                    {"concept_id": "algebra_basics", "weight": 0.6}
+                ]
+            },
+            {
+                "concept_id": "polynomials",
+                "name": "Polynomials",
+                "difficulty": 0.6,
+                "prerequisites": [
+                    {"concept_id": "algebra_basics", "weight": 0.7}
+                ]
+            },
+            {
+                "concept_id": "advanced_functions",
+                "name": "Advanced Functions",
+                "difficulty": 0.8,
+                "prerequisites": [
+                    {"concept_id": "quadratic_equations", "weight": 0.8},
+                    {"concept_id": "polynomials", "weight": 0.7}
+                ]
+            }
+        ]
+        
+        self.enhanced_bkt.load_concept_structure(concepts_data)
         
     def simulate_improved_learning(self, days: int = 10):
         """Simulate learning with the enhanced system"""
@@ -326,6 +487,7 @@ class ImprovedSimulation:
         
         total_correct = 0
         total_questions = 0
+        overall_accuracy = 0.0
         
         for day in range(1, days + 1):
             print(f"\n📅 Day {day}")
@@ -369,10 +531,25 @@ class ImprovedSimulation:
                 feedback = result['motivational_feedback']
                 print(f"         💬 {feedback.message}")
                 
+                # Show prerequisite information if available
+                if 'prerequisite_readiness' in result:
+                    readiness = result['prerequisite_readiness']
+                    print(f"         📚 Prerequisite Readiness: {readiness['overall_readiness']:.2f}")
+                    if readiness['gaps_count'] > 0:
+                        print(f"         🔍 Recommended prerequisites: {', '.join(readiness['recommended_concepts'])}")
+                
                 # Check for break recommendation
                 if result['needs_break']:
                     print(f"         ⏸️ System recommends a break")
                     break
+                
+                # Check if we should move to next topic based on mastery
+                if result['new_mastery'] > 0.85 and day > 3:
+                    # Get recommended next concepts
+                    next_concepts = self.enhanced_bkt.recommend_next_concepts(topic)
+                    if next_concepts:
+                        topic = next_concepts[0]
+                        print(f"         🆙 Moving to next topic: {topic}")
             
             daily_accuracy = (daily_correct / daily_questions) * 100
             overall_accuracy = (total_correct / total_questions) * 100
@@ -384,6 +561,12 @@ class ImprovedSimulation:
         print(f"   Overall Success Rate: {overall_accuracy:.1f}%")
         print(f"   Total Questions: {total_questions}")
         print(f"   Learning Improvement: {overall_accuracy - 20:.1f}% above baseline")
+        
+        # Show learning path for advanced topic
+        advanced_topic = "advanced_functions"
+        learning_path = self.enhanced_bkt.get_learning_path(advanced_topic)
+        print(f"\n🛣️ Recommended Learning Path for {advanced_topic}:")
+        print(f"   {' → '.join(learning_path)}")
         
         return {
             'success_rate': overall_accuracy,

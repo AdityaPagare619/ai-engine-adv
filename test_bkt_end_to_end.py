@@ -2,7 +2,7 @@
 """
 End-to-End BKT System Test
 Demonstrates the complete flow of your research-grade BKT implementation
-with live Supabase integration
+with mock Supabase integration for testing
 """
 
 import sys
@@ -14,6 +14,8 @@ from typing import List, Dict, Any
 # Add the ai_engine source to Python path
 sys.path.append(os.path.join(os.path.dirname(__file__), 'ai_engine', 'src'))
 
+# Import mock client first to avoid real client initialization
+from ai_engine.src.knowledge_tracing.bkt.tests.mock_supabase import MockSupabaseClient
 from ai_engine.src.knowledge_tracing.bkt.repository import BKTRepository
 from ai_engine.src.knowledge_tracing.bkt.model import BayesianKnowledgeTracing
 from ai_engine.src.knowledge_tracing.core.bkt_core import CanonicalBKTCore
@@ -21,7 +23,10 @@ import asyncio
 
 class BKTSystemTester:
     def __init__(self):
-        self.repository = BKTRepository()
+        # Create repository with mock client
+        repo = BKTRepository.__new__(BKTRepository)  # Create without calling __init__
+        repo.client = MockSupabaseClient()  # Set mock client directly
+        self.repository = repo
         self.bkt_core = CanonicalBKTCore()
         
     def test_parameter_retrieval(self) -> bool:

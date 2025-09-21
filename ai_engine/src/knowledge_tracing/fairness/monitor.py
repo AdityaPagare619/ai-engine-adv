@@ -1,63 +1,44 @@
 # ai_engine/src/knowledge_tracing/fairness/monitor.py
-from typing import List, Dict, Optional
-import logging
+from __future__ import annotations
+from typing import Dict, List, Tuple, Optional
 import numpy as np
+import logging
 
 logger = logging.getLogger("fairness_monitor")
 
+Key = Tuple[str, str]  # (exam_code, subject)
+
 class FairnessMonitor:
     """
-    Monitors demographic parity bias and reading ability bias in mastery estimates.
-
-    Tracks statistics for defined groups and issues alerts when disparities grow.
+    Tracks mastery/score distributions segmented by (exam_code, subject) and group keys,
+    enabling per-exam audits and avoiding masked disparities across subjects.
     """
+    def __init__(self):
+        self.group_stats: Dict[Key, Dict[str, List[float]]] = {}
 
-    def __init__(self, protected_groups: Optional[List[str]] = None):
-        self.protected_groups = protected_groups or []
-        self.group_stats = {}
+    def update_stats(self, exam_code: str, subject: str, group: str, mastery_scores: List[float]):
+        key: Key = (exam_code or "JEE_Mains", subject or "generic")
+        if key not in self.group_stats:
+            self.group_stats[key] = {}
+        if group not in self.group_stats[key]:
+            self.group_stats[key][group] = []
+        self.group_stats[key][group].extend(mastery_scores)
 
-    def update_stats(self, group: str, mastery_scores: List[float]):
-        if group not in self.group_stats:
-            self.group_stats[group] = []
+    def check_parity(self, exam_code: str = "JEE_Mains", subject: str = "generic") -> Dict[str, float]:
+        key: Key = (exam_code, subject)
+        groups = self.group_stats.get(key, {})
+        if not groups:
+            return {"averages": {}, "disparity": 0.0}
+        avgs = {g: float(np.mean(vals)) if len(vals) else float("nan") for g, vals in groups.items()}
+        if len(avgs) < 2:
+            return {"averages": avgs, "disparity": 0.0}
+        disparity = max(avgs.values()) - min(avgs.values())
+        logger.info(f"[Fairness] {key} avgs={avgs} disparity={disparity:.4f}")
+        return {"averages": avgs, "disparity": float(disparity)}
 
-        self.group_stats[group].extend(mastery_scores)
-
-    def check_parity(self) -> Dict[str, float]:
-        """
-        Returns a dictionary of group-wise average mastery and disparity measures
-        """
-        averages = {}
-        for group, scores in self.group_stats.items():
-            if scores:
-                avg = np.mean(scores)
-                averages[group] = avg
-            else:
-                averages[group] = float('nan')
-
-        if len(averages) < 2:
-            return averages  # Not enough groups to compare
-
-        max_avg = max(averages.values())
-        min_avg = min(averages.values())
-        disparity = max_avg - min_avg
-
-        logger.info(f"FairnessMonitor: Group averages: {averages}, Disparity: {disparity}")
-        return {
-            "averages": averages,
-            "disparity": disparity
-        }
-
-    def generate_recommendations(self) -> List[str]:
-        """
-        Generate recommendations based on current disparity.
-        """
-        results = self.check_parity()
-        recs = []
-
-        if "disparity" in results:
-            if results["disparity"] > 0.1:
-                recs.append("Investigate feature bias and retrain model")
-            else:
-                recs.append("Bias levels acceptable")
-
-        return recs
+    def generate_recommendations(self, disparity: float) -> List[str]:
+        if disparity > 0.15:
+            return ["Investigate feature bias and retrain per-exam head", "Review time allocation skew by group"]
+        if disparity > 0.08:
+            return ["Monitor drift and audit selection thresholds"]
+        return ["Bias levels acceptable"]

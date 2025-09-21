@@ -5,6 +5,13 @@ import time
 from typing import Any
 from supabase import create_client, Client
 from postgrest.exceptions import APIError
+try:
+    from dotenv import load_dotenv, find_dotenv  # type: ignore
+except Exception:
+    def load_dotenv(*args, **kwargs):  # type: ignore
+        return False
+    def find_dotenv(*args, **kwargs):  # type: ignore
+        return ""
 
 logger = logging.getLogger("supabase_client")
 
@@ -12,19 +19,34 @@ logger = logging.getLogger("supabase_client")
 class SupabaseClient:
     """
     Lightweight but robust Supabase client wrapper.
-    - Auto-configures from environment variables (SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY).
+    - Auto-configures from .env files or environment variables (SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY).
     - Provides health check.
     - Returns wrapped table objects with retry/error handling.
     """
 
     def __init__(self, url: str | None = None, key: str | None = None):
+        # Load .env files if present (ai_engine/.env then project .env)
+        try:
+            # Attempt to load ai_engine/.env explicitly first
+            ai_env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 
+                                       ".env")
+            if os.path.exists(ai_env_path):
+                load_dotenv(ai_env_path, override=False)
+            # Then load project root .env if found
+            env_file = find_dotenv(usecwd=True)
+            if env_file:
+                load_dotenv(env_file, override=False)
+        except Exception:
+            # Do not fail if dotenv isn't available or files absent
+            pass
+
         self.url = url or os.getenv("SUPABASE_URL")
         self.key = key or os.getenv("SUPABASE_SERVICE_ROLE_KEY")
 
         if not self.url or not self.key:
             raise RuntimeError(
-                "Supabase URL/Service Role Key not set in environment. "
-                "Ensure SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are configured."
+                "Supabase URL/Service Role Key not configured. Set SUPABASE_URL and "
+                "SUPABASE_SERVICE_ROLE_KEY in ai_engine/.env or project .env, or pass them explicitly."
             )
 
         try:

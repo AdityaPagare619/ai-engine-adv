@@ -41,8 +41,9 @@ class BKTRepository:
     Includes contextual adjustments using question metadata.
     """
 
-    def __init__(self, client: Optional[SupabaseClient] = None):
-        self.client = client or SupabaseClient()
+    def __init__(self, client: Optional[Any] = None):
+        # Allow any Supabase-like client for testing (mock or real)
+        self.client: Any = client or SupabaseClient()
 
     # ---------- Question Metadata ----------
     def get_question_metadata(self, question_id: str) -> Optional[QuestionMetadata]:
@@ -136,29 +137,29 @@ class BKTRepository:
     def get_state(self, student_id: str, concept_id: str) -> BKTState:
         """Fetch a student's BKT state for a concept, return sensible defaults if missing."""
         try:
-            row = (
+            resp = (
                 self.client.table("bkt_knowledge_states")
                 .select("mastery_probability, practice_count")
                 .eq("student_id", student_id)
                 .eq("concept_id", concept_id)
-                .single()
+                .limit(1)
                 .execute()
-                .data
             )
-            if row:
+            data = resp.data if isinstance(resp.data, list) else ([resp.data] if resp.data else [])
+            if data:
+                row = data[0]
                 return BKTState(
                     student_id=student_id,
                     concept_id=concept_id,
                     mastery_probability=float(row.get("mastery_probability", 0.5)),
                     practice_count=int(row.get("practice_count", 0)),
                 )
-            else:
-                return BKTState(
-                    student_id=student_id,
-                    concept_id=concept_id,
-                    mastery_probability=0.5,
-                    practice_count=0,
-                )
+            return BKTState(
+                student_id=student_id,
+                concept_id=concept_id,
+                mastery_probability=0.5,
+                practice_count=0,
+            )
         except Exception as e:
             logger.exception(f"Failed to fetch BKT state for {student_id}, {concept_id}: {e}")
             return BKTState(student_id=student_id, concept_id=concept_id, mastery_probability=0.5, practice_count=0)
@@ -172,12 +173,16 @@ class BKTRepository:
                     .select("practice_count")\
                     .eq("student_id", student_id)\
                     .eq("concept_id", concept_id)\
-                    .single()\
+                    .limit(1)\
                     .execute()
                 
                 # Update existing record
                 if existing.data:
-                    current_count = int(existing.data.get("practice_count", 0))
+                    if isinstance(existing.data, list):
+                        row0 = existing.data[0] if existing.data else None
+                    else:
+                        row0 = existing.data
+                    current_count = int((row0 or {}).get("practice_count", 0))
                     self.client.table("bkt_knowledge_states")\
                         .update({
                             "mastery_probability": float(mastery),
@@ -239,9 +244,8 @@ class BKTRepository:
                 "is_correct": bool(is_correct),
                 "response_time_ms": int(response_time_ms) if response_time_ms is not None else None,
                 "question_id": question_id,
-                "params_used": params_used or {},  # default to {}
+                "params_json": params_used or {},
                 "engine_version": engine_version,
-                "timestamp": datetime.now(timezone.utc).isoformat(),
             }
             self.client.table("bkt_update_logs").insert(payload).execute()
         except Exception as e:

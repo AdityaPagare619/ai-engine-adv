@@ -4,54 +4,55 @@ import numpy as np
 import logging
 from typing import List, Tuple, Dict, Any
 
-from .bandit_policy import LinUCBPolicy, BanditContext
+from ai_engine.src.knowledge_tracing.selection.bandit_policy import LinUCBPolicy, BanditContext
 
 logger = logging.getLogger("pressure_linucb")
 
 class PressureAwareLinUCB(LinUCBPolicy):
     """
-    LinUCB variant that augments context feature vectors with stress_level and cognitive_load,
-    handling dimensionality changes and fallback for legacy models.
+    LinUCB that consumes extended feature vectors (stress/load/scoring/time),
+    safely resizes matrices when feature dimension changes, and exposes
+    reward updates normalized by observed time-to-answer.
     """
 
     def select_with_pressure(self, contexts: List[BanditContext]) -> Tuple[str, Dict[str, Any]]:
-        """
-        Selects best arm given bandit contexts injected with pressure features.
-
-        Args:
-          contexts (List[BanditContext]): List of bandit candidate contexts.
-
-        Returns:
-          (arm_id, diagnostics) tuple, arm_id is string id of selected arm.
-        """
         try:
-            enhanced_contexts: List[Tuple[str, np.ndarray]] = []
+            enhanced: List[Tuple[str, np.ndarray]] = []
             for ctx in contexts:
-                base_vec = ctx.feature_vector()  # base d-dimensional vector
-                stress = ctx.features.get("stress_level", 0.0)
-                load = ctx.features.get("cognitive_load", 0.0)
-                extended_vec = np.concatenate([base_vec, [stress, load]])
-                enhanced_contexts.append((ctx.arm_id, extended_vec))
-
-            new_d = enhanced_contexts[0][1].size
+                x = ctx.feature_vector()
+                enhanced.append((ctx.arm_id, x))
+            new_d = enhanced[0][1].size
             if new_d != self.d:
                 self._resize_to(new_d)
-
-            return super().select_with_matrices(enhanced_contexts)
-        except Exception as e:
-            logger.exception("PressureAwareLinUCB selection failed, falling back")
+            return super().select_with_matrices(enhanced)
+        except Exception:
+            logger.exception("PressureAwareLinUCB selection failed; fallback to base")
             return super().select(contexts)
 
-    def _resize_to(self, new_dim: int):
-        "Resize internal matrices A and b preserving existing data."
-        old_dim = self.d
-        old_A = self.A.copy()
-        old_b = self.b.copy()
+    def update_with_outcome(self, ctx: BanditContext, correct: bool, observed_time_ms: float):
+        """
+        Computes reward as expected score per unit time (per 30s) using exam scoring
+        from context, then updates LinUCB with the chosen arm's feature vector.
+        """
+        try:
+            correct_score = float(ctx.features.get("correct_score", 1.0))
+            incorrect_score = float(ctx.features.get("incorrect_score", 0.0))
+            score = correct_score if correct else incorrect_score
+            time_norm = max(1000.0, float(observed_time_ms))
+            reward = (score / time_norm) * 30000.0  # normalize to 30s window
 
+            x = ctx.feature_vector()
+            if x.size != self.d:
+                self._resize_to(x.size)
+            self.update(x, reward)
+        except Exception:
+            logger.exception("PressureAwareLinUCB update_with_outcome failed")
+
+    def _resize_to(self, new_dim: int):
+        old_A, old_b, old_d = self.A.copy(), self.b.copy(), self.d
         self.d = new_dim
         self.A = np.eye(new_dim)
         self.b = np.zeros(new_dim)
-        self.A[:old_dim, :old_dim] = old_A
-        self.b[:old_dim] = old_b
-
-        logger.info(f"Resized LinUCB internal dimension: from {old_dim} to {new_dim}")
+        self.A[:old_d, :old_d] = old_A
+        self.b[:old_d] = old_b
+        logger.info(f"Resized LinUCB from {old_d} to {new_dim}")

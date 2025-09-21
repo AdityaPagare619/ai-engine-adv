@@ -1,6 +1,7 @@
 import math
 import asyncio
 import logging
+from dataclasses import asdict
 from typing import Any, Dict, Optional
 from .repository import (
     BKTRepository,
@@ -45,7 +46,8 @@ class BayesianKnowledgeTracing:
                 )
         except Exception as e:
             logger.error(f"BKT init error: {e}")
-            self.state = BKTState(mastery_probability=0.5, practice_count=0)
+            self.state = BKTState(student_id=student_id, concept_id=self.concept_id, mastery_probability=0.5, practice_count=0)
+            # keep existing params fallback
             self.params = self.params
 
     async def initialize_with_context(
@@ -82,7 +84,7 @@ class BayesianKnowledgeTracing:
                 )
         except Exception as e:
             logger.error(f"BKT init error: {e}")
-            self.state = BKTState(mastery_probability=0.5, practice_count=0)
+            self.state = BKTState(student_id=student_id, concept_id=self.concept_id, mastery_probability=0.5, practice_count=0)
             self.params = self.params
             self.question_metadata = None
 
@@ -167,14 +169,14 @@ class BayesianKnowledgeTracing:
                 if attempt == retry_attempts - 1:
                     raise
 
-        self.state = BKTState(mastery_probability=new_mastery, practice_count=n + 1)
+        self.state = BKTState(student_id=student_id, concept_id=self.concept_id, mastery_probability=new_mastery, practice_count=n + 1)
 
         explanation = {
             "modulated_slip_rate": slip_rate,
             "modulated_guess_rate": guess_rate,
             "learning_rate": self.params.learn_rate,
             "response_time_ms": response_time_ms,
-            "question_context": self.question_metadata._asdict()
+            "question_context": asdict(self.question_metadata)
             if self.question_metadata
             else None,
             "difficulty_adjustment": slip_rate - self.params.slip_rate
@@ -191,7 +193,7 @@ class BayesianKnowledgeTracing:
             "confidence": confidence,
             "learning_occurred": learning_occurred,
             "explanation": explanation,
-            "question_context": self.question_metadata._asdict()
+            "question_context": asdict(self.question_metadata)
             if self.question_metadata
             else None,
         }
