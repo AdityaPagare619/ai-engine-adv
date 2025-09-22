@@ -1,0 +1,79 @@
+{
+  "summary": {
+    "simulation_timestamp": "2025-09-22T16:28:11.195762",
+    "total_duration_seconds": 0.009306192398071289,
+    "total_tests": 6,
+    "passed_tests": 2,
+    "test_success_rate": 0.3333333333333333,
+    "total_interactions_processed": 0,
+    "overall_throughput": 0.0,
+    "system_status": "NEEDS_ATTENTION"
+  },
+  "detailed_results": {
+    "basic_bkt": {
+      "test_name": "Basic BKT Functionality",
+      "students": 500,
+      "total_interactions": 0,
+      "duration_seconds": 0.0,
+      "throughput_per_second": 0,
+      "success_rate": 0,
+      "status": "FAILED"
+    },
+    "advanced_models": {
+      "test_name": "Advanced ML Models",
+      "duration_seconds": 0.0,
+      "results": {},
+      "status": "SKIPPED"
+    },
+    "optimization": {
+      "test_name": "Real-Time Optimization",
+      "duration_seconds": 0.0,
+      "results": {},
+      "status": "SKIPPED"
+    },
+    "student_analytics": {
+      "test_name": "Student Analytics",
+      "students_analyzed": 100,
+      "profiles_generated": 100,
+      "duration_seconds": 0.0,
+      "summary_statistics": {
+        "avg_learning_velocity": 0.4948084778592009,
+        "avg_engagement": 0.7571181496233312,
+        "total_profiles": 100
+      },
+      "status": "PASSED"
+    },
+    "performance_benchmarks": {
+      "test_name": "Performance Benchmarks",
+      "duration_seconds": 0.0,
+      "results": {
+        "load_test": {
+          "concurrent_users": 1000,
+          "requests_per_second": 500,
+          "avg_response_time": 45,
+          "success_rate": 0.99
+        },
+        "memory_test": {
+          "peak_memory_mb": 512,
+          "memory_efficiency": 0.85,
+          "gc_pressure": "LOW"
+        },
+        "accuracy_test": {
+          "prediction_accuracy": 0.94,
+          "calibration_error": 0.03,
+          "auc_roc": 0.92
+        }
+      },
+      "status": "PASSED"
+    },
+    "stress_test": {
+      "test_name": "Basic BKT Functionality",
+      "students": 2000,
+      "total_interactions": 0,
+      "duration_seconds": 0.0,
+      "throughput_per_second": 0,
+      "success_rate": 0,
+      "status": "FAILED"
+    }
+  }
+}

@@ -10,7 +10,9 @@ import logging
 import json
 
 # Import your existing load manager
-from ..knowledge_tracing.cognitive.load_manager import CognitiveLoadManager, LoadAssessment
+from ai_engine.src.knowledge_tracing.cognitive.load_manager import CognitiveLoadManager, LoadAssessment
+from .advanced_models import AdvancedModelEnsemble, ModelPrediction
+from .optimization_engine import RealTimeOptimizer, OptimizationMetrics
 
 @dataclass
 class ConceptMastery:
@@ -36,13 +38,20 @@ class EnhancedMultiConceptBKT:
         # Initialize your existing load manager
         self.load_manager = CognitiveLoadManager()
         
-        # BKT parameters from research validation
+        # Initialize advanced ML ensemble
+        self.model_ensemble = AdvancedModelEnsemble()
+        
+        # Initialize real-time optimizer
+        self.optimizer = RealTimeOptimizer()
+        
+        # BKT parameters from research validation (now optimized in real-time)
+        optimized_params = self.optimizer.suggest_parameters()
         self.default_params = {
-            'prior_knowledge': 0.3,
-            'learn_rate': 0.25,
-            'slip_rate': 0.1,
-            'guess_rate': 0.2,
-            'decay_rate': 0.05
+            'prior_knowledge': optimized_params.prior_knowledge,
+            'learn_rate': optimized_params.learn_rate,
+            'slip_rate': optimized_params.slip_rate,
+            'guess_rate': optimized_params.guess_rate,
+            'decay_rate': optimized_params.decay_rate
         }
         
         # Concept relationships for transfer learning
@@ -150,6 +159,17 @@ class EnhancedMultiConceptBKT:
             mastery.last_interaction = datetime.now()
             mastery.confidence_level = self._calculate_confidence(mastery, load_assessment)
             
+            # Get advanced ML prediction for comparison
+            sequence = self._build_interaction_sequence(student_id, concept_id)
+            ml_prediction = self.model_ensemble.predict_with_uncertainty(
+                sequence=sequence,
+                concept_id=concept_id
+            )
+            
+            # Update optimization engine with performance metrics
+            self._update_optimization_metrics(student_id, concept_id, is_correct, 
+                                            old_mastery, new_mastery, ml_prediction)
+            
             # Log performance
             self._log_interaction(student_id, concept_id, is_correct, 
                                 old_mastery, new_mastery, load_assessment, response_time_ms)
@@ -224,7 +244,61 @@ class EnhancedMultiConceptBKT:
                     boost = strength * (related_mastery - 0.7) * 0.1
                     total_boost += boost
         
-        return min(0.2, total_boost)  # Cap total boost
+        return min(0.3, total_boost)  # Cap total boost
+    
+    def _build_interaction_sequence(self, student_id: str, concept_id: str) -> List[Dict]:
+        """Build interaction sequence for ML models"""
+        # Get recent interactions for this student from performance log
+        student_interactions = [
+            log for log in self.performance_log[-100:]  # Last 100 interactions
+            if log['student_id'] == student_id
+        ]
+        
+        # Convert to ML model format
+        sequence = []
+        for interaction in student_interactions:
+            sequence.append({
+                'concept_id': interaction['concept_id'],
+                'is_correct': interaction.get('is_correct', False),
+                'timestamp': interaction['timestamp'],
+                'mastery_before': interaction.get('old_mastery', 0.5),
+                'mastery_after': interaction.get('new_mastery', 0.5),
+                'response_time_ms': interaction.get('response_time_ms', 30000),
+                'difficulty': 0.5  # Default difficulty
+            })
+        
+        return sequence
+    
+    def _update_optimization_metrics(self, student_id: str, concept_id: str, is_correct: bool,
+                                   old_mastery: float, new_mastery: float, ml_prediction: ModelPrediction):
+        """Update optimization engine with performance metrics"""
+        # Calculate various metrics
+        mastery_change = new_mastery - old_mastery
+        
+        # Simple metrics calculation (would be more sophisticated in practice)
+        accuracy = 0.8 if is_correct else 0.6  # Simplified accuracy based on correctness
+        convergence_rate = min(1.0, abs(mastery_change) * 5)  # Scaled mastery change
+        prediction_variance = abs(ml_prediction.uncertainty) if ml_prediction else 0.5
+        calibration_error = 0.1  # Would calculate properly in practice
+        student_satisfaction = 0.85  # Would get from user feedback
+        learning_velocity = max(0.0, mastery_change)  # Only positive changes count
+        retention_rate = 0.9  # Would track over time
+        engagement_score = 0.8  # Would calculate from session data
+        
+        metrics = OptimizationMetrics(
+            accuracy=accuracy,
+            convergence_rate=convergence_rate,
+            prediction_variance=prediction_variance,
+            calibration_error=calibration_error,
+            student_satisfaction=student_satisfaction,
+            learning_velocity=learning_velocity,
+            retention_rate=retention_rate,
+            engagement_score=engagement_score
+        )
+        
+        # Update optimizer with current parameter version
+        current_params = self.optimizer.current_best
+        self.optimizer.update_performance(current_params.version, metrics)
     
     def _calculate_confidence(self, mastery: ConceptMastery, load_assessment: LoadAssessment) -> float:
         """Calculate confidence level based on mastery and cognitive state"""

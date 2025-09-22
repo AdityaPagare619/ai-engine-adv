@@ -1,0 +1,102 @@
+{
+  "start_time": "2025-09-22T16:25:21.282790",
+  "components_tested": [
+    "FallbackBKT"
+  ],
+  "performance_metrics": {
+    "basic_bkt": {
+      "test_name": "Basic BKT Simulation",
+      "num_students": 500,
+      "interactions_per_student": 15,
+      "total_interactions": 7500,
+      "successful_updates": 7500,
+      "success_rate": 1.0,
+      "duration_seconds": 0.1107177734375,
+      "throughput_per_second": 67739.80154355016,
+      "errors": 0,
+      "error_details": [],
+      "performance_summary": {
+        "total_interactions": 7500,
+        "accuracy_rate": 0.3572,
+        "total_students": 500
+      }
+    },
+    "advanced_models": {
+      "test_name": "Advanced Models Test",
+      "models_tested": [],
+      "success": false
+    },
+    "optimization": {
+      "test_name": "Optimization Engine Test",
+      "success": false
+    },
+    "student_analytics": {
+      "test_name": "Student Analytics Test",
+      "num_students": 100,
+      "profiles_generated": 5,
+      "duration_seconds": 0.016848087310791016,
+      "sample_profiles": {
+        "analytics_student_000": {
+          "total_concepts": 0,
+          "overall_mastery": 0,
+          "strong_concepts": 0,
+          "weak_concepts": 0
+        },
+        "analytics_student_002": {
+          "total_concepts": 0,
+          "overall_mastery": 0,
+          "strong_concepts": 0,
+          "weak_concepts": 0
+        },
+        "analytics_student_004": {
+          "total_concepts": 0,
+          "overall_mastery": 0,
+          "strong_concepts": 0,
+          "weak_concepts": 0
+        },
+        "analytics_student_006": {
+          "total_concepts": 0,
+          "overall_mastery": 0,
+          "strong_concepts": 0,
+          "weak_concepts": 0
+        },
+        "analytics_student_008": {
+          "total_concepts": 0,
+          "overall_mastery": 0,
+          "strong_concepts": 0,
+          "weak_concepts": 0
+        }
+      },
+      "success": true
+    },
+    "benchmarks": {
+      "test_name": "Performance Benchmarks",
+      "success": false
+    },
+    "stress_test": {
+      "test_name": "High-Load Stress Test",
+      "num_students": 2000,
+      "interactions_per_student": 25,
+      "total_interactions": 50000,
+      "successful_updates": 50000,
+      "success_rate": 1.0,
+      "duration_seconds": 0.6646418571472168,
+      "throughput_per_second": 75228.48502893056,
+      "errors": 0,
+      "error_details": [],
+      "performance_summary": {
+        "total_interactions": 58963,
+        "accuracy_rate": 0.34056950969251903,
+        "total_students": 2100
+      }
+    }
+  },
+  "errors": [],
+  "success_metrics": {},
+  "end_time": "2025-09-22T16:25:22.413452",
+  "total_duration_seconds": 1.130662,
+  "total_tests_run": 6,
+  "successful_tests": 1,
+  "success_rate": 0.16666666666666666,
+  "overall_status": "PARTIAL_SUCCESS"
+}

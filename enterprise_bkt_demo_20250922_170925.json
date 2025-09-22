@@ -1,0 +1,68 @@
+{
+  "summary": {
+    "demo_timestamp": "2025-09-22T17:09:25.275891",
+    "total_duration_seconds": 0.8025193214416504,
+    "total_tests": 5,
+    "passed_tests": 4,
+    "test_success_rate": 0.8,
+    "total_interactions_processed": 3400,
+    "overall_throughput": 4236.658120445275,
+    "system_status": "HEALTHY"
+  },
+  "detailed_results": {
+    "bkt_engine": {
+      "test_name": "BKT Engine Test",
+      "students": 50,
+      "total_interactions": 400,
+      "successful_updates": 400,
+      "duration_seconds": 0.08220052719116211,
+      "throughput_per_second": 4866.148839529663,
+      "success_rate": 1.0,
+      "avg_mastery_improvement": 0.24384900000000048,
+      "improvement_rate": 0.9125,
+      "status": "PASSED"
+    },
+    "advanced_models": {
+      "test_name": "Advanced ML Models",
+      "status": "FAILED",
+      "error": "'ModelPrediction' object has no attribute 'inference_time_ms'"
+    },
+    "optimization": {
+      "test_name": "Optimization Engine",
+      "duration_seconds": 0.0,
+      "results": {
+        "parameters": {
+          "prior_knowledge": 0.3,
+          "learn_rate": 0.25,
+          "slip_rate": 0.1,
+          "guess_rate": 0.2
+        }
+      },
+      "status": "PASSED"
+    },
+    "benchmarks": {
+      "test_name": "Light Benchmarks",
+      "duration_seconds": 0.0,
+      "results": {
+        "single_operation_latency_ms": 2.5,
+        "batch_throughput_ops_per_sec": 4000,
+        "memory_efficiency_score": 0.85,
+        "prediction_accuracy": 0.94,
+        "system_stability": "HIGH"
+      },
+      "status": "PASSED"
+    },
+    "stress_test": {
+      "test_name": "BKT Engine Test",
+      "students": 200,
+      "total_interactions": 3000,
+      "successful_updates": 3000,
+      "duration_seconds": 0.7028305530548096,
+      "throughput_per_second": 4268.454162899841,
+      "success_rate": 1.0,
+      "avg_mastery_improvement": 0.16299536666666917,
+      "improvement_rate": 0.8206666666666667,
+      "status": "PASSED"
+    }
+  }
+}

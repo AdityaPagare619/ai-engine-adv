@@ -1,0 +1,70 @@
+{
+  "summary": {
+    "simulation_timestamp": "2025-09-22T16:31:36.619247",
+    "total_duration_seconds": 2.534109354019165,
+    "total_tests": 6,
+    "passed_tests": 4,
+    "test_success_rate": 0.6666666666666666,
+    "total_interactions_processed": 11000,
+    "overall_throughput": 4340.775579614868,
+    "system_status": "NEEDS_ATTENTION"
+  },
+  "detailed_results": {
+    "basic_bkt": {
+      "test_name": "Basic BKT Functionality",
+      "students": 100,
+      "total_interactions": 1000,
+      "successful_updates": 1000,
+      "duration_seconds": 0.21815800666809082,
+      "throughput_per_second": 4583.83359507596,
+      "success_rate": 1.0,
+      "status": "PASSED"
+    },
+    "advanced_models": {
+      "test_name": "Advanced ML Models",
+      "duration_seconds": 0.0,
+      "results": {},
+      "status": "SKIPPED"
+    },
+    "optimization": {
+      "test_name": "Real-Time Optimization",
+      "duration_seconds": 0.0,
+      "results": {
+        "parameters": {
+          "prior_knowledge": 0.3,
+          "learn_rate": 0.25,
+          "slip_rate": 0.1,
+          "guess_rate": 0.2
+        }
+      },
+      "status": "PASSED"
+    },
+    "student_analytics": {
+      "test_name": "Student Analytics",
+      "students_analyzed": 100,
+      "profiles_generated": 100,
+      "duration_seconds": 0.008519649505615234,
+      "summary_statistics": {
+        "avg_learning_velocity": 0.4694719311447492,
+        "avg_engagement": 0.7487634876793992,
+        "total_profiles": 100
+      },
+      "status": "PASSED"
+    },
+    "performance_benchmarks": {
+      "test_name": "Performance Benchmarks",
+      "status": "FAILED",
+      "error": "'BKTPerformanceBenchmarks' object has no attribute 'run_throughput_test'"
+    },
+    "stress_test": {
+      "test_name": "Basic BKT Functionality",
+      "students": 500,
+      "total_interactions": 10000,
+      "successful_updates": 10000,
+      "duration_seconds": 2.304993152618408,
+      "throughput_per_second": 4338.407681879782,
+      "success_rate": 1.0,
+      "status": "PASSED"
+    }
+  }
+}
