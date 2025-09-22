@@ -1,0 +1,256 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "Question Generator Service - Phase 2.2 Monitoring",
+    "tags": [
+      "jee-neet",
+      "question-generator",
+      "phase-2"
+    ],
+    "timezone": "browser",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Service Overview",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "question_generator_uptime_seconds",
+            "legendFormat": "Uptime (seconds)",
+            "refId": "A"
+          },
+          {
+            "expr": "question_generator_requests_per_second",
+            "legendFormat": "RPS",
+            "refId": "B"
+          },
+          {
+            "expr": "question_generator_success_rate",
+            "legendFormat": "Success Rate (%)",
+            "refId": "C"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "unit": "short"
+          }
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "id": 2,
+        "title": "Request Volume",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(question_generator_requests_total[5m])",
+            "legendFormat": "{{status}} requests/sec",
+            "refId": "A"
+          }
+        ],
+        "yAxes": [
+          {
+            "label": "Requests per second",
+            "min": 0
+          }
+        ],
+        "xAxis": {
+          "show": true
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 8
+        }
+      },
+      {
+        "id": 3,
+        "title": "Response Times",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "question_generator_request_duration_ms",
+            "legendFormat": "Average Response Time",
+            "refId": "A"
+          }
+        ],
+        "yAxes": [
+          {
+            "label": "Milliseconds",
+            "min": 0
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 8
+        }
+      },
+      {
+        "id": 4,
+        "title": "Success Rate",
+        "type": "singlestat",
+        "targets": [
+          {
+            "expr": "question_generator_success_rate",
+            "refId": "A"
+          }
+        ],
+        "valueName": "current",
+        "format": "percent",
+        "colorBackground": true,
+        "thresholds": "80,95",
+        "colors": [
+          "rgba(245, 54, 54, 0.9)",
+          "rgba(237, 129, 40, 0.89)",
+          "rgba(50, 172, 45, 0.97)"
+        ],
+        "gridPos": {
+          "h": 4,
+          "w": 6,
+          "x": 0,
+          "y": 16
+        }
+      },
+      {
+        "id": 5,
+        "title": "Active Connections",
+        "type": "singlestat",
+        "targets": [
+          {
+            "expr": "question_generator_active_connections",
+            "refId": "A"
+          }
+        ],
+        "valueName": "current",
+        "format": "short",
+        "gridPos": {
+          "h": 4,
+          "w": 6,
+          "x": 6,
+          "y": 16
+        }
+      },
+      {
+        "id": 6,
+        "title": "Questions Generated",
+        "type": "singlestat",
+        "targets": [
+          {
+            "expr": "question_generator_questions_generated_total",
+            "refId": "A"
+          }
+        ],
+        "valueName": "current",
+        "format": "short",
+        "gridPos": {
+          "h": 4,
+          "w": 6,
+          "x": 12,
+          "y": 16
+        }
+      },
+      {
+        "id": 7,
+        "title": "System Health",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "question_generator_validation_errors_total",
+            "legendFormat": "Validation Errors",
+            "refId": "A"
+          },
+          {
+            "expr": "question_generator_rag_checks_total",
+            "legendFormat": "RAG Checks",
+            "refId": "B"
+          },
+          {
+            "expr": "question_generator_bkt_calls_total",
+            "legendFormat": "BKT Calls",
+            "refId": "C"
+          }
+        ],
+        "yAxes": [
+          {
+            "label": "Count",
+            "min": 0
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 20
+        }
+      },
+      {
+        "id": 8,
+        "title": "Error Rate",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(question_generator_requests_total{status=\"failed\"}[5m])",
+            "legendFormat": "Error Rate",
+            "refId": "A"
+          }
+        ],
+        "yAxes": [
+          {
+            "label": "Errors per second",
+            "min": 0
+          }
+        ],
+        "alert": {
+          "conditions": [
+            {
+              "query": {
+                "queryType": "A",
+                "refId": "A"
+              },
+              "reducer": {
+                "type": "last",
+                "params": []
+              },
+              "evaluator": {
+                "params": [0.1],
+                "type": "gt"
+              }
+            }
+          ],
+          "executionErrorState": "alerting",
+          "for": "1m",
+          "frequency": "10s",
+          "handler": 1,
+          "name": "High Error Rate Alert",
+          "noDataState": "no_data",
+          "notifications": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 20
+        }
+      }
+    ],
+    "time": {
+      "from": "now-15m",
+      "to": "now"
+    },
+    "refresh": "5s",
+    "schemaVersion": 16,
+    "version": 1,
+    "links": []
+  }
+}

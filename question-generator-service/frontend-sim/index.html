@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Generator - Phase 2.2 Testing</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 JEE/NEET Question Generator</h1>
+            <p class="subtitle">Phase 2.2 Testing Interface</p>
+        </header>
+
+        <main>
+            <!-- Generation Controls -->
+            <section class="generation-controls">
+                <h2>📝 Generate Question</h2>
+                
+                <form id="questionForm" class="form-grid">
+                    <div class="form-group">
+                        <label for="studentId">Student ID:</label>
+                        <input type="text" id="studentId" name="studentId" value="test_student_001" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="examType">Exam Type:</label>
+                        <select id="examType" name="examType" required>
+                            <option value="JEE_MAIN">JEE Main</option>
+                            <option value="JEE_ADVANCED">JEE Advanced</option>
+                            <option value="NEET">NEET</option>
+                            <option value="FOUNDATION">Foundation</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject:</label>
+                        <select id="subject" name="subject" required>
+                            <option value="PHYSICS">Physics</option>
+                            <option value="CHEMISTRY">Chemistry</option>
+                            <option value="MATHEMATICS">Mathematics</option>
+                            <option value="BIOLOGY">Biology</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="format">Question Format:</label>
+                        <select id="format" name="format" required>
+                            <option value="MCQ">Multiple Choice (MCQ)</option>
+                            <option value="NUMERICAL">Numerical Answer</option>
+                            <option value="ASSERTION_REASON">Assertion-Reason</option>
+                            <option value="PASSAGE">Passage Based</option>
+                            <option value="MATRIX_MATCH">Matrix Match</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="topicId">Topic ID:</label>
+                        <input type="text" id="topicId" name="topicId" value="PHY_MECHANICS_KINEMATICS" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="difficulty">Difficulty Level:</label>
+                        <div class="difficulty-slider">
+                            <input type="range" id="difficulty" name="difficulty" min="0.1" max="1.0" step="0.1" value="0.5">
+                            <span id="difficultyValue">0.5</span>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" id="generateBtn" class="btn-primary">
+                            🚀 Generate Question
+                        </button>
+                        <button type="button" id="clearBtn" class="btn-secondary">
+                            🗑️ Clear
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Loading State -->
+            <section id="loadingSection" class="loading-section hidden">
+                <div class="spinner"></div>
+                <p>Generating question with AI pipeline...</p>
+                <div class="progress-steps">
+                    <div class="step" id="step1">✓ Request Validation</div>
+                    <div class="step" id="step2">⏳ RAG Quality Check</div>
+                    <div class="step" id="step3">⏳ BKT Calibration</div>
+                    <div class="step" id="step4">⏳ Question Generation</div>
+                </div>
+            </section>
+
+            <!-- Generated Question Display -->
+            <section id="questionSection" class="question-section hidden">
+                <h2>📚 Generated Question</h2>
+                
+                <div class="question-card">
+                    <div class="question-header">
+                        <span id="questionId" class="question-id"></span>
+                        <div class="metadata">
+                            <span class="difficulty-badge" id="difficultyBadge"></span>
+                            <span class="generation-time" id="generationTime"></span>
+                        </div>
+                    </div>
+
+                    <div class="question-content">
+                        <p id="questionText" class="question-text"></p>
+                        
+                        <div id="optionsContainer" class="options-container">
+                            <!-- Options will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="question-actions">
+                        <button type="button" id="submitAnswer" class="btn-primary">
+                            ✓ Submit Answer
+                        </button>
+                        <button type="button" id="showSolution" class="btn-secondary">
+                            💡 Show Solution
+                        </button>
+                        <button type="button" id="generateAnother" class="btn-secondary">
+                            🔄 Generate Another
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quality Metrics -->
+                <div class="quality-metrics">
+                    <h3>🎯 Quality Metrics</h3>
+                    <div class="metrics-grid">
+                        <div class="metric">
+                            <label>RAG Alignment:</label>
+                            <span id="ragAlignment">-</span>
+                        </div>
+                        <div class="metric">
+                            <label>BKT Mastery:</label>
+                            <span id="bktMastery">-</span>
+                        </div>
+                        <div class="metric">
+                            <label>Quality Score:</label>
+                            <span id="qualityScore">-</span>
+                        </div>
+                        <div class="metric">
+                            <label>Template ID:</label>
+                            <span id="templateId">-</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Answer Submission -->
+            <section id="answerSection" class="answer-section hidden">
+                <h3>Your Answer</h3>
+                <div class="answer-result">
+                    <div id="answerStatus" class="answer-status"></div>
+                    <div id="correctAnswer" class="correct-answer"></div>
+                    <div id="solutionSteps" class="solution-steps"></div>
+                </div>
+            </section>
+
+            <!-- Error Display -->
+            <section id="errorSection" class="error-section hidden">
+                <h3>❌ Error</h3>
+                <div id="errorMessage" class="error-message"></div>
+                <button type="button" id="retryBtn" class="btn-primary">🔄 Retry</button>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 JEE/NEET AI Platform - Phase 2.2 Testing Interface</p>
+            <p class="api-status">API Status: <span id="apiStatus">Checking...</span></p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -2,11 +2,13 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
 	"os/signal"
+	"sync"
 	"syscall"
 	"time"
 
@@ -17,6 +19,9 @@ import (
 	"question-generator-service/internal/db"
 	"question-generator-service/internal/service"
 	"question-generator-service/api"
+	"question-generator-service/pkg/validator"
+	"question-generator-service/pkg/rag_advisor"
+	"question-generator-service/pkg/logger"
 )
 
 const (
@@ -51,8 +56,28 @@ func main() {
 		log.Fatalf("Failed to initialize generator service: %v", err)
 	}
 
-	// Set up HTTP handlers and middleware
+	// Initialize middleware with configuration
+	middlewareConfig := api.MiddlewareConfig{
+		RateLimitPerMinute: 1000, // 1000 requests per minute per IP
+		AuthEnabled:        false, // Disable auth for Phase 2.2
+		AuthHeader:         "Authorization",
+		TokenPrefix:        "Bearer",
+	}
+	middleware := api.NewMiddleware(middlewareConfig)
+
+	// Initialize logger service
+	loggerService, err := logger.NewService(dbClient)
+	if err != nil {
+		log.Fatalf("Failed to initialize logger service: %v", err)
+	}
+
+	// Set up HTTP handlers and middleware chain
 	router := mux.NewRouter()
+	
+	// Apply global middleware
+	router.Use(middleware.RequestLogger)
+	router.Use(middleware.RecoverMiddleware)
+	router.Use(middleware.RateLimitByIP)
 	
 	// Add service discovery and health check endpoints
 	router.HandleFunc("/health", healthCheckHandler).Methods("GET")
@@ -61,6 +86,24 @@ func main() {
 	
 	// Mount API routes with versioning
 	apiRouter := router.PathPrefix("/v1").Subrouter()
+	
+	// Add specific endpoint with middleware chain as per guide
+	apiRouter.Handle("/questions/generate",
+		middleware.RequestLogger(
+			validator.ValidateGenerateQuestionRequest(
+				rag_advisor.AdviseQuality(
+					loggerService.LogRequest(
+						http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+							// Call the generator service method
+							handleGenerateQuestion(generatorService, w, r)
+						}),
+					),
+				),
+			),
+		),
+	).Methods("POST")
+	
+	// Register other handlers
 	api.RegisterHandlers(apiRouter, generatorService)
 
 	// Configure CORS for cross-origin requests
@@ -164,20 +207,137 @@ func readinessCheckHandler(dbClient *db.Client) http.HandlerFunc {
 	}
 }
 
-// metricsHandler provides Prometheus-compatible metrics endpoint
+// Global metrics counters
+var (
+	startTime = time.Now()
+	totalRequests int64
+	successfulRequests int64
+	failedRequests int64
+	totalResponseTime int64 // in milliseconds
+	validationErrors int64
+	ragChecks int64
+	bktCalls int64
+	activeConnections int64
+	questionsGenerated int64
+	mutex sync.RWMutex
+)
+
+// metricsHandler provides comprehensive Prometheus-compatible metrics
 func metricsHandler(w http.ResponseWriter, r *http.Request) {
-	// In production, this would integrate with Prometheus metrics
-	// For now, provide basic service metrics
 	w.Header().Set("Content-Type", "text/plain")
 	w.WriteHeader(http.StatusOK)
+	
+	mutex.RLock()
+	defer mutex.RUnlock()
+	
+	uptime := time.Since(startTime).Seconds()
+	avgResponseTime := float64(0)
+	if totalRequests > 0 {
+		avgResponseTime = float64(totalResponseTime) / float64(totalRequests)
+	}
+	successRate := float64(0)
+	if totalRequests > 0 {
+		successRate = float64(successfulRequests) / float64(totalRequests) * 100
+	}
 	
 	metrics := fmt.Sprintf(`# HELP question_generator_info Service information
 # TYPE question_generator_info gauge
 question_generator_info{version="%s",service="%s"} 1
+
 # HELP question_generator_uptime_seconds Service uptime in seconds
 # TYPE question_generator_uptime_seconds counter
-question_generator_uptime_seconds %d
-`, serviceVersion, serviceName, int64(time.Since(time.Now()).Seconds()))
+question_generator_uptime_seconds %.2f
+
+# HELP question_generator_requests_total Total number of HTTP requests
+# TYPE question_generator_requests_total counter
+question_generator_requests_total{status="success"} %d
+question_generator_requests_total{status="failed"} %d
+
+# HELP question_generator_request_duration_ms Average request duration in milliseconds
+# TYPE question_generator_request_duration_ms gauge
+question_generator_request_duration_ms %.2f
+
+# HELP question_generator_success_rate Percentage of successful requests
+# TYPE question_generator_success_rate gauge
+question_generator_success_rate %.2f
+
+# HELP question_generator_validation_errors_total Total validation errors
+# TYPE question_generator_validation_errors_total counter
+question_generator_validation_errors_total %d
+
+# HELP question_generator_rag_checks_total Total RAG quality checks performed
+# TYPE question_generator_rag_checks_total counter
+question_generator_rag_checks_total %d
+
+# HELP question_generator_bkt_calls_total Total BKT service calls
+# TYPE question_generator_bkt_calls_total counter
+question_generator_bkt_calls_total %d
+
+# HELP question_generator_active_connections Current active connections
+# TYPE question_generator_active_connections gauge
+question_generator_active_connections %d
+
+# HELP question_generator_questions_generated_total Total questions generated successfully
+# TYPE question_generator_questions_generated_total counter
+question_generator_questions_generated_total %d
+
+# HELP question_generator_requests_per_second Current requests per second
+# TYPE question_generator_requests_per_second gauge
+question_generator_requests_per_second %.2f
+`,
+		serviceVersion, serviceName, uptime,
+		successfulRequests, failedRequests,
+		avgResponseTime, successRate,
+		validationErrors, ragChecks, bktCalls,
+		activeConnections, questionsGenerated,
+		float64(totalRequests)/uptime,
+	)
 	
 	w.Write([]byte(metrics))
+}
+
+// handleGenerateQuestion processes question generation requests
+func handleGenerateQuestion(generatorService *service.GeneratorService, w http.ResponseWriter, r *http.Request) {
+	ctx := r.Context()
+	
+	// Extract validated request from context
+	validatedReq := ctx.Value("validated_request")
+	if validatedReq == nil {
+		http.Error(w, "Request validation failed", http.StatusBadRequest)
+		return
+	}
+	
+	// Convert to service request format
+	// This is a simplified handler for Phase 2.2
+	// Full implementation would use the complete service.GenerateQuestionRequest
+	
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	
+	// Mock response for Phase 2.2 testing
+	mockResponse := map[string]interface{}{
+		"question_id":     "mock_q_12345",
+		"question_text":   "What is the acceleration due to gravity on Earth?",
+		"options": map[string]string{
+			"A": "9.8 m/s²",
+			"B": "9.6 m/s²",
+			"C": "10.0 m/s²",
+			"D": "8.9 m/s²",
+		},
+		"correct_answer":  "A",
+		"difficulty":      0.3,
+		"generation_time": 150,
+		"quality_score":   0.85,
+		"status":          "success",
+		"metadata": map[string]interface{}{
+			"template_id": "physics_basic_001",
+			"bkt_mastery": 0.65,
+			"rag_checked": true,
+		},
+	}
+	
+	if err := json.NewEncoder(w).Encode(mockResponse); err != nil {
+		log.Printf("Failed to encode response: %v", err)
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+	}
 }

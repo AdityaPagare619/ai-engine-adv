@@ -29,6 +29,7 @@ type DatabaseConfig struct {
 	MaxIdleConns    int
 	ConnMaxLifetime time.Duration
 	MigrationsPath  string
+	MigrationVersion string // Target migration version (V1, V2, V3, etc.)
 }
 
 // ServerConfig contains HTTP server settings  
@@ -43,6 +44,7 @@ type ServerConfig struct {
 // BKTConfig contains BKT inference service settings
 type BKTConfig struct {
 	ServiceURL    string
+	ModelPath     string // Path to BKT model file
 	Timeout       time.Duration
 	RetryCount    int
 	RetryDelay    time.Duration
@@ -89,6 +91,7 @@ func LoadConfig() (*AppConfig, error) {
 			MaxIdleConns:    getEnvAsInt("DB_MAX_IDLE_CONNS", 5),
 			ConnMaxLifetime: getEnvAsDuration("DB_CONN_MAX_LIFETIME", time.Hour),
 			MigrationsPath:  getEnv("DB_MIGRATIONS_PATH", "internal/db/migrations"),
+			MigrationVersion: getEnv("DB_MIGRATION_VERSION", "V4"), // Default to latest
 		},
 		Server: ServerConfig{
 			Port:           getEnvAsInt("SERVER_PORT", 8080),
@@ -99,6 +102,7 @@ func LoadConfig() (*AppConfig, error) {
 		},
 		BKT: BKTConfig{
 			ServiceURL: getEnv("BKT_SERVICE_URL", "http://bkt-inference:8081"),
+			ModelPath:  getEnv("BKT_MODEL_PATH", "/models/enhanced_bkt_v2.pkl"),
 			Timeout:    getEnvAsDuration("BKT_TIMEOUT", 5*time.Second),
 			RetryCount: getEnvAsInt("BKT_RETRY_COUNT", 3),
 			RetryDelay: getEnvAsDuration("BKT_RETRY_DELAY", 100*time.Millisecond),
