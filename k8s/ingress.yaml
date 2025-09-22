@@ -1,0 +1,44 @@
+# Kubernetes Ingress for external access
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jee-smart-ai-ingress
+  namespace: jee-smart-ai
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, PUT, DELETE, OPTIONS"
+    nginx.ingress.kubernetes.io/cors-allow-headers: "DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
+    nginx.ingress.kubernetes.io/rate-limit: "100"
+    nginx.ingress.kubernetes.io/rate-limit-window: "1m"
+spec:
+  rules:
+  - host: jee-smart-ai.local  # Change to your domain
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: api-gateway-service
+            port:
+              number: 8080
+      - path: /api/v1/ai
+        pathType: Prefix
+        backend:
+          service:
+            name: ai-engine-service
+            port:
+              number: 8005
+      - path: /api/v1/time
+        pathType: Prefix
+        backend:
+          service:
+            name: time-context-service
+            port:
+              number: 8006
+  tls:
+  - hosts:
+    - jee-smart-ai.local
+    secretName: jee-smart-ai-tls

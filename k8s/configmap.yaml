@@ -1,0 +1,38 @@
+# Application Configuration
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jee-app-config
+  namespace: jee-smart-ai
+data:
+  # Database configuration
+  POSTGRES_DB: "jee_smart_platform"
+  POSTGRES_USER: "jee_admin"
+  DB_HOST: "postgres-service"
+  DB_PORT: "5432"
+  
+  # Redis configuration
+  REDIS_HOST: "redis-service"
+  REDIS_PORT: "6379"
+  
+  # Application configuration
+  ENVIRONMENT: "production"
+  LOG_LEVEL: "INFO"
+  
+  # Service URLs
+  AI_ENGINE_URL: "http://ai-engine-service:8005"
+  TIME_CONTEXT_URL: "http://time-context-service:8006"
+  ADMIN_SERVICE_URL: "http://admin-service:8000"
+  CONTENT_PROCESSOR_URL: "http://content-processor-service:8002"
+  ASSET_PROCESSOR_URL: "http://asset-processor-service:8003"
+  DATABASE_MANAGER_URL: "http://database-manager-service:8004"
+  
+  # BKT Engine configuration
+  BKT_MODEL_PATH: "/app/models/"
+  BKT_PERFORMANCE_LOG_SIZE: "10000"
+  
+  # Time Context configuration
+  DEFAULT_FOUNDATION_DAYS: "90"
+  DEFAULT_BUILDING_DAYS: "60"
+  DEFAULT_MASTERY_DAYS: "30"
+  DEFAULT_CONFIDENCE_DAYS: "30"

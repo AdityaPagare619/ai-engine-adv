@@ -1,0 +1,93 @@
+# Time Context Service Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: time-context
+  namespace: jee-smart-ai
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: time-context
+  template:
+    metadata:
+      labels:
+        app: time-context
+    spec:
+      containers:
+      - name: time-context
+        image: jee-smart-ai/time-context:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8006
+        env:
+        - name: DATABASE_URL
+          value: "postgresql://$(POSTGRES_USER):$(POSTGRES_PASSWORD)@$(DB_HOST):$(DB_PORT)/$(POSTGRES_DB)"
+        - name: POSTGRES_USER
+          valueFrom:
+            configMapKeyRef:
+              name: jee-app-config
+              key: POSTGRES_USER
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: jee-app-secrets
+              key: POSTGRES_PASSWORD
+        - name: DB_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: jee-app-config
+              key: DB_HOST
+        - name: DB_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: jee-app-config
+              key: DB_PORT
+        - name: POSTGRES_DB
+          valueFrom:
+            configMapKeyRef:
+              name: jee-app-config
+              key: POSTGRES_DB
+        - name: ENVIRONMENT
+          valueFrom:
+            configMapKeyRef:
+              name: jee-app-config
+              key: ENVIRONMENT
+        - name: LOG_LEVEL
+          valueFrom:
+            configMapKeyRef:
+              name: jee-app-config
+              key: LOG_LEVEL
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8006
+          initialDelaySeconds: 30
+          periodSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8006
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+---
+# Time Context Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: time-context-service
+  namespace: jee-smart-ai
+spec:
+  selector:
+    app: time-context
+  ports:
+  - port: 8006
+    targetPort: 8006
+  type: ClusterIP

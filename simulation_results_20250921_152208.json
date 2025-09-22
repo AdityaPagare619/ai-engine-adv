@@ -1,0 +1,6408 @@
+{
+  "students": {},
+  "exams": {
+    "student_1_NEET_3": {
+      "student_id": "student_1",
+      "exam_type": "NEET",
+      "day": 3,
+      "topics": [
+        "organic_chemistry",
+        "inorganic_chemistry",
+        "biology"
+      ],
+      "questions": [
+        {
+          "topic": "inorganic_chemistry",
+          "difficulty": 0.4133974498463174,
+          "is_correct": false,
+          "response_time_ms": 53074,
+          "previous_mastery": 0.3,
+          "new_mastery": 0.35526315789473684,
+          "mastery_change": 0.05526315789473685
+        },
+        {
+          "topic": "organic_chemistry",
+          "difficulty": 0.3488952304212491,
+          "is_correct": true,
+          "response_time_ms": 51549,
+          "previous_mastery": 0.2,
+          "new_mastery": 0.6571428571428571,
+          "mastery_change": 0.45714285714285713
+        },
+        {
+          "topic": "biology",
+          "difficulty": 0.4141085221832671,
+          "is_correct": false,
+          "response_time_ms": 56611,
+          "previous_mastery": 0.08,
+          "new_mastery": 0.3119658119658119,
+          "mastery_change": 0.2319658119658119
+        },
+        {
+          "topic": "organic_chemistry",
+          "difficulty": 0.3066774397839819,
+          "is_correct": true,
+          "response_time_ms": 42198,
+          "previous_mastery": 0.6571428571428571,
+          "new_mastery": 0.9111111111111111,
+          "mastery_change": 0.25396825396825395
+        },
+        {
+          "topic": "biology",
+          "difficulty": 0.6032593355684601,
+          "is_correct": false,
+          "response_time_ms": 62157,
+          "previous_mastery": 0.3119658119658119,
+          "new_mastery": 0.3263598326359832,
+          "mastery_change": 0.014394020670171315
+        },
+        {
+          "topic": "inorganic_chemistry",
+          "difficulty": 0.6989269621838091,
+          "is_correct": false,
+          "response_time_ms": 65882,
+          "previous_mastery": 0.35526315789473684,
+          "new_mastery": 0.34080717488789236,
+          "mastery_change": -0.014455983006844475
+        },
+        {
+          "topic": "biology",
+          "difficulty": 0.47905498205768765,
+          "is_correct": false,
+          "response_time_ms": 55811,
+          "previous_mastery": 0.3263598326359832,
+          "new_mastery": 0.36183465458663644,
+          "mastery_change": 0.03547482195065321
+        },
+        {
+          "topic": "organic_chemistry",
+          "difficulty": 0.39418376362977353,
+          "is_correct": false,
+          "response_time_ms": 41627,
+          "previous_mastery": 0.9111111111111111,
+          "new_mastery": 0.7565217391304347,
+          "mastery_change": -0.15458937198067635
+        }
+      ],
+      "correct_count": 2,
+      "total_time_ms": 428909,
+      "accuracy": 0.25,
+      "avg_time_per_question": 53613.625
+    },
+    "student_2_NEET_3": {
+      "student_id": "student_2",
+      "exam_type": "NEET",
+      "day": 3,
+      "topics": [
+        "organic_chemistry",
+        "inorganic_chemistry",
+        "biology"
+      ],
+      "questions": [
+        {
+          "topic": "inorganic_chemistry",
+          "difficulty": 0.5117677633822528,
+          "is_correct": true,
+          "response_time_ms": 43484,
+          "previous_mastery": 0.6,
+          "new_mastery": 0.8852459016393442,
+          "mastery_change": 0.28524590163934427
+        },
+        {
+          "topic": "organic_chemistry",
+          "difficulty": 0.35322601257522024,
+          "is_correct": true,
+          "response_time_ms": 36257,
+          "previous_mastery": 0.7,
+          "new_mastery": 0.925,
+          "mastery_change": 0.2250000000000001
+        },
+        {
+          "topic": "inorganic_chemistry",
+          "difficulty": 0.7722208549827404,
+          "is_correct": false,
+          "response_time_ms": 47554,
+          "previous_mastery": 0.8852459016393442,
+          "new_mastery": 0.7552699228791773,
+          "mastery_change": -0.12997597876016698
+        },
+        {
+          "topic": "inorganic_chemistry",
+          "difficulty": 0.5327907813577233,
+          "is_correct": true,
+          "response_time_ms": 41745,
+          "previous_mastery": 0.7552699228791773,
+          "new_mastery": 0.9390926041019266,
+          "mastery_change": 0.18382268122274936
+        },
+        {
+          "topic": "organic_chemistry",
+          "difficulty": 0.7756713453332758,
+          "is_correct": true,
+          "response_time_ms": 46894,
+          "previous_mastery": 0.925,
+          "new_mastery": 0.9872340425531915,
+          "mastery_change": 0.062234042553191427
+        },
+        {
+          "topic": "organic_chemistry",
+          "difficulty": 0.368240499936678,
+          "is_correct": true,
+          "response_time_ms": 32777,
+          "previous_mastery": 0.9872340425531915,
+          "new_mastery": 0.9974248927038626,
+          "mastery_change": 0.010190850150671116
+        }
+      ],
+      "correct_count": 5,
+      "total_time_ms": 248711,
+      "accuracy": 0.8333333333333334,
+      "avg_time_per_question": 41451.833333333336
+    },
+    "student_3_NEET_3": {
+      "student_id": "student_3",
+      "exam_type": "NEET",
+      "day": 3,
+      "topics": [
+        "physics_basics",
+        "biology",
+        "organic_chemistry"
+      ],
+      "questions": [
+        {
+          "topic": "physics_basics",
+          "difficulty": 0.7030127184644543,
+          "is_correct": false,
+          "response_time_ms": 47829,
+          "previous_mastery": 0.15,
+          "new_mastery": 0.23947368421052634,
+          "mastery_change": 0.08947368421052634
+        },
+        {
+          "topic": "organic_chemistry",
+          "difficulty": 0.434532578924297,
+          "is_correct": false,
+          "response_time_ms": 36075,
+          "previous_mastery": 0.3,
+          "new_mastery": 0.35526315789473684,
+          "mastery_change": 0.05526315789473685
+        },
+        {
+          "topic": "physics_basics",
+          "difficulty": 0.5332484441682399,
+          "is_correct": false,
+          "response_time_ms": 40093,
+          "previous_mastery": 0.23947368421052634,
+          "new_mastery": 0.3414713541666667,
+          "mastery_change": 0.10199766995614035
+        },
+        {
+          "topic": "biology",
+          "difficulty": 0.47847980419151503,
+          "is_correct": false,
+          "response_time_ms": 39988,
+          "previous_mastery": 0.08,
+          "new_mastery": 0.3119658119658119,
+          "mastery_change": 0.2319658119658119
+        },
+        {
+          "topic": "biology",
+          "difficulty": 0.7114796866034243,
+          "is_correct": false,
+          "response_time_ms": 44969,
+          "previous_mastery": 0.3119658119658119,
+          "new_mastery": 0.2941328175370729,
+          "mastery_change": -0.017832994428739035
+        },
+        {
+          "topic": "organic_chemistry",
+          "difficulty": 0.7632247305979134,
+          "is_correct": false,
+          "response_time_ms": 45989,
+          "previous_mastery": 0.35526315789473684,
+          "new_mastery": 0.31973684210526315,
+          "mastery_change": -0.035526315789473684
+        }
+      ],
+      "correct_count": 0,
+      "total_time_ms": 254943,
+      "accuracy": 0.0,
+      "avg_time_per_question": 42490.5
+    },
+    "student_1_JEE_Advanced_6": {
+      "student_id": "student_1",
+      "exam_type": "JEE_Advanced",
+      "day": 6,
+      "topics": [
+        "modern_physics",
+        "advanced_mechanics",
+        "advanced_calculus"
+      ],
+      "questions": [
+        {
+          "topic": "advanced_calculus",
+          "difficulty": 0.45902266712519163,
+          "is_correct": false,
+          "response_time_ms": 58963,
+          "previous_mastery": 0.08,
+          "new_mastery": 0.3119658119658119,
+          "mastery_change": 0.2319658119658119
+        },
+        {
+          "topic": "advanced_calculus",
+          "difficulty": 0.511102927065963,
+          "is_correct": false,
+          "response_time_ms": 57647,
+          "previous_mastery": 0.3119658119658119,
+          "new_mastery": 0.35820045558086555,
+          "mastery_change": 0.04623464361505364
+        },
+        {
+          "topic": "advanced_calculus",
+          "difficulty": 0.6739928714441472,
+          "is_correct": false,
+          "response_time_ms": 64615,
+          "previous_mastery": 0.35820045558086555,
+          "new_mastery": 0.34183375510998637,
+          "mastery_change": -0.01636670047087918
+        },
+        {
+          "topic": "advanced_mechanics",
+          "difficulty": 0.3396424113886208,
+          "is_correct": false,
+          "response_time_ms": 52710,
+          "previous_mastery": 0.05,
+          "new_mastery": 0.4044776119402985,
+          "mastery_change": 0.35447761194029853
+        },
+        {
+          "topic": "advanced_mechanics",
+          "difficulty": 0.447834715086995,
+          "is_correct": false,
+          "response_time_ms": 52880,
+          "previous_mastery": 0.4044776119402985,
+          "new_mastery": 0.3837157987643425,
+          "mastery_change": -0.020761813175956045
+        },
+        {
+          "topic": "modern_physics",
+          "difficulty": 0.49212930408152833,
+          "is_correct": false,
+          "response_time_ms": 60697,
+          "previous_mastery": 0.08,
+          "new_mastery": 0.3119658119658119,
+          "mastery_change": 0.2319658119658119
+        }
+      ],
+      "correct_count": 0,
+      "total_time_ms": 347512,
+      "accuracy": 0.0,
+      "avg_time_per_question": 57918.666666666664
+    },
+    "student_2_JEE_Advanced_6": {
+      "student_id": "student_2",
+      "exam_type": "JEE_Advanced",
+      "day": 6,
+      "topics": [
+        "modern_physics",
+        "advanced_mechanics",
+        "thermodynamics"
+      ],
+      "questions": [
+        {
+          "topic": "advanced_mechanics",
+          "difficulty": 0.49408149819666614,
+          "is_correct": false,
+          "response_time_ms": 50666,
+          "previous_mastery": 0.08,
+          "new_mastery": 0.3119658119658119,
+          "mastery_change": 0.2319658119658119
+        },
+        {
+          "topic": "advanced_mechanics",
+          "difficulty": 0.4335887796863739,
+          "is_correct": false,
+          "response_time_ms": 44877,
+          "previous_mastery": 0.3119658119658119,
+          "new_mastery": 0.35820045558086555,
+          "mastery_change": 0.04623464361505364
+        },
+        {
+          "topic": "advanced_mechanics",
+          "difficulty": 0.5605572356401312,
+          "is_correct": false,
+          "response_time_ms": 49290,
+          "previous_mastery": 0.35820045558086555,
+          "new_mastery": 0.37029054916985954,
+          "mastery_change": 0.012090093588993989
+        },
+        {
+          "topic": "modern_physics",
+          "difficulty": 0.34132326938539337,
+          "is_correct": false,
+          "response_time_ms": 43998,
+          "previous_mastery": 0.05,
+          "new_mastery": 0.4044776119402985,
+          "mastery_change": 0.35447761194029853
+        },
+        {
+          "topic": "modern_physics",
+          "difficulty": 0.4022825424631592,
+          "is_correct": true,
+          "response_time_ms": 42265,
+          "previous_mastery": 0.4044776119402985,
+          "new_mastery": 0.7884731899424416,
+          "mastery_change": 0.3839955780021431
+        },
+        {
+          "topic": "advanced_mechanics",
+          "difficulty": 0.6914391154771325,
+          "is_correct": true,
+          "response_time_ms": 54325,
+          "previous_mastery": 0.37029054916985954,
+          "new_mastery": 0.7762620533182076,
+          "mastery_change": 0.4059715041483481
+        },
+        {
+          "topic": "advanced_mechanics",
+          "difficulty": 0.35608147434016557,
+          "is_correct": false,
+          "response_time_ms": 35305,
+          "previous_mastery": 0.7762620533182076,
+          "new_mastery": 0.6986358479863869,
+          "mastery_change": -0.07762620533182074
+        }
+      ],
+      "correct_count": 2,
+      "total_time_ms": 320726,
+      "accuracy": 0.2857142857142857,
+      "avg_time_per_question": 45818.0
+    },
+    "student_3_JEE_Advanced_6": {
+      "student_id": "student_3",
+      "exam_type": "JEE_Advanced",
+      "day": 6,
+      "topics": [
+        "advanced_calculus",
+        "thermodynamics",
+        "modern_physics"
+      ],
+      "questions": [
+        {
+          "topic": "advanced_calculus",
+          "difficulty": 0.7110522739249562,
+          "is_correct": false,
+          "response_time_ms": 48109,
+          "previous_mastery": 0.15,
+          "new_mastery": 0.23947368421052634,
+          "mastery_change": 0.08947368421052634
+        },
+        {
+          "topic": "thermodynamics",
+          "difficulty": 0.3077298711150711,
+          "is_correct": false,
+          "response_time_ms": 30868,
+          "previous_mastery": 0.4,
+          "new_mastery": 0.4521739130434783,
+          "mastery_change": 0.05217391304347829
+        },
+        {
+          "topic": "advanced_calculus",
+          "difficulty": 0.6799304981332097,
+          "is_correct": false,
+          "response_time_ms": 44994,
+          "previous_mastery": 0.23947368421052634,
+          "new_mastery": 0.30473135525260625,
+          "mastery_change": 0.06525767104207991
+        },
+        {
+          "topic": "thermodynamics",
+          "difficulty": 0.556747425506054,
+          "is_correct": false,
+          "response_time_ms": 38068,
+          "previous_mastery": 0.4521739130434783,
+          "new_mastery": 0.4069565217391305,
+          "mastery_change": -0.04521739130434782
+        },
+        {
+          "topic": "modern_physics",
+          "difficulty": 0.5188557770513873,
+          "is_correct": false,
+          "response_time_ms": 41398,
+          "previous_mastery": 0.08,
+          "new_mastery": 0.3119658119658119,
+          "mastery_change": 0.2319658119658119
+        },
+        {
+          "topic": "thermodynamics",
+          "difficulty": 0.5155420685869911,
+          "is_correct": false,
+          "response_time_ms": 37363,
+          "previous_mastery": 0.4069565217391305,
+          "new_mastery": 0.3844765342960289,
+          "mastery_change": -0.02247998744310159
+        },
+        {
+          "topic": "thermodynamics",
+          "difficulty": 0.5910057810691377,
+          "is_correct": false,
+          "response_time_ms": 40053,
+          "previous_mastery": 0.3844765342960289,
+          "new_mastery": 0.3777372262773722,
+          "mastery_change": -0.006739308018656687
+        },
+        {
+          "topic": "advanced_calculus",
+          "difficulty": 0.7828948671503371,
+          "is_correct": false,
+          "response_time_ms": 47413,
+          "previous_mastery": 0.30473135525260625,
+          "new_mastery": 0.29135164372858946,
+          "mastery_change": -0.01337971152401679
+        },
+        {
+          "topic": "modern_physics",
+          "difficulty": 0.6771728972131552,
+          "is_correct": false,
+          "response_time_ms": 43850,
+          "previous_mastery": 0.3119658119658119,
+          "new_mastery": 0.3263598326359832,
+          "mastery_change": 0.014394020670171315
+        },
+        {
+          "topic": "modern_physics",
+          "difficulty": 0.6830360821950033,
+          "is_correct": false,
+          "response_time_ms": 43832,
+          "previous_mastery": 0.3263598326359832,
+          "new_mastery": 0.33102493074792244,
+          "mastery_change": 0.004665098111939214
+        }
+      ],
+      "correct_count": 0,
+      "total_time_ms": 415948,
+      "accuracy": 0.0,
+      "avg_time_per_question": 41594.8
+    },
+    "student_1_JEE_Mains_9": {
+      "student_id": "student_1",
+      "exam_type": "JEE_Mains",
+      "day": 9,
+      "topics": [
+        "calculus",
+        "electromagnetism",
+        "mechanics"
+      ],
+      "questions": [
+        {
+          "topic": "calculus",
+          "difficulty": 0.7045722776806874,
+          "is_correct": false,
+          "response_time_ms": 60718,
+          "previous_mastery": 0.6,
+          "new_mastery": 0.4448979591836735,
+          "mastery_change": -0.1551020408163265
+        },
+        {
+          "topic": "electromagnetism",
+          "difficulty": 0.544157116906961,
+          "is_correct": false,
+          "response_time_ms": 57538,
+          "previous_mastery": 0.4,
+          "new_mastery": 0.38235294117647056,
+          "mastery_change": -0.01764705882352946
+        },
+        {
+          "topic": "calculus",
+          "difficulty": 0.57388409951541,
+          "is_correct": true,
+          "response_time_ms": 58048,
+          "previous_mastery": 0.4448979591836735,
+          "new_mastery": 0.8120805369127516,
+          "mastery_change": 0.36718257772907814
+        },
+        {
+          "topic": "electromagnetism",
+          "difficulty": 0.6976551477704118,
+          "is_correct": false,
+          "response_time_ms": 65222,
+          "previous_mastery": 0.38235294117647056,
+          "new_mastery": 0.3505154639175258,
+          "mastery_change": -0.03183747725894476
+        },
+        {
+          "topic": "electromagnetism",
+          "difficulty": 0.7184168044887645,
+          "is_correct": true,
+          "response_time_ms": 66929,
+          "previous_mastery": 0.3505154639175258,
+          "new_mastery": 0.7836909871244636,
+          "mastery_change": 0.4331755232069378
+        },
+        {
+          "topic": "calculus",
+          "difficulty": 0.36682505262867815,
+          "is_correct": false,
+          "response_time_ms": 42212,
+          "previous_mastery": 0.8120805369127516,
+          "new_mastery": 0.6290220820189274,
+          "mastery_change": -0.18305845489382422
+        },
+        {
+          "topic": "electromagnetism",
+          "difficulty": 0.5349509894235858,
+          "is_correct": false,
+          "response_time_ms": 49631,
+          "previous_mastery": 0.7836909871244636,
+          "new_mastery": 0.5941095260009205,
+          "mastery_change": -0.18958146112354313
+        },
+        {
+          "topic": "calculus",
+          "difficulty": 0.7255293531647219,
+          "is_correct": true,
+          "response_time_ms": 60991,
+          "previous_mastery": 0.6290220820189274,
+          "new_mastery": 0.9155930378611161,
+          "mastery_change": 0.2865709558421887
+        },
+        {
+          "topic": "calculus",
+          "difficulty": 0.5726580546126918,
+          "is_correct": false,
+          "response_time_ms": 48541,
+          "previous_mastery": 0.9155930378611161,
+          "new_mastery": 0.7791430794408821,
+          "mastery_change": -0.136449958420234
+        },
+        {
+          "topic": "electromagnetism",
+          "difficulty": 0.7722257847095827,
+          "is_correct": false,
+          "response_time_ms": 63851,
+          "previous_mastery": 0.5941095260009205,
+          "new_mastery": 0.5346985734008285,
+          "mastery_change": -0.05941095260009199
+        }
+      ],
+      "correct_count": 3,
+      "total_time_ms": 573681,
+      "accuracy": 0.3,
+      "avg_time_per_question": 57368.1
+    },
+    "student_2_JEE_Mains_9": {
+      "student_id": "student_2",
+      "exam_type": "JEE_Mains",
+      "day": 9,
+      "topics": [
+        "calculus",
+        "electromagnetism",
+        "algebra"
+      ],
+      "questions": [
+        {
+          "topic": "electromagnetism",
+          "difficulty": 0.6113165806541536,
+          "is_correct": false,
+          "response_time_ms": 54058,
+          "previous_mastery": 0.2,
+          "new_mastery": 0.29411764705882354,
+          "mastery_change": 0.09411764705882353
+        },
+        {
+          "topic": "electromagnetism",
+          "difficulty": 0.6129522713172788,
+          "is_correct": false,
+          "response_time_ms": 52502,
+          "previous_mastery": 0.29411764705882354,
+          "new_mastery": 0.3207547169811321,
+          "mastery_change": 0.026637069922308576
+        },
+        {
+          "topic": "calculus",
+          "difficulty": 0.4952898019038068,
+          "is_correct": false,
+          "response_time_ms": 47582,
+          "previous_mastery": 0.3,
+          "new_mastery": 0.35526315789473684,
+          "mastery_change": 0.05526315789473685
+        },
+        {
+          "topic": "algebra",
+          "difficulty": 0.7039701037762696,
+          "is_correct": false,
+          "response_time_ms": 52426,
+          "previous_mastery": 0.5,
+          "new_mastery": 0.38181818181818183,
+          "mastery_change": -0.11818181818181817
+        },
+        {
+          "topic": "electromagnetism",
+          "difficulty": 0.5393788863991633,
+          "is_correct": false,
+          "response_time_ms": 49049,
+          "previous_mastery": 0.3207547169811321,
+          "new_mastery": 0.36040609137055835,
+          "mastery_change": 0.03965137438942623
+        },
+        {
+          "topic": "algebra",
+          "difficulty": 0.7720055065768405,
+          "is_correct": true,
+          "response_time_ms": 57324,
+          "previous_mastery": 0.38181818181818183,
+          "new_mastery": 0.80431654676259,
+          "mastery_change": 0.4224983649444082
+        },
+        {
+          "topic": "algebra",
+          "difficulty": 0.4486605656296151,
+          "is_correct": false,
+          "response_time_ms": 38079,
+          "previous_mastery": 0.80431654676259,
+          "new_mastery": 0.6158192090395481,
+          "mastery_change": -0.1884973377230419
+        },
+        {
+          "topic": "calculus",
+          "difficulty": 0.6713507458699097,
+          "is_correct": false,
+          "response_time_ms": 53793,
+          "previous_mastery": 0.35526315789473684,
+          "new_mastery": 0.34080717488789236,
+          "mastery_change": -0.014455983006844475
+        },
+        {
+          "topic": "electromagnetism",
+          "difficulty": 0.7467701460403526,
+          "is_correct": false,
+          "response_time_ms": 56727,
+          "previous_mastery": 0.36040609137055835,
+          "new_mastery": 0.32436548223350253,
+          "mastery_change": -0.03604060913705581
+        }
+      ],
+      "correct_count": 1,
+      "total_time_ms": 461540,
+      "accuracy": 0.1111111111111111,
+      "avg_time_per_question": 51282.22222222222
+    },
+    "student_3_JEE_Mains_9": {
+      "student_id": "student_3",
+      "exam_type": "JEE_Mains",
+      "day": 9,
+      "topics": [
+        "algebra",
+        "electromagnetism",
+        "mechanics"
+      ],
+      "questions": [
+        {
+          "topic": "algebra",
+          "difficulty": 0.47411257564620257,
+          "is_correct": true,
+          "response_time_ms": 33675,
+          "previous_mastery": 0.6,
+          "new_mastery": 0.8852459016393442,
+          "mastery_change": 0.28524590163934427
+        },
+        {
+          "topic": "mechanics",
+          "difficulty": 0.7172817717174641,
+          "is_correct": true,
+          "response_time_ms": 42348,
+          "previous_mastery": 0.5,
+          "new_mastery": 0.8666666666666666,
+          "mastery_change": 0.3666666666666666
+        },
+        {
+          "topic": "electromagnetism",
+          "difficulty": 0.5425254483766031,
+          "is_correct": true,
+          "response_time_ms": 37001,
+          "previous_mastery": 0.5,
+          "new_mastery": 0.8409090909090908,
+          "mastery_change": 0.34090909090909083
+        },
+        {
+          "topic": "electromagnetism",
+          "difficulty": 0.35863594215014194,
+          "is_correct": true,
+          "response_time_ms": 27599,
+          "previous_mastery": 0.8409090909090908,
+          "new_mastery": 0.964406779661017,
+          "mastery_change": 0.12349768875192613
+        },
+        {
+          "topic": "algebra",
+          "difficulty": 0.6549521118552778,
+          "is_correct": false,
+          "response_time_ms": 34942,
+          "previous_mastery": 0.8852459016393442,
+          "new_mastery": 0.7439024390243902,
+          "mastery_change": -0.141343462614954
+        },
+        {
+          "topic": "algebra",
+          "difficulty": 0.5505444473802226,
+          "is_correct": false,
+          "response_time_ms": 34040,
+          "previous_mastery": 0.7439024390243902,
+          "new_mastery": 0.5572289156626506,
+          "mastery_change": -0.1866735233617396
+        },
+        {
+          "topic": "mechanics",
+          "difficulty": 0.7386703188249518,
+          "is_correct": false,
+          "response_time_ms": 37438,
+          "previous_mastery": 0.8666666666666666,
+          "new_mastery": 0.725252525252525,
+          "mastery_change": -0.14141414141414155
+        },
+        {
+          "topic": "electromagnetism",
+          "difficulty": 0.7006598041836996,
+          "is_correct": false,
+          "response_time_ms": 34982,
+          "previous_mastery": 0.964406779661017,
+          "new_mastery": 0.9108057464084947,
+          "mastery_change": -0.0536010332525223
+        },
+        {
+          "topic": "algebra",
+          "difficulty": 0.6050592688719366,
+          "is_correct": false,
+          "response_time_ms": 38128,
+          "previous_mastery": 0.5572289156626506,
+          "new_mastery": 0.4294954721862872,
+          "mastery_change": -0.12773344347636345
+        },
+        {
+          "topic": "electromagnetism",
+          "difficulty": 0.7069172994685238,
+          "is_correct": false,
+          "response_time_ms": 35937,
+          "previous_mastery": 0.9108057464084947,
+          "new_mastery": 0.8001687485851872,
+          "mastery_change": -0.11063699782330749
+        }
+      ],
+      "correct_count": 4,
+      "total_time_ms": 356090,
+      "accuracy": 0.4,
+      "avg_time_per_question": 35609.0
+    },
+    "student_1_NEET_12": {
+      "student_id": "student_1",
+      "exam_type": "NEET",
+      "day": 12,
+      "topics": [
+        "biology",
+        "organic_chemistry",
+        "physics_basics"
+      ],
+      "questions": [
+        {
+          "topic": "biology",
+          "difficulty": 0.7341432751225359,
+          "is_correct": false,
+          "response_time_ms": 67432,
+          "previous_mastery": 0.36183465458663644,
+          "new_mastery": 0.3256511891279728,
+          "mastery_change": -0.03618346545866363
+        },
+        {
+          "topic": "biology",
+          "difficulty": 0.33262890718358357,
+          "is_correct": true,
+          "response_time_ms": 48690,
+          "previous_mastery": 0.3256511891279728,
+          "new_mastery": 0.7549756532473767,
+          "mastery_change": 0.4293244641194039
+        },
+        {
+          "topic": "physics_basics",
+          "difficulty": 0.3658885759443904,
+          "is_correct": false,
+          "response_time_ms": 54085,
+          "previous_mastery": 0.05,
+          "new_mastery": 0.4044776119402985,
+          "mastery_change": 0.35447761194029853
+        },
+        {
+          "topic": "organic_chemistry",
+          "difficulty": 0.3223391692424698,
+          "is_correct": false,
+          "response_time_ms": 41285,
+          "previous_mastery": 0.7565217391304347,
+          "new_mastery": 0.584452296819788,
+          "mastery_change": -0.1720694423106467
+        },
+        {
+          "topic": "biology",
+          "difficulty": 0.3414083774810209,
+          "is_correct": true,
+          "response_time_ms": 42106,
+          "previous_mastery": 0.7549756532473767,
+          "new_mastery": 0.9414273067086366,
+          "mastery_change": 0.18645165346125991
+        },
+        {
+          "topic": "organic_chemistry",
+          "difficulty": 0.4151128887927279,
+          "is_correct": true,
+          "response_time_ms": 48173,
+          "previous_mastery": 0.584452296819788,
+          "new_mastery": 0.8789340549444085,
+          "mastery_change": 0.2944817581246204
+        }
+      ],
+      "correct_count": 3,
+      "total_time_ms": 301771,
+      "accuracy": 0.5,
+      "avg_time_per_question": 50295.166666666664
+    },
+    "student_2_NEET_12": {
+      "student_id": "student_2",
+      "exam_type": "NEET",
+      "day": 12,
+      "topics": [
+        "organic_chemistry",
+        "biology",
+        "physics_basics"
+      ],
+      "questions": [
+        {
+          "topic": "organic_chemistry",
+          "difficulty": 0.6777457150479917,
+          "is_correct": false,
+          "response_time_ms": 42395,
+          "previous_mastery": 0.9974248927038626,
+          "new_mastery": 0.9923339011925041,
+          "mastery_change": -0.0050909915113585
+        },
+        {
+          "topic": "biology",
+          "difficulty": 0.47807207194505774,
+          "is_correct": false,
+          "response_time_ms": 49967,
+          "previous_mastery": 0.08,
+          "new_mastery": 0.3119658119658119,
+          "mastery_change": 0.2319658119658119
+        },
+        {
+          "topic": "organic_chemistry",
+          "difficulty": 0.4877780028708279,
+          "is_correct": true,
+          "response_time_ms": 36484,
+          "previous_mastery": 0.9923339011925041,
+          "new_mastery": 0.95,
+          "mastery_change": -0.04233390119250413
+        },
+        {
+          "topic": "physics_basics",
+          "difficulty": 0.7195715315188516,
+          "is_correct": false,
+          "response_time_ms": 60509,
+          "previous_mastery": 0.15,
+          "new_mastery": 0.23947368421052634,
+          "mastery_change": 0.08947368421052634
+        },
+        {
+          "topic": "biology",
+          "difficulty": 0.3856598992335643,
+          "is_correct": false,
+          "response_time_ms": 42922,
+          "previous_mastery": 0.3119658119658119,
+          "new_mastery": 0.43650000000000005,
+          "mastery_change": 0.12453418803418814
+        }
+      ],
+      "correct_count": 1,
+      "total_time_ms": 232277,
+      "accuracy": 0.2,
+      "avg_time_per_question": 46455.4
+    },
+    "student_3_NEET_12": {
+      "student_id": "student_3",
+      "exam_type": "NEET",
+      "day": 12,
+      "topics": [
+        "organic_chemistry",
+        "biology",
+        "inorganic_chemistry"
+      ],
+      "questions": [
+        {
+          "topic": "organic_chemistry",
+          "difficulty": 0.3724365737408731,
+          "is_correct": false,
+          "response_time_ms": 33819,
+          "previous_mastery": 0.31973684210526315,
+          "new_mastery": 0.4377524598653547,
+          "mastery_change": 0.11801561776009156
+        },
+        {
+          "topic": "organic_chemistry",
+          "difficulty": 0.6241876017407271,
+          "is_correct": false,
+          "response_time_ms": 40367,
+          "previous_mastery": 0.4377524598653547,
+          "new_mastery": 0.39397721387881923,
+          "mastery_change": -0.04377524598653548
+        },
+        {
+          "topic": "inorganic_chemistry",
+          "difficulty": 0.39019691490248876,
+          "is_correct": false,
+          "response_time_ms": 33481,
+          "previous_mastery": 0.4,
+          "new_mastery": 0.4521739130434783,
+          "mastery_change": 0.05217391304347829
+        },
+        {
+          "topic": "organic_chemistry",
+          "difficulty": 0.41329864684047196,
+          "is_correct": false,
+          "response_time_ms": 34283,
+          "previous_mastery": 0.39397721387881923,
+          "new_mastery": 0.38054226306428385,
+          "mastery_change": -0.013434950814535385
+        },
+        {
+          "topic": "inorganic_chemistry",
+          "difficulty": 0.7130779732424157,
+          "is_correct": false,
+          "response_time_ms": 42932,
+          "previous_mastery": 0.4521739130434783,
+          "new_mastery": 0.4069565217391305,
+          "mastery_change": -0.04521739130434782
+        },
+        {
+          "topic": "inorganic_chemistry",
+          "difficulty": 0.3682566762853846,
+          "is_correct": false,
+          "response_time_ms": 32708,
+          "previous_mastery": 0.4069565217391305,
+          "new_mastery": 0.4535673407096529,
+          "mastery_change": 0.04661081897052238
+        },
+        {
+          "topic": "biology",
+          "difficulty": 0.35911802429066736,
+          "is_correct": false,
+          "response_time_ms": 33669,
+          "previous_mastery": 0.2941328175370729,
+          "new_mastery": 0.43371018990615534,
+          "mastery_change": 0.13957737236908246
+        }
+      ],
+      "correct_count": 0,
+      "total_time_ms": 251259,
+      "accuracy": 0.0,
+      "avg_time_per_question": 35894.142857142855
+    },
+    "student_1_JEE_Advanced_15": {
+      "student_id": "student_1",
+      "exam_type": "JEE_Advanced",
+      "day": 15,
+      "topics": [
+        "advanced_mechanics",
+        "advanced_calculus",
+        "thermodynamics"
+      ],
+      "questions": [
+        {
+          "topic": "advanced_mechanics",
+          "difficulty": 0.4501990952031255,
+          "is_correct": false,
+          "response_time_ms": 53368,
+          "previous_mastery": 0.3837157987643425,
+          "new_mastery": 0.3775152827305145,
+          "mastery_change": -0.006200516033827985
+        },
+        {
+          "topic": "advanced_calculus",
+          "difficulty": 0.6126011896873831,
+          "is_correct": false,
+          "response_time_ms": 61996,
+          "previous_mastery": 0.34183375510998637,
+          "new_mastery": 0.33619109947643977,
+          "mastery_change": -0.0056426556335466005
+        },
+        {
+          "topic": "advanced_mechanics",
+          "difficulty": 0.3081700232228137,
+          "is_correct": false,
+          "response_time_ms": 46679,
+          "previous_mastery": 0.3775152827305145,
+          "new_mastery": 0.4478381322538564,
+          "mastery_change": 0.07032284952334189
+        },
+        {
+          "topic": "thermodynamics",
+          "difficulty": 0.5188278896332912,
+          "is_correct": false,
+          "response_time_ms": 58255,
+          "previous_mastery": 0.3,
+          "new_mastery": 0.35526315789473684,
+          "mastery_change": 0.05526315789473685
+        },
+        {
+          "topic": "advanced_calculus",
+          "difficulty": 0.46738204182010723,
+          "is_correct": false,
+          "response_time_ms": 55062,
+          "previous_mastery": 0.33619109947643977,
+          "new_mastery": 0.364382654157416,
+          "mastery_change": 0.028191554680976227
+        }
+      ],
+      "correct_count": 0,
+      "total_time_ms": 275360,
+      "accuracy": 0.0,
+      "avg_time_per_question": 55072.0
+    },
+    "student_2_JEE_Advanced_15": {
+      "student_id": "student_2",
+      "exam_type": "JEE_Advanced",
+      "day": 15,
+      "topics": [
+        "advanced_calculus",
+        "advanced_mechanics",
+        "modern_physics"
+      ],
+      "questions": [
+        {
+          "topic": "advanced_calculus",
+          "difficulty": 0.6456731651882626,
+          "is_correct": false,
+          "response_time_ms": 57283,
+          "previous_mastery": 0.1,
+          "new_mastery": 0.2702702702702703,
+          "mastery_change": 0.17027027027027028
+        },
+        {
+          "topic": "modern_physics",
+          "difficulty": 0.6608440498851573,
+          "is_correct": true,
+          "response_time_ms": 45607,
+          "previous_mastery": 0.7884731899424416,
+          "new_mastery": 0.9528602290883723,
+          "mastery_change": 0.16438703914593067
+        },
+        {
+          "topic": "modern_physics",
+          "difficulty": 0.5209779032032933,
+          "is_correct": true,
+          "response_time_ms": 38166,
+          "previous_mastery": 0.9528602290883723,
+          "new_mastery": 0.9899606938046699,
+          "mastery_change": 0.037100464716297576
+        },
+        {
+          "topic": "advanced_calculus",
+          "difficulty": 0.3412245359083911,
+          "is_correct": false,
+          "response_time_ms": 41677,
+          "previous_mastery": 0.2702702702702703,
+          "new_mastery": 0.43015075376884426,
+          "mastery_change": 0.15988048349857398
+        },
+        {
+          "topic": "modern_physics",
+          "difficulty": 0.4147613134745278,
+          "is_correct": true,
+          "response_time_ms": 34211,
+          "previous_mastery": 0.9899606938046699,
+          "new_mastery": 0.95,
+          "mastery_change": -0.03996069380466993
+        },
+        {
+          "topic": "advanced_mechanics",
+          "difficulty": 0.3219723770984751,
+          "is_correct": false,
+          "response_time_ms": 35164,
+          "previous_mastery": 0.6986358479863869,
+          "new_mastery": 0.6287722631877483,
+          "mastery_change": -0.06986358479863863
+        },
+        {
+          "topic": "advanced_mechanics",
+          "difficulty": 0.7352981831934016,
+          "is_correct": false,
+          "response_time_ms": 51187,
+          "previous_mastery": 0.6287722631877483,
+          "new_mastery": 0.5658950368689735,
+          "mastery_change": -0.06287722631877479
+        },
+        {
+          "topic": "advanced_calculus",
+          "difficulty": 0.7904299873934166,
+          "is_correct": false,
+          "response_time_ms": 57107,
+          "previous_mastery": 0.43015075376884426,
+          "new_mastery": 0.38713567839195984,
+          "mastery_change": -0.043015075376884426
+        }
+      ],
+      "correct_count": 3,
+      "total_time_ms": 360402,
+      "accuracy": 0.375,
+      "avg_time_per_question": 45050.25
+    },
+    "student_3_JEE_Advanced_15": {
+      "student_id": "student_3",
+      "exam_type": "JEE_Advanced",
+      "day": 15,
+      "topics": [
+        "advanced_calculus",
+        "modern_physics",
+        "advanced_mechanics"
+      ],
+      "questions": [
+        {
+          "topic": "modern_physics",
+          "difficulty": 0.7418859848986755,
+          "is_correct": false,
+          "response_time_ms": 45672,
+          "previous_mastery": 0.33102493074792244,
+          "new_mastery": 0.30163725281735065,
+          "mastery_change": -0.029387677930571787
+        },
+        {
+          "topic": "advanced_calculus",
+          "difficulty": 0.49653534874747635,
+          "is_correct": false,
+          "response_time_ms": 38215,
+          "previous_mastery": 0.29135164372858946,
+          "new_mastery": 0.35318586040329886,
+          "mastery_change": 0.0618342166747094
+        },
+        {
+          "topic": "advanced_mechanics",
+          "difficulty": 0.3894922011807163,
+          "is_correct": false,
+          "response_time_ms": 36881,
+          "previous_mastery": 0.05,
+          "new_mastery": 0.4044776119402985,
+          "mastery_change": 0.35447761194029853
+        },
+        {
+          "topic": "modern_physics",
+          "difficulty": 0.526316880738193,
+          "is_correct": true,
+          "response_time_ms": 39061,
+          "previous_mastery": 0.30163725281735065,
+          "new_mastery": 0.7164304285834102,
+          "mastery_change": 0.41479317576605956
+        },
+        {
+          "topic": "advanced_mechanics",
+          "difficulty": 0.36941467188666216,
+          "is_correct": true,
+          "response_time_ms": 32772,
+          "previous_mastery": 0.4044776119402985,
+          "new_mastery": 0.8024752475247525,
+          "mastery_change": 0.397997635584454
+        },
+        {
+          "topic": "advanced_calculus",
+          "difficulty": 0.5399307698464193,
+          "is_correct": false,
+          "response_time_ms": 38835,
+          "previous_mastery": 0.35318586040329886,
+          "new_mastery": 0.36891899094986647,
+          "mastery_change": 0.01573313054656761
+        }
+      ],
+      "correct_count": 2,
+      "total_time_ms": 231436,
+      "accuracy": 0.3333333333333333,
+      "avg_time_per_question": 38572.666666666664
+    },
+    "student_1_JEE_Mains_18": {
+      "student_id": "student_1",
+      "exam_type": "JEE_Mains",
+      "day": 18,
+      "topics": [
+        "calculus",
+        "mechanics",
+        "electromagnetism"
+      ],
+      "questions": [
+        {
+          "topic": "mechanics",
+          "difficulty": 0.3060217134600095,
+          "is_correct": false,
+          "response_time_ms": 43070,
+          "previous_mastery": 0.6,
+          "new_mastery": 0.5058823529411764,
+          "mastery_change": -0.09411764705882353
+        },
+        {
+          "topic": "electromagnetism",
+          "difficulty": 0.3758732143230291,
+          "is_correct": false,
+          "response_time_ms": 47266,
+          "previous_mastery": 0.5346985734008285,
+          "new_mastery": 0.48460847613961855,
+          "mastery_change": -0.05009009726120994
+        },
+        {
+          "topic": "electromagnetism",
+          "difficulty": 0.3156971103905204,
+          "is_correct": false,
+          "response_time_ms": 45335,
+          "previous_mastery": 0.48460847613961855,
+          "new_mastery": 0.47105089900982583,
+          "mastery_change": -0.01355757712979272
+        },
+        {
+          "topic": "mechanics",
+          "difficulty": 0.7135830560646562,
+          "is_correct": true,
+          "response_time_ms": 63221,
+          "previous_mastery": 0.5058823529411764,
+          "new_mastery": 0.8692607003891051,
+          "mastery_change": 0.36337834744792863
+        },
+        {
+          "topic": "calculus",
+          "difficulty": 0.328256015754588,
+          "is_correct": false,
+          "response_time_ms": 41167,
+          "previous_mastery": 0.7791430794408821,
+          "new_mastery": 0.6010569434027577,
+          "mastery_change": -0.1780861360381244
+        },
+        {
+          "topic": "calculus",
+          "difficulty": 0.39036048826154884,
+          "is_correct": false,
+          "response_time_ms": 46787,
+          "previous_mastery": 0.6010569434027577,
+          "new_mastery": 0.5062670811128029,
+          "mastery_change": -0.09478986228995478
+        },
+        {
+          "topic": "electromagnetism",
+          "difficulty": 0.5704984094086625,
+          "is_correct": false,
+          "response_time_ms": 57366,
+          "previous_mastery": 0.47105089900982583,
+          "new_mastery": 0.4239458091088433,
+          "mastery_change": -0.047105089900982555
+        }
+      ],
+      "correct_count": 1,
+      "total_time_ms": 344212,
+      "accuracy": 0.14285714285714285,
+      "avg_time_per_question": 49173.142857142855
+    },
+    "student_2_JEE_Mains_18": {
+      "student_id": "student_2",
+      "exam_type": "JEE_Mains",
+      "day": 18,
+      "topics": [
+        "calculus",
+        "mechanics",
+        "electromagnetism"
+      ],
+      "questions": [
+        {
+          "topic": "electromagnetism",
+          "difficulty": 0.45169687572142125,
+          "is_correct": false,
+          "response_time_ms": 45429,
+          "previous_mastery": 0.32436548223350253,
+          "new_mastery": 0.3613243761996161,
+          "mastery_change": 0.03695889396611357
+        },
+        {
+          "topic": "calculus",
+          "difficulty": 0.36150118616290094,
+          "is_correct": false,
+          "response_time_ms": 41537,
+          "previous_mastery": 0.34080717488789236,
+          "new_mastery": 0.44126696832579193,
+          "mastery_change": 0.10045979343789957
+        },
+        {
+          "topic": "calculus",
+          "difficulty": 0.6031366621094862,
+          "is_correct": false,
+          "response_time_ms": 49576,
+          "previous_mastery": 0.44126696832579193,
+          "new_mastery": 0.39714027149321274,
+          "mastery_change": -0.04412669683257919
+        },
+        {
+          "topic": "electromagnetism",
+          "difficulty": 0.32936240480307266,
+          "is_correct": true,
+          "response_time_ms": 39962,
+          "previous_mastery": 0.3613243761996161,
+          "new_mastery": 0.7775487465181059,
+          "mastery_change": 0.4162243703184898
+        },
+        {
+          "topic": "electromagnetism",
+          "difficulty": 0.5497527018258181,
+          "is_correct": true,
+          "response_time_ms": 41970,
+          "previous_mastery": 0.7775487465181059,
+          "new_mastery": 0.945670090268005,
+          "mastery_change": 0.16812134374989907
+        },
+        {
+          "topic": "mechanics",
+          "difficulty": 0.7432585574099406,
+          "is_correct": false,
+          "response_time_ms": 57736,
+          "previous_mastery": 0.3,
+          "new_mastery": 0.28955223880597014,
+          "mastery_change": -0.010447761194029848
+        }
+      ],
+      "correct_count": 2,
+      "total_time_ms": 276210,
+      "accuracy": 0.3333333333333333,
+      "avg_time_per_question": 46035.0
+    },
+    "student_3_JEE_Mains_18": {
+      "student_id": "student_3",
+      "exam_type": "JEE_Mains",
+      "day": 18,
+      "topics": [
+        "mechanics",
+        "algebra",
+        "calculus"
+      ],
+      "questions": [
+        {
+          "topic": "mechanics",
+          "difficulty": 0.6807740249139932,
+          "is_correct": true,
+          "response_time_ms": 37953,
+          "previous_mastery": 0.725252525252525,
+          "new_mastery": 0.9351145038167938,
+          "mastery_change": 0.2098619785642688
+        },
+        {
+          "topic": "calculus",
+          "difficulty": 0.3417507477792709,
+          "is_correct": true,
+          "response_time_ms": 30857,
+          "previous_mastery": 0.5,
+          "new_mastery": 0.85,
+          "mastery_change": 0.35
+        },
+        {
+          "topic": "mechanics",
+          "difficulty": 0.7135597895626316,
+          "is_correct": true,
+          "response_time_ms": 35748,
+          "previous_mastery": 0.9351145038167938,
+          "new_mastery": 0.9890499194847021,
+          "mastery_change": 0.05393541566790827
+        },
+        {
+          "topic": "calculus",
+          "difficulty": 0.33194565948163374,
+          "is_correct": true,
+          "response_time_ms": 26782,
+          "previous_mastery": 0.85,
+          "new_mastery": 0.9666666666666667,
+          "mastery_change": 0.1166666666666667
+        },
+        {
+          "topic": "calculus",
+          "difficulty": 0.46707927154278545,
+          "is_correct": true,
+          "response_time_ms": 28978,
+          "previous_mastery": 0.9666666666666667,
+          "new_mastery": 0.9929718875502008,
+          "mastery_change": 0.026305220883534153
+        },
+        {
+          "topic": "algebra",
+          "difficulty": 0.7925836305647387,
+          "is_correct": false,
+          "response_time_ms": 45764,
+          "previous_mastery": 0.4294954721862872,
+          "new_mastery": 0.3865459249676585,
+          "mastery_change": -0.0429495472186287
+        }
+      ],
+      "correct_count": 5,
+      "total_time_ms": 206082,
+      "accuracy": 0.8333333333333334,
+      "avg_time_per_question": 34347.0
+    },
+    "student_1_NEET_21": {
+      "student_id": "student_1",
+      "exam_type": "NEET",
+      "day": 21,
+      "topics": [
+        "inorganic_chemistry",
+        "physics_basics",
+        "organic_chemistry"
+      ],
+      "questions": [
+        {
+          "topic": "inorganic_chemistry",
+          "difficulty": 0.5274650499768099,
+          "is_correct": false,
+          "response_time_ms": 57890,
+          "previous_mastery": 0.34080717488789236,
+          "new_mastery": 0.3655980271270037,
+          "mastery_change": 0.024790852239111316
+        },
+        {
+          "topic": "physics_basics",
+          "difficulty": 0.512358799110834,
+          "is_correct": false,
+          "response_time_ms": 55941,
+          "previous_mastery": 0.4044776119402985,
+          "new_mastery": 0.3837157987643425,
+          "mastery_change": -0.020761813175956045
+        },
+        {
+          "topic": "organic_chemistry",
+          "difficulty": 0.6216029681387856,
+          "is_correct": true,
+          "response_time_ms": 51223,
+          "previous_mastery": 0.8789340549444085,
+          "new_mastery": 0.9750331597166058,
+          "mastery_change": 0.0960991047721973
+        },
+        {
+          "topic": "organic_chemistry",
+          "difficulty": 0.6753577530683852,
+          "is_correct": true,
+          "response_time_ms": 51271,
+          "previous_mastery": 0.9750331597166058,
+          "new_mastery": 0.9952293870991006,
+          "mastery_change": 0.020196227382494825
+        },
+        {
+          "topic": "physics_basics",
+          "difficulty": 0.556878534017745,
+          "is_correct": false,
+          "response_time_ms": 58465,
+          "previous_mastery": 0.3837157987643425,
+          "new_mastery": 0.3775152827305145,
+          "mastery_change": -0.006200516033827985
+        },
+        {
+          "topic": "physics_basics",
+          "difficulty": 0.37737069028702297,
+          "is_correct": false,
+          "response_time_ms": 49992,
+          "previous_mastery": 0.3775152827305145,
+          "new_mastery": 0.4478381322538564,
+          "mastery_change": 0.07032284952334189
+        }
+      ],
+      "correct_count": 2,
+      "total_time_ms": 324782,
+      "accuracy": 0.3333333333333333,
+      "avg_time_per_question": 54130.333333333336
+    },
+    "student_2_NEET_21": {
+      "student_id": "student_2",
+      "exam_type": "NEET",
+      "day": 21,
+      "topics": [
+        "organic_chemistry",
+        "physics_basics",
+        "biology"
+      ],
+      "questions": [
+        {
+          "topic": "biology",
+          "difficulty": 0.6893826985332943,
+          "is_correct": false,
+          "response_time_ms": 53031,
+          "previous_mastery": 0.43650000000000005,
+          "new_mastery": 0.39285000000000003,
+          "mastery_change": -0.04365000000000002
+        },
+        {
+          "topic": "physics_basics",
+          "difficulty": 0.5755818174361821,
+          "is_correct": false,
+          "response_time_ms": 51885,
+          "previous_mastery": 0.23947368421052634,
+          "new_mastery": 0.3414713541666667,
+          "mastery_change": 0.10199766995614035
+        },
+        {
+          "topic": "physics_basics",
+          "difficulty": 0.36939612512472725,
+          "is_correct": false,
+          "response_time_ms": 41846,
+          "previous_mastery": 0.3414713541666667,
+          "new_mastery": 0.4413806706114399,
+          "mastery_change": 0.09990931644477319
+        },
+        {
+          "topic": "biology",
+          "difficulty": 0.7703861257041504,
+          "is_correct": false,
+          "response_time_ms": 57046,
+          "previous_mastery": 0.39285000000000003,
+          "new_mastery": 0.353565,
+          "mastery_change": -0.039285000000000014
+        },
+        {
+          "topic": "organic_chemistry",
+          "difficulty": 0.7181457304515662,
+          "is_correct": false,
+          "response_time_ms": 44556,
+          "previous_mastery": 0.95,
+          "new_mastery": 0.8785714285714284,
+          "mastery_change": -0.07142857142857151
+        }
+      ],
+      "correct_count": 0,
+      "total_time_ms": 248364,
+      "accuracy": 0.0,
+      "avg_time_per_question": 49672.8
+    },
+    "student_3_NEET_21": {
+      "student_id": "student_3",
+      "exam_type": "NEET",
+      "day": 21,
+      "topics": [
+        "inorganic_chemistry",
+        "organic_chemistry",
+        "physics_basics"
+      ],
+      "questions": [
+        {
+          "topic": "organic_chemistry",
+          "difficulty": 0.44594296220551244,
+          "is_correct": true,
+          "response_time_ms": 35481,
+          "previous_mastery": 0.38054226306428385,
+          "new_mastery": 0.7733653418384397,
+          "mastery_change": 0.3928230787741559
+        },
+        {
+          "topic": "physics_basics",
+          "difficulty": 0.6172968932485028,
+          "is_correct": false,
+          "response_time_ms": 41487,
+          "previous_mastery": 0.3414713541666667,
+          "new_mastery": 0.33606826386609784,
+          "mastery_change": -0.005403090300568847
+        },
+        {
+          "topic": "inorganic_chemistry",
+          "difficulty": 0.4959761006023722,
+          "is_correct": false,
+          "response_time_ms": 36159,
+          "previous_mastery": 0.4535673407096529,
+          "new_mastery": 0.4082106066386876,
+          "mastery_change": -0.0453567340709653
+        },
+        {
+          "topic": "physics_basics",
+          "difficulty": 0.6453609816001062,
+          "is_correct": false,
+          "response_time_ms": 42470,
+          "previous_mastery": 0.33606826386609784,
+          "new_mastery": 0.33424747696358054,
+          "mastery_change": -0.0018207869025173018
+        },
+        {
+          "topic": "organic_chemistry",
+          "difficulty": 0.35729620358472197,
+          "is_correct": true,
+          "response_time_ms": 28310,
+          "previous_mastery": 0.7733653418384397,
+          "new_mastery": 0.9466057421114462,
+          "mastery_change": 0.17324040027300647
+        },
+        {
+          "topic": "organic_chemistry",
+          "difficulty": 0.32578122909911794,
+          "is_correct": true,
+          "response_time_ms": 25581,
+          "previous_mastery": 0.9466057421114462,
+          "new_mastery": 0.9889269917156653,
+          "mastery_change": 0.042321249604219124
+        },
+        {
+          "topic": "organic_chemistry",
+          "difficulty": 0.7980082612555467,
+          "is_correct": false,
+          "response_time_ms": 37084,
+          "previous_mastery": 0.9889269917156653,
+          "new_mastery": 0.9706611050509865,
+          "mastery_change": -0.018265886664678876
+        }
+      ],
+      "correct_count": 3,
+      "total_time_ms": 246572,
+      "accuracy": 0.42857142857142855,
+      "avg_time_per_question": 35224.57142857143
+    },
+    "student_1_JEE_Advanced_24": {
+      "student_id": "student_1",
+      "exam_type": "JEE_Advanced",
+      "day": 24,
+      "topics": [
+        "thermodynamics",
+        "advanced_calculus",
+        "modern_physics"
+      ],
+      "questions": [
+        {
+          "topic": "modern_physics",
+          "difficulty": 0.6636521046757968,
+          "is_correct": false,
+          "response_time_ms": 65113,
+          "previous_mastery": 0.3119658119658119,
+          "new_mastery": 0.3263598326359832,
+          "mastery_change": 0.014394020670171315
+        },
+        {
+          "topic": "modern_physics",
+          "difficulty": 0.6609575375978258,
+          "is_correct": false,
+          "response_time_ms": 64672,
+          "previous_mastery": 0.3263598326359832,
+          "new_mastery": 0.33102493074792244,
+          "mastery_change": 0.004665098111939214
+        },
+        {
+          "topic": "modern_physics",
+          "difficulty": 0.5698590938218846,
+          "is_correct": false,
+          "response_time_ms": 60141,
+          "previous_mastery": 0.33102493074792244,
+          "new_mastery": 0.3630369253956292,
+          "mastery_change": 0.032011994647706765
+        },
+        {
+          "topic": "advanced_calculus",
+          "difficulty": 0.3980876682420839,
+          "is_correct": true,
+          "response_time_ms": 51211,
+          "previous_mastery": 0.364382654157416,
+          "new_mastery": 0.7793972347366787,
+          "mastery_change": 0.41501458057926266
+        },
+        {
+          "topic": "modern_physics",
+          "difficulty": 0.6413180159403055,
+          "is_correct": false,
+          "response_time_ms": 62938,
+          "previous_mastery": 0.3630369253956292,
+          "new_mastery": 0.34353763510452395,
+          "mastery_change": -0.019499290291105253
+        },
+        {
+          "topic": "advanced_calculus",
+          "difficulty": 0.7150604994950327,
+          "is_correct": false,
+          "response_time_ms": 57167,
+          "previous_mastery": 0.7793972347366787,
+          "new_mastery": 0.7014575112630108,
+          "mastery_change": -0.07793972347366784
+        },
+        {
+          "topic": "advanced_calculus",
+          "difficulty": 0.5537427328458997,
+          "is_correct": true,
+          "response_time_ms": 52033,
+          "previous_mastery": 0.7014575112630108,
+          "new_mastery": 0.9221241305151663,
+          "mastery_change": 0.22066661925215547
+        },
+        {
+          "topic": "thermodynamics",
+          "difficulty": 0.7413972443799945,
+          "is_correct": false,
+          "response_time_ms": 67931,
+          "previous_mastery": 0.35526315789473684,
+          "new_mastery": 0.31973684210526315,
+          "mastery_change": -0.035526315789473684
+        },
+        {
+          "topic": "advanced_calculus",
+          "difficulty": 0.6372525910049132,
+          "is_correct": true,
+          "response_time_ms": 50933,
+          "previous_mastery": 0.9221241305151663,
+          "new_mastery": 0.9844925312630443,
+          "mastery_change": 0.06236840074787797
+        }
+      ],
+      "correct_count": 3,
+      "total_time_ms": 532139,
+      "accuracy": 0.3333333333333333,
+      "avg_time_per_question": 59126.555555555555
+    },
+    "student_2_JEE_Advanced_24": {
+      "student_id": "student_2",
+      "exam_type": "JEE_Advanced",
+      "day": 24,
+      "topics": [
+        "advanced_calculus",
+        "thermodynamics",
+        "advanced_mechanics"
+      ],
+      "questions": [
+        {
+          "topic": "thermodynamics",
+          "difficulty": 0.5554766782267704,
+          "is_correct": false,
+          "response_time_ms": 48396,
+          "previous_mastery": 0.4,
+          "new_mastery": 0.38235294117647056,
+          "mastery_change": -0.01764705882352946
+        },
+        {
+          "topic": "advanced_calculus",
+          "difficulty": 0.48356054369226,
+          "is_correct": false,
+          "response_time_ms": 45748,
+          "previous_mastery": 0.38713567839195984,
+          "new_mastery": 0.37851610273134934,
+          "mastery_change": -0.008619575660610501
+        },
+        {
+          "topic": "thermodynamics",
+          "difficulty": 0.6744940748669208,
+          "is_correct": true,
+          "response_time_ms": 53429,
+          "previous_mastery": 0.38235294117647056,
+          "new_mastery": 0.7842465753424657,
+          "mastery_change": 0.4018936341659951
+        },
+        {
+          "topic": "thermodynamics",
+          "difficulty": 0.6752673121519268,
+          "is_correct": false,
+          "response_time_ms": 46179,
+          "previous_mastery": 0.7842465753424657,
+          "new_mastery": 0.607068607068607,
+          "mastery_change": -0.17717796827385868
+        },
+        {
+          "topic": "advanced_calculus",
+          "difficulty": 0.7986917658983523,
+          "is_correct": false,
+          "response_time_ms": 58453,
+          "previous_mastery": 0.37851610273134934,
+          "new_mastery": 0.3406644924582144,
+          "mastery_change": -0.03785161027313494
+        },
+        {
+          "topic": "advanced_mechanics",
+          "difficulty": 0.7916737560530561,
+          "is_correct": false,
+          "response_time_ms": 54484,
+          "previous_mastery": 0.5658950368689735,
+          "new_mastery": 0.5093055331820762,
+          "mastery_change": -0.0565895036868973
+        },
+        {
+          "topic": "advanced_calculus",
+          "difficulty": 0.6532324481731653,
+          "is_correct": false,
+          "response_time_ms": 53325,
+          "previous_mastery": 0.3406644924582144,
+          "new_mastery": 0.33579510064955065,
+          "mastery_change": -0.004869391808663748
+        },
+        {
+          "topic": "advanced_mechanics",
+          "difficulty": 0.642702441806229,
+          "is_correct": false,
+          "response_time_ms": 49918,
+          "previous_mastery": 0.5093055331820762,
+          "new_mastery": 0.45837497986386855,
+          "mastery_change": -0.050930553318207616
+        },
+        {
+          "topic": "advanced_calculus",
+          "difficulty": 0.3373788047630344,
+          "is_correct": false,
+          "response_time_ms": 40630,
+          "previous_mastery": 0.33579510064955065,
+          "new_mastery": 0.4404148022851745,
+          "mastery_change": 0.10461970163562384
+        }
+      ],
+      "correct_count": 1,
+      "total_time_ms": 450562,
+      "accuracy": 0.1111111111111111,
+      "avg_time_per_question": 50062.444444444445
+    },
+    "student_3_JEE_Advanced_24": {
+      "student_id": "student_3",
+      "exam_type": "JEE_Advanced",
+      "day": 24,
+      "topics": [
+        "thermodynamics",
+        "advanced_mechanics",
+        "modern_physics"
+      ],
+      "questions": [
+        {
+          "topic": "modern_physics",
+          "difficulty": 0.49575348675608694,
+          "is_correct": true,
+          "response_time_ms": 32852,
+          "previous_mastery": 0.7164304285834102,
+          "new_mastery": 0.9270073217821476,
+          "mastery_change": 0.2105768931987374
+        },
+        {
+          "topic": "thermodynamics",
+          "difficulty": 0.6436859349720996,
+          "is_correct": false,
+          "response_time_ms": 41827,
+          "previous_mastery": 0.3777372262773722,
+          "new_mastery": 0.34882240611075743,
+          "mastery_change": -0.028914820166614785
+        },
+        {
+          "topic": "thermodynamics",
+          "difficulty": 0.4969691317389477,
+          "is_correct": false,
+          "response_time_ms": 37507,
+          "previous_mastery": 0.34882240611075743,
+          "new_mastery": 0.36773794808405436,
+          "mastery_change": 0.018915541973296923
+        },
+        {
+          "topic": "modern_physics",
+          "difficulty": 0.6615837066642885,
+          "is_correct": true,
+          "response_time_ms": 34518,
+          "previous_mastery": 0.9270073217821476,
+          "new_mastery": 0.985521240245328,
+          "mastery_change": 0.058513918463180326
+        },
+        {
+          "topic": "thermodynamics",
+          "difficulty": 0.7060778721786315,
+          "is_correct": false,
+          "response_time_ms": 43966,
+          "previous_mastery": 0.36773794808405436,
+          "new_mastery": 0.33096415327564893,
+          "mastery_change": -0.036773794808405424
+        },
+        {
+          "topic": "advanced_mechanics",
+          "difficulty": 0.7641064429020789,
+          "is_correct": false,
+          "response_time_ms": 39107,
+          "previous_mastery": 0.8024752475247525,
+          "new_mastery": 0.6355185384202042,
+          "mastery_change": -0.1669567091045483
+        },
+        {
+          "topic": "advanced_mechanics",
+          "difficulty": 0.49601370245002596,
+          "is_correct": false,
+          "response_time_ms": 33876,
+          "previous_mastery": 0.6355185384202042,
+          "new_mastery": 0.48099121157798086,
+          "mastery_change": -0.15452732684222337
+        }
+      ],
+      "correct_count": 2,
+      "total_time_ms": 263653,
+      "accuracy": 0.2857142857142857,
+      "avg_time_per_question": 37664.71428571428
+    },
+    "student_1_JEE_Mains_27": {
+      "student_id": "student_1",
+      "exam_type": "JEE_Mains",
+      "day": 27,
+      "topics": [
+        "mechanics",
+        "algebra",
+        "calculus"
+      ],
+      "questions": [
+        {
+          "topic": "mechanics",
+          "difficulty": 0.44494821411757485,
+          "is_correct": true,
+          "response_time_ms": 44373,
+          "previous_mastery": 0.8692607003891051,
+          "new_mastery": 0.9703464622522567,
+          "mastery_change": 0.10108576186315166
+        },
+        {
+          "topic": "calculus",
+          "difficulty": 0.4765998481311053,
+          "is_correct": false,
+          "response_time_ms": 52359,
+          "previous_mastery": 0.5062670811128029,
+          "new_mastery": 0.45564037300152266,
+          "mastery_change": -0.05062670811128028
+        },
+        {
+          "topic": "calculus",
+          "difficulty": 0.656571465262735,
+          "is_correct": false,
+          "response_time_ms": 61687,
+          "previous_mastery": 0.45564037300152266,
+          "new_mastery": 0.4100763357013704,
+          "mastery_change": -0.04556403730015224
+        },
+        {
+          "topic": "calculus",
+          "difficulty": 0.32246333957609047,
+          "is_correct": true,
+          "response_time_ms": 46841,
+          "previous_mastery": 0.4100763357013704,
+          "new_mastery": 0.8055359837994276,
+          "mastery_change": 0.39545964809805717
+        },
+        {
+          "topic": "mechanics",
+          "difficulty": 0.444987077553592,
+          "is_correct": true,
+          "response_time_ms": 42554,
+          "previous_mastery": 0.9703464622522567,
+          "new_mastery": 0.9937643355138969,
+          "mastery_change": 0.023417873261640132
+        },
+        {
+          "topic": "mechanics",
+          "difficulty": 0.662122578479757,
+          "is_correct": false,
+          "response_time_ms": 50362,
+          "previous_mastery": 0.9937643355138969,
+          "new_mastery": 0.9816365318207909,
+          "mastery_change": -0.012127803693105954
+        }
+      ],
+      "correct_count": 3,
+      "total_time_ms": 298176,
+      "accuracy": 0.5,
+      "avg_time_per_question": 49696.0
+    },
+    "student_2_JEE_Mains_27": {
+      "student_id": "student_2",
+      "exam_type": "JEE_Mains",
+      "day": 27,
+      "topics": [
+        "calculus",
+        "mechanics",
+        "electromagnetism"
+      ],
+      "questions": [
+        {
+          "topic": "calculus",
+          "difficulty": 0.763263026003933,
+          "is_correct": false,
+          "response_time_ms": 56680,
+          "previous_mastery": 0.39714027149321274,
+          "new_mastery": 0.3574262443438915,
+          "mastery_change": -0.03971402714932126
+        },
+        {
+          "topic": "mechanics",
+          "difficulty": 0.5650505401784904,
+          "is_correct": false,
+          "response_time_ms": 50612,
+          "previous_mastery": 0.28955223880597014,
+          "new_mastery": 0.35275835275835277,
+          "mastery_change": 0.06320611395238263
+        },
+        {
+          "topic": "calculus",
+          "difficulty": 0.7471799832198768,
+          "is_correct": false,
+          "response_time_ms": 56800,
+          "previous_mastery": 0.3574262443438915,
+          "new_mastery": 0.32168361990950234,
+          "mastery_change": -0.035742624434389136
+        },
+        {
+          "topic": "calculus",
+          "difficulty": 0.5389302465838759,
+          "is_correct": false,
+          "response_time_ms": 49016,
+          "previous_mastery": 0.32168361990950234,
+          "new_mastery": 0.3606416462011313,
+          "mastery_change": 0.03895802629162898
+        },
+        {
+          "topic": "mechanics",
+          "difficulty": 0.4674049054286623,
+          "is_correct": false,
+          "response_time_ms": 45632,
+          "previous_mastery": 0.35275835275835277,
+          "new_mastery": 0.3688027711625893,
+          "mastery_change": 0.016044418404236538
+        },
+        {
+          "topic": "electromagnetism",
+          "difficulty": 0.47423253851680686,
+          "is_correct": true,
+          "response_time_ms": 36775,
+          "previous_mastery": 0.945670090268005,
+          "new_mastery": 0.9883683504895759,
+          "mastery_change": 0.04269826022157097
+        },
+        {
+          "topic": "electromagnetism",
+          "difficulty": 0.6907485449909584,
+          "is_correct": false,
+          "response_time_ms": 42971,
+          "previous_mastery": 0.9883683504895759,
+          "new_mastery": 0.9662816515040533,
+          "mastery_change": -0.022086698985522624
+        },
+        {
+          "topic": "electromagnetism",
+          "difficulty": 0.31583911486852934,
+          "is_correct": true,
+          "response_time_ms": 31396,
+          "previous_mastery": 0.9662816515040533,
+          "new_mastery": 0.9931012540882524,
+          "mastery_change": 0.02681960258419913
+        },
+        {
+          "topic": "mechanics",
+          "difficulty": 0.3738158206404201,
+          "is_correct": false,
+          "response_time_ms": 41641,
+          "previous_mastery": 0.3688027711625893,
+          "new_mastery": 0.4462237698986976,
+          "mastery_change": 0.0774209987361083
+        },
+        {
+          "topic": "mechanics",
+          "difficulty": 0.6118716567412366,
+          "is_correct": false,
+          "response_time_ms": 49832,
+          "previous_mastery": 0.4462237698986976,
+          "new_mastery": 0.40160139290882785,
+          "mastery_change": -0.04462237698986976
+        }
+      ],
+      "correct_count": 2,
+      "total_time_ms": 461355,
+      "accuracy": 0.2,
+      "avg_time_per_question": 46135.5
+    },
+    "student_3_JEE_Mains_27": {
+      "student_id": "student_3",
+      "exam_type": "JEE_Mains",
+      "day": 27,
+      "topics": [
+        "calculus",
+        "electromagnetism",
+        "algebra"
+      ],
+      "questions": [
+        {
+          "topic": "calculus",
+          "difficulty": 0.3331132821671707,
+          "is_correct": true,
+          "response_time_ms": 25270,
+          "previous_mastery": 0.9929718875502008,
+          "new_mastery": 0.95,
+          "mastery_change": -0.04297188755020087
+        },
+        {
+          "topic": "algebra",
+          "difficulty": 0.44447107205110437,
+          "is_correct": false,
+          "response_time_ms": 35362,
+          "previous_mastery": 0.3865459249676585,
+          "new_mastery": 0.37834294703723126,
+          "mastery_change": -0.008202977930427235
+        },
+        {
+          "topic": "algebra",
+          "difficulty": 0.4639010906112811,
+          "is_correct": false,
+          "response_time_ms": 36080,
+          "previous_mastery": 0.37834294703723126,
+          "new_mastery": 0.37595879079560834,
+          "mastery_change": -0.0023841562416229145
+        },
+        {
+          "topic": "calculus",
+          "difficulty": 0.6019184721035764,
+          "is_correct": false,
+          "response_time_ms": 32653,
+          "previous_mastery": 0.95,
+          "new_mastery": 0.8695652173913042,
+          "mastery_change": -0.08043478260869574
+        },
+        {
+          "topic": "electromagnetism",
+          "difficulty": 0.48772372700748884,
+          "is_correct": true,
+          "response_time_ms": 31582,
+          "previous_mastery": 0.8001687485851872,
+          "new_mastery": 0.9521018912948684,
+          "mastery_change": 0.15193314270968128
+        },
+        {
+          "topic": "calculus",
+          "difficulty": 0.6521412787418814,
+          "is_correct": false,
+          "response_time_ms": 35091,
+          "previous_mastery": 0.8695652173913042,
+          "new_mastery": 0.7187499999999998,
+          "mastery_change": -0.15081521739130443
+        },
+        {
+          "topic": "algebra",
+          "difficulty": 0.5474108002648865,
+          "is_correct": false,
+          "response_time_ms": 38777,
+          "previous_mastery": 0.37595879079560834,
+          "new_mastery": 0.37527424072958787,
+          "mastery_change": -0.0006845500660204729
+        }
+      ],
+      "correct_count": 2,
+      "total_time_ms": 234815,
+      "accuracy": 0.2857142857142857,
+      "avg_time_per_question": 33545.0
+    },
+    "student_1_NEET_30": {
+      "student_id": "student_1",
+      "exam_type": "NEET",
+      "day": 30,
+      "topics": [
+        "inorganic_chemistry",
+        "biology",
+        "organic_chemistry"
+      ],
+      "questions": [
+        {
+          "topic": "inorganic_chemistry",
+          "difficulty": 0.6463309471273151,
+          "is_correct": false,
+          "response_time_ms": 63125,
+          "previous_mastery": 0.3655980271270037,
+          "new_mastery": 0.34444680399235506,
+          "mastery_change": -0.021151223134648622
+        },
+        {
+          "topic": "biology",
+          "difficulty": 0.32613916100542534,
+          "is_correct": false,
+          "response_time_ms": 38470,
+          "previous_mastery": 0.9414273067086366,
+          "new_mastery": 0.8179674932853909,
+          "mastery_change": -0.12345981342324575
+        },
+        {
+          "topic": "inorganic_chemistry",
+          "difficulty": 0.701737617538706,
+          "is_correct": false,
+          "response_time_ms": 66258,
+          "previous_mastery": 0.34444680399235506,
+          "new_mastery": 0.31000212359311957,
+          "mastery_change": -0.03444468039923548
+        },
+        {
+          "topic": "biology",
+          "difficulty": 0.3953159898506103,
+          "is_correct": true,
+          "response_time_ms": 43274,
+          "previous_mastery": 0.8179674932853909,
+          "new_mastery": 0.958565175322911,
+          "mastery_change": 0.1405976820375201
+        },
+        {
+          "topic": "organic_chemistry",
+          "difficulty": 0.4229405286558029,
+          "is_correct": false,
+          "response_time_ms": 41271,
+          "previous_mastery": 0.9952293870991006,
+          "new_mastery": 0.9836155110640226,
+          "mastery_change": -0.011613876035078019
+        },
+        {
+          "topic": "inorganic_chemistry",
+          "difficulty": 0.7216768432504239,
+          "is_correct": false,
+          "response_time_ms": 67998,
+          "previous_mastery": 0.31000212359311957,
+          "new_mastery": 0.2933743127892362,
+          "mastery_change": -0.01662781080388337
+        },
+        {
+          "topic": "organic_chemistry",
+          "difficulty": 0.524486785633099,
+          "is_correct": true,
+          "response_time_ms": 45341,
+          "previous_mastery": 0.9836155110640226,
+          "new_mastery": 0.9965872526630754,
+          "mastery_change": 0.012971741599052788
+        },
+        {
+          "topic": "biology",
+          "difficulty": 0.7091020322741721,
+          "is_correct": false,
+          "response_time_ms": 52927,
+          "previous_mastery": 0.958565175322911,
+          "new_mastery": 0.8974911261921006,
+          "mastery_change": -0.06107404913081038
+        }
+      ],
+      "correct_count": 2,
+      "total_time_ms": 418664,
+      "accuracy": 0.25,
+      "avg_time_per_question": 52333.0
+    },
+    "student_2_NEET_30": {
+      "student_id": "student_2",
+      "exam_type": "NEET",
+      "day": 30,
+      "topics": [
+        "inorganic_chemistry",
+        "physics_basics",
+        "biology"
+      ],
+      "questions": [
+        {
+          "topic": "inorganic_chemistry",
+          "difficulty": 0.3002532740575127,
+          "is_correct": true,
+          "response_time_ms": 31253,
+          "previous_mastery": 0.9390926041019266,
+          "new_mastery": 0.987302958324336,
+          "mastery_change": 0.04821035422240938
+        },
+        {
+          "topic": "inorganic_chemistry",
+          "difficulty": 0.6216746172405088,
+          "is_correct": true,
+          "response_time_ms": 40803,
+          "previous_mastery": 0.987302958324336,
+          "new_mastery": 0.95,
+          "mastery_change": -0.037302958324336055
+        },
+        {
+          "topic": "inorganic_chemistry",
+          "difficulty": 0.4691854041773014,
+          "is_correct": true,
+          "response_time_ms": 36546,
+          "previous_mastery": 0.95,
+          "new_mastery": 0.95,
+          "mastery_change": 0.0
+        },
+        {
+          "topic": "physics_basics",
+          "difficulty": 0.5509491348203521,
+          "is_correct": false,
+          "response_time_ms": 47537,
+          "previous_mastery": 0.4413806706114399,
+          "new_mastery": 0.3972426035502959,
+          "mastery_change": -0.04413806706114398
+        },
+        {
+          "topic": "physics_basics",
+          "difficulty": 0.7829235104676611,
+          "is_correct": false,
+          "response_time_ms": 57457,
+          "previous_mastery": 0.3972426035502959,
+          "new_mastery": 0.3575183431952663,
+          "mastery_change": -0.03972426035502957
+        },
+        {
+          "topic": "inorganic_chemistry",
+          "difficulty": 0.4048153974506556,
+          "is_correct": true,
+          "response_time_ms": 34474,
+          "previous_mastery": 0.95,
+          "new_mastery": 0.95,
+          "mastery_change": 0.0
+        }
+      ],
+      "correct_count": 4,
+      "total_time_ms": 248070,
+      "accuracy": 0.6666666666666666,
+      "avg_time_per_question": 41345.0
+    },
+    "student_3_NEET_30": {
+      "student_id": "student_3",
+      "exam_type": "NEET",
+      "day": 30,
+      "topics": [
+        "organic_chemistry",
+        "inorganic_chemistry",
+        "physics_basics"
+      ],
+      "questions": [
+        {
+          "topic": "organic_chemistry",
+          "difficulty": 0.6303818185509704,
+          "is_correct": true,
+          "response_time_ms": 33096,
+          "previous_mastery": 0.9706611050509865,
+          "new_mastery": 0.9943751878678706,
+          "mastery_change": 0.02371408281688414
+        },
+        {
+          "topic": "organic_chemistry",
+          "difficulty": 0.5893978838719045,
+          "is_correct": false,
+          "response_time_ms": 31729,
+          "previous_mastery": 0.9943751878678706,
+          "new_mastery": 0.9807463501897099,
+          "mastery_change": -0.013628837678160699
+        },
+        {
+          "topic": "organic_chemistry",
+          "difficulty": 0.5665053510618631,
+          "is_correct": false,
+          "response_time_ms": 31332,
+          "previous_mastery": 0.9807463501897099,
+          "new_mastery": 0.9374309555474037,
+          "mastery_change": -0.04331539464230616
+        },
+        {
+          "topic": "physics_basics",
+          "difficulty": 0.6309362245430925,
+          "is_correct": false,
+          "response_time_ms": 42029,
+          "previous_mastery": 0.33424747696358054,
+          "new_mastery": 0.3336383266844783,
+          "mastery_change": -0.0006091502791022441
+        },
+        {
+          "topic": "physics_basics",
+          "difficulty": 0.38128835975814873,
+          "is_correct": true,
+          "response_time_ms": 33950,
+          "previous_mastery": 0.3336383266844783,
+          "new_mastery": 0.7601975633849194,
+          "mastery_change": 0.4265592367004411
+        },
+        {
+          "topic": "inorganic_chemistry",
+          "difficulty": 0.5448200748320164,
+          "is_correct": false,
+          "response_time_ms": 38272,
+          "previous_mastery": 0.4082106066386876,
+          "new_mastery": 0.3848630984485548,
+          "mastery_change": -0.02334750819013276
+        }
+      ],
+      "correct_count": 2,
+      "total_time_ms": 210408,
+      "accuracy": 0.3333333333333333,
+      "avg_time_per_question": 35068.0
+    }
+  },
+  "daily_stats": {},
+  "mastery_progression": {
+    "student_1": {
+      "inorganic_chemistry": [
+        {
+          "day": 1,
+          "mastery": 0.3
+        },
+        {
+          "day": 2,
+          "mastery": 0.3
+        },
+        {
+          "day": 3,
+          "mastery": 0.34080717488789236
+        },
+        {
+          "day": 4,
+          "mastery": 0.34080717488789236
+        },
+        {
+          "day": 5,
+          "mastery": 0.34080717488789236
+        },
+        {
+          "day": 6,
+          "mastery": 0.34080717488789236
+        },
+        {
+          "day": 7,
+          "mastery": 0.34080717488789236
+        },
+        {
+          "day": 8,
+          "mastery": 0.34080717488789236
+        },
+        {
+          "day": 9,
+          "mastery": 0.34080717488789236
+        },
+        {
+          "day": 10,
+          "mastery": 0.34080717488789236
+        },
+        {
+          "day": 11,
+          "mastery": 0.34080717488789236
+        },
+        {
+          "day": 12,
+          "mastery": 0.34080717488789236
+        },
+        {
+          "day": 13,
+          "mastery": 0.34080717488789236
+        },
+        {
+          "day": 14,
+          "mastery": 0.34080717488789236
+        },
+        {
+          "day": 15,
+          "mastery": 0.34080717488789236
+        },
+        {
+          "day": 16,
+          "mastery": 0.34080717488789236
+        },
+        {
+          "day": 17,
+          "mastery": 0.34080717488789236
+        },
+        {
+          "day": 18,
+          "mastery": 0.34080717488789236
+        },
+        {
+          "day": 19,
+          "mastery": 0.34080717488789236
+        },
+        {
+          "day": 20,
+          "mastery": 0.34080717488789236
+        },
+        {
+          "day": 21,
+          "mastery": 0.3655980271270037
+        },
+        {
+          "day": 22,
+          "mastery": 0.3655980271270037
+        },
+        {
+          "day": 23,
+          "mastery": 0.3655980271270037
+        },
+        {
+          "day": 24,
+          "mastery": 0.3655980271270037
+        },
+        {
+          "day": 25,
+          "mastery": 0.3655980271270037
+        },
+        {
+          "day": 26,
+          "mastery": 0.3655980271270037
+        },
+        {
+          "day": 27,
+          "mastery": 0.3655980271270037
+        },
+        {
+          "day": 28,
+          "mastery": 0.3655980271270037
+        },
+        {
+          "day": 29,
+          "mastery": 0.3655980271270037
+        },
+        {
+          "day": 30,
+          "mastery": 0.2933743127892362
+        }
+      ],
+      "mechanics": [
+        {
+          "day": 1,
+          "mastery": 0.6
+        },
+        {
+          "day": 2,
+          "mastery": 0.6
+        },
+        {
+          "day": 3,
+          "mastery": 0.6
+        },
+        {
+          "day": 4,
+          "mastery": 0.6
+        },
+        {
+          "day": 5,
+          "mastery": 0.6
+        },
+        {
+          "day": 6,
+          "mastery": 0.6
+        },
+        {
+          "day": 7,
+          "mastery": 0.6
+        },
+        {
+          "day": 8,
+          "mastery": 0.6
+        },
+        {
+          "day": 9,
+          "mastery": 0.6
+        },
+        {
+          "day": 10,
+          "mastery": 0.6
+        },
+        {
+          "day": 11,
+          "mastery": 0.6
+        },
+        {
+          "day": 12,
+          "mastery": 0.6
+        },
+        {
+          "day": 13,
+          "mastery": 0.6
+        },
+        {
+          "day": 14,
+          "mastery": 0.6
+        },
+        {
+          "day": 15,
+          "mastery": 0.6
+        },
+        {
+          "day": 16,
+          "mastery": 0.6
+        },
+        {
+          "day": 17,
+          "mastery": 0.6
+        },
+        {
+          "day": 18,
+          "mastery": 0.8692607003891051
+        },
+        {
+          "day": 19,
+          "mastery": 0.8692607003891051
+        },
+        {
+          "day": 20,
+          "mastery": 0.8692607003891051
+        },
+        {
+          "day": 21,
+          "mastery": 0.8692607003891051
+        },
+        {
+          "day": 22,
+          "mastery": 0.8692607003891051
+        },
+        {
+          "day": 23,
+          "mastery": 0.8692607003891051
+        },
+        {
+          "day": 24,
+          "mastery": 0.8692607003891051
+        },
+        {
+          "day": 25,
+          "mastery": 0.8692607003891051
+        },
+        {
+          "day": 26,
+          "mastery": 0.8692607003891051
+        },
+        {
+          "day": 27,
+          "mastery": 0.9816365318207909
+        },
+        {
+          "day": 28,
+          "mastery": 0.9816365318207909
+        },
+        {
+          "day": 29,
+          "mastery": 0.9816365318207909
+        },
+        {
+          "day": 30,
+          "mastery": 0.9816365318207909
+        }
+      ],
+      "calculus": [
+        {
+          "day": 1,
+          "mastery": 0.6
+        },
+        {
+          "day": 2,
+          "mastery": 0.6
+        },
+        {
+          "day": 3,
+          "mastery": 0.6
+        },
+        {
+          "day": 4,
+          "mastery": 0.6
+        },
+        {
+          "day": 5,
+          "mastery": 0.6
+        },
+        {
+          "day": 6,
+          "mastery": 0.6
+        },
+        {
+          "day": 7,
+          "mastery": 0.6
+        },
+        {
+          "day": 8,
+          "mastery": 0.6
+        },
+        {
+          "day": 9,
+          "mastery": 0.7791430794408821
+        },
+        {
+          "day": 10,
+          "mastery": 0.7791430794408821
+        },
+        {
+          "day": 11,
+          "mastery": 0.7791430794408821
+        },
+        {
+          "day": 12,
+          "mastery": 0.7791430794408821
+        },
+        {
+          "day": 13,
+          "mastery": 0.7791430794408821
+        },
+        {
+          "day": 14,
+          "mastery": 0.7791430794408821
+        },
+        {
+          "day": 15,
+          "mastery": 0.7791430794408821
+        },
+        {
+          "day": 16,
+          "mastery": 0.7791430794408821
+        },
+        {
+          "day": 17,
+          "mastery": 0.7791430794408821
+        },
+        {
+          "day": 18,
+          "mastery": 0.5062670811128029
+        },
+        {
+          "day": 19,
+          "mastery": 0.5062670811128029
+        },
+        {
+          "day": 20,
+          "mastery": 0.5062670811128029
+        },
+        {
+          "day": 21,
+          "mastery": 0.5062670811128029
+        },
+        {
+          "day": 22,
+          "mastery": 0.5062670811128029
+        },
+        {
+          "day": 23,
+          "mastery": 0.5062670811128029
+        },
+        {
+          "day": 24,
+          "mastery": 0.5062670811128029
+        },
+        {
+          "day": 25,
+          "mastery": 0.5062670811128029
+        },
+        {
+          "day": 26,
+          "mastery": 0.5062670811128029
+        },
+        {
+          "day": 27,
+          "mastery": 0.8055359837994276
+        },
+        {
+          "day": 28,
+          "mastery": 0.8055359837994276
+        },
+        {
+          "day": 29,
+          "mastery": 0.8055359837994276
+        },
+        {
+          "day": 30,
+          "mastery": 0.8055359837994276
+        }
+      ],
+      "electromagnetism": [
+        {
+          "day": 1,
+          "mastery": 0.4
+        },
+        {
+          "day": 2,
+          "mastery": 0.4
+        },
+        {
+          "day": 3,
+          "mastery": 0.4
+        },
+        {
+          "day": 4,
+          "mastery": 0.4
+        },
+        {
+          "day": 5,
+          "mastery": 0.4
+        },
+        {
+          "day": 6,
+          "mastery": 0.4
+        },
+        {
+          "day": 7,
+          "mastery": 0.4
+        },
+        {
+          "day": 8,
+          "mastery": 0.4
+        },
+        {
+          "day": 9,
+          "mastery": 0.5346985734008285
+        },
+        {
+          "day": 10,
+          "mastery": 0.5346985734008285
+        },
+        {
+          "day": 11,
+          "mastery": 0.5346985734008285
+        },
+        {
+          "day": 12,
+          "mastery": 0.5346985734008285
+        },
+        {
+          "day": 13,
+          "mastery": 0.5346985734008285
+        },
+        {
+          "day": 14,
+          "mastery": 0.5346985734008285
+        },
+        {
+          "day": 15,
+          "mastery": 0.5346985734008285
+        },
+        {
+          "day": 16,
+          "mastery": 0.5346985734008285
+        },
+        {
+          "day": 17,
+          "mastery": 0.5346985734008285
+        },
+        {
+          "day": 18,
+          "mastery": 0.4239458091088433
+        },
+        {
+          "day": 19,
+          "mastery": 0.4239458091088433
+        },
+        {
+          "day": 20,
+          "mastery": 0.4239458091088433
+        },
+        {
+          "day": 21,
+          "mastery": 0.4239458091088433
+        },
+        {
+          "day": 22,
+          "mastery": 0.4239458091088433
+        },
+        {
+          "day": 23,
+          "mastery": 0.4239458091088433
+        },
+        {
+          "day": 24,
+          "mastery": 0.4239458091088433
+        },
+        {
+          "day": 25,
+          "mastery": 0.4239458091088433
+        },
+        {
+          "day": 26,
+          "mastery": 0.4239458091088433
+        },
+        {
+          "day": 27,
+          "mastery": 0.4239458091088433
+        },
+        {
+          "day": 28,
+          "mastery": 0.4239458091088433
+        },
+        {
+          "day": 29,
+          "mastery": 0.4239458091088433
+        },
+        {
+          "day": 30,
+          "mastery": 0.4239458091088433
+        }
+      ],
+      "algebra": [
+        {
+          "day": 1,
+          "mastery": 0.7
+        },
+        {
+          "day": 2,
+          "mastery": 0.7
+        },
+        {
+          "day": 3,
+          "mastery": 0.7
+        },
+        {
+          "day": 4,
+          "mastery": 0.7
+        },
+        {
+          "day": 5,
+          "mastery": 0.7
+        },
+        {
+          "day": 6,
+          "mastery": 0.7
+        },
+        {
+          "day": 7,
+          "mastery": 0.7
+        },
+        {
+          "day": 8,
+          "mastery": 0.7
+        },
+        {
+          "day": 9,
+          "mastery": 0.7
+        },
+        {
+          "day": 10,
+          "mastery": 0.7
+        },
+        {
+          "day": 11,
+          "mastery": 0.7
+        },
+        {
+          "day": 12,
+          "mastery": 0.7
+        },
+        {
+          "day": 13,
+          "mastery": 0.7
+        },
+        {
+          "day": 14,
+          "mastery": 0.7
+        },
+        {
+          "day": 15,
+          "mastery": 0.7
+        },
+        {
+          "day": 16,
+          "mastery": 0.7
+        },
+        {
+          "day": 17,
+          "mastery": 0.7
+        },
+        {
+          "day": 18,
+          "mastery": 0.7
+        },
+        {
+          "day": 19,
+          "mastery": 0.7
+        },
+        {
+          "day": 20,
+          "mastery": 0.7
+        },
+        {
+          "day": 21,
+          "mastery": 0.7
+        },
+        {
+          "day": 22,
+          "mastery": 0.7
+        },
+        {
+          "day": 23,
+          "mastery": 0.7
+        },
+        {
+          "day": 24,
+          "mastery": 0.7
+        },
+        {
+          "day": 25,
+          "mastery": 0.7
+        },
+        {
+          "day": 26,
+          "mastery": 0.7
+        },
+        {
+          "day": 27,
+          "mastery": 0.7
+        },
+        {
+          "day": 28,
+          "mastery": 0.7
+        },
+        {
+          "day": 29,
+          "mastery": 0.7
+        },
+        {
+          "day": 30,
+          "mastery": 0.7
+        }
+      ],
+      "organic_chemistry": [
+        {
+          "day": 1,
+          "mastery": 0.2
+        },
+        {
+          "day": 2,
+          "mastery": 0.2
+        },
+        {
+          "day": 3,
+          "mastery": 0.7565217391304347
+        },
+        {
+          "day": 4,
+          "mastery": 0.7565217391304347
+        },
+        {
+          "day": 5,
+          "mastery": 0.7565217391304347
+        },
+        {
+          "day": 6,
+          "mastery": 0.7565217391304347
+        },
+        {
+          "day": 7,
+          "mastery": 0.7565217391304347
+        },
+        {
+          "day": 8,
+          "mastery": 0.7565217391304347
+        },
+        {
+          "day": 9,
+          "mastery": 0.7565217391304347
+        },
+        {
+          "day": 10,
+          "mastery": 0.7565217391304347
+        },
+        {
+          "day": 11,
+          "mastery": 0.7565217391304347
+        },
+        {
+          "day": 12,
+          "mastery": 0.8789340549444085
+        },
+        {
+          "day": 13,
+          "mastery": 0.8789340549444085
+        },
+        {
+          "day": 14,
+          "mastery": 0.8789340549444085
+        },
+        {
+          "day": 15,
+          "mastery": 0.8789340549444085
+        },
+        {
+          "day": 16,
+          "mastery": 0.8789340549444085
+        },
+        {
+          "day": 17,
+          "mastery": 0.8789340549444085
+        },
+        {
+          "day": 18,
+          "mastery": 0.8789340549444085
+        },
+        {
+          "day": 19,
+          "mastery": 0.8789340549444085
+        },
+        {
+          "day": 20,
+          "mastery": 0.8789340549444085
+        },
+        {
+          "day": 21,
+          "mastery": 0.9952293870991006
+        },
+        {
+          "day": 22,
+          "mastery": 0.9952293870991006
+        },
+        {
+          "day": 23,
+          "mastery": 0.9952293870991006
+        },
+        {
+          "day": 24,
+          "mastery": 0.9952293870991006
+        },
+        {
+          "day": 25,
+          "mastery": 0.9952293870991006
+        },
+        {
+          "day": 26,
+          "mastery": 0.9952293870991006
+        },
+        {
+          "day": 27,
+          "mastery": 0.9952293870991006
+        },
+        {
+          "day": 28,
+          "mastery": 0.9952293870991006
+        },
+        {
+          "day": 29,
+          "mastery": 0.9952293870991006
+        },
+        {
+          "day": 30,
+          "mastery": 0.9965872526630754
+        }
+      ],
+      "thermodynamics": [
+        {
+          "day": 1,
+          "mastery": 0.3
+        },
+        {
+          "day": 2,
+          "mastery": 0.3
+        },
+        {
+          "day": 3,
+          "mastery": 0.3
+        },
+        {
+          "day": 4,
+          "mastery": 0.3
+        },
+        {
+          "day": 5,
+          "mastery": 0.3
+        },
+        {
+          "day": 6,
+          "mastery": 0.3
+        },
+        {
+          "day": 7,
+          "mastery": 0.3
+        },
+        {
+          "day": 8,
+          "mastery": 0.3
+        },
+        {
+          "day": 9,
+          "mastery": 0.3
+        },
+        {
+          "day": 10,
+          "mastery": 0.3
+        },
+        {
+          "day": 11,
+          "mastery": 0.3
+        },
+        {
+          "day": 12,
+          "mastery": 0.3
+        },
+        {
+          "day": 13,
+          "mastery": 0.3
+        },
+        {
+          "day": 14,
+          "mastery": 0.3
+        },
+        {
+          "day": 15,
+          "mastery": 0.35526315789473684
+        },
+        {
+          "day": 16,
+          "mastery": 0.35526315789473684
+        },
+        {
+          "day": 17,
+          "mastery": 0.35526315789473684
+        },
+        {
+          "day": 18,
+          "mastery": 0.35526315789473684
+        },
+        {
+          "day": 19,
+          "mastery": 0.35526315789473684
+        },
+        {
+          "day": 20,
+          "mastery": 0.35526315789473684
+        },
+        {
+          "day": 21,
+          "mastery": 0.35526315789473684
+        },
+        {
+          "day": 22,
+          "mastery": 0.35526315789473684
+        },
+        {
+          "day": 23,
+          "mastery": 0.35526315789473684
+        },
+        {
+          "day": 24,
+          "mastery": 0.31973684210526315
+        },
+        {
+          "day": 25,
+          "mastery": 0.31973684210526315
+        },
+        {
+          "day": 26,
+          "mastery": 0.31973684210526315
+        },
+        {
+          "day": 27,
+          "mastery": 0.31973684210526315
+        },
+        {
+          "day": 28,
+          "mastery": 0.31973684210526315
+        },
+        {
+          "day": 29,
+          "mastery": 0.31973684210526315
+        },
+        {
+          "day": 30,
+          "mastery": 0.31973684210526315
+        }
+      ],
+      "biology": [
+        {
+          "day": 3,
+          "mastery": 0.36183465458663644
+        },
+        {
+          "day": 4,
+          "mastery": 0.36183465458663644
+        },
+        {
+          "day": 5,
+          "mastery": 0.36183465458663644
+        },
+        {
+          "day": 6,
+          "mastery": 0.36183465458663644
+        },
+        {
+          "day": 7,
+          "mastery": 0.36183465458663644
+        },
+        {
+          "day": 8,
+          "mastery": 0.36183465458663644
+        },
+        {
+          "day": 9,
+          "mastery": 0.36183465458663644
+        },
+        {
+          "day": 10,
+          "mastery": 0.36183465458663644
+        },
+        {
+          "day": 11,
+          "mastery": 0.36183465458663644
+        },
+        {
+          "day": 12,
+          "mastery": 0.9414273067086366
+        },
+        {
+          "day": 13,
+          "mastery": 0.9414273067086366
+        },
+        {
+          "day": 14,
+          "mastery": 0.9414273067086366
+        },
+        {
+          "day": 15,
+          "mastery": 0.9414273067086366
+        },
+        {
+          "day": 16,
+          "mastery": 0.9414273067086366
+        },
+        {
+          "day": 17,
+          "mastery": 0.9414273067086366
+        },
+        {
+          "day": 18,
+          "mastery": 0.9414273067086366
+        },
+        {
+          "day": 19,
+          "mastery": 0.9414273067086366
+        },
+        {
+          "day": 20,
+          "mastery": 0.9414273067086366
+        },
+        {
+          "day": 21,
+          "mastery": 0.9414273067086366
+        },
+        {
+          "day": 22,
+          "mastery": 0.9414273067086366
+        },
+        {
+          "day": 23,
+          "mastery": 0.9414273067086366
+        },
+        {
+          "day": 24,
+          "mastery": 0.9414273067086366
+        },
+        {
+          "day": 25,
+          "mastery": 0.9414273067086366
+        },
+        {
+          "day": 26,
+          "mastery": 0.9414273067086366
+        },
+        {
+          "day": 27,
+          "mastery": 0.9414273067086366
+        },
+        {
+          "day": 28,
+          "mastery": 0.9414273067086366
+        },
+        {
+          "day": 29,
+          "mastery": 0.9414273067086366
+        },
+        {
+          "day": 30,
+          "mastery": 0.8974911261921006
+        }
+      ],
+      "advanced_calculus": [
+        {
+          "day": 6,
+          "mastery": 0.34183375510998637
+        },
+        {
+          "day": 7,
+          "mastery": 0.34183375510998637
+        },
+        {
+          "day": 8,
+          "mastery": 0.34183375510998637
+        },
+        {
+          "day": 9,
+          "mastery": 0.34183375510998637
+        },
+        {
+          "day": 10,
+          "mastery": 0.34183375510998637
+        },
+        {
+          "day": 11,
+          "mastery": 0.34183375510998637
+        },
+        {
+          "day": 12,
+          "mastery": 0.34183375510998637
+        },
+        {
+          "day": 13,
+          "mastery": 0.34183375510998637
+        },
+        {
+          "day": 14,
+          "mastery": 0.34183375510998637
+        },
+        {
+          "day": 15,
+          "mastery": 0.364382654157416
+        },
+        {
+          "day": 16,
+          "mastery": 0.364382654157416
+        },
+        {
+          "day": 17,
+          "mastery": 0.364382654157416
+        },
+        {
+          "day": 18,
+          "mastery": 0.364382654157416
+        },
+        {
+          "day": 19,
+          "mastery": 0.364382654157416
+        },
+        {
+          "day": 20,
+          "mastery": 0.364382654157416
+        },
+        {
+          "day": 21,
+          "mastery": 0.364382654157416
+        },
+        {
+          "day": 22,
+          "mastery": 0.364382654157416
+        },
+        {
+          "day": 23,
+          "mastery": 0.364382654157416
+        },
+        {
+          "day": 24,
+          "mastery": 0.9844925312630443
+        },
+        {
+          "day": 25,
+          "mastery": 0.9844925312630443
+        },
+        {
+          "day": 26,
+          "mastery": 0.9844925312630443
+        },
+        {
+          "day": 27,
+          "mastery": 0.9844925312630443
+        },
+        {
+          "day": 28,
+          "mastery": 0.9844925312630443
+        },
+        {
+          "day": 29,
+          "mastery": 0.9844925312630443
+        },
+        {
+          "day": 30,
+          "mastery": 0.9844925312630443
+        }
+      ],
+      "modern_physics": [
+        {
+          "day": 6,
+          "mastery": 0.3119658119658119
+        },
+        {
+          "day": 7,
+          "mastery": 0.3119658119658119
+        },
+        {
+          "day": 8,
+          "mastery": 0.3119658119658119
+        },
+        {
+          "day": 9,
+          "mastery": 0.3119658119658119
+        },
+        {
+          "day": 10,
+          "mastery": 0.3119658119658119
+        },
+        {
+          "day": 11,
+          "mastery": 0.3119658119658119
+        },
+        {
+          "day": 12,
+          "mastery": 0.3119658119658119
+        },
+        {
+          "day": 13,
+          "mastery": 0.3119658119658119
+        },
+        {
+          "day": 14,
+          "mastery": 0.3119658119658119
+        },
+        {
+          "day": 15,
+          "mastery": 0.3119658119658119
+        },
+        {
+          "day": 16,
+          "mastery": 0.3119658119658119
+        },
+        {
+          "day": 17,
+          "mastery": 0.3119658119658119
+        },
+        {
+          "day": 18,
+          "mastery": 0.3119658119658119
+        },
+        {
+          "day": 19,
+          "mastery": 0.3119658119658119
+        },
+        {
+          "day": 20,
+          "mastery": 0.3119658119658119
+        },
+        {
+          "day": 21,
+          "mastery": 0.3119658119658119
+        },
+        {
+          "day": 22,
+          "mastery": 0.3119658119658119
+        },
+        {
+          "day": 23,
+          "mastery": 0.3119658119658119
+        },
+        {
+          "day": 24,
+          "mastery": 0.34353763510452395
+        },
+        {
+          "day": 25,
+          "mastery": 0.34353763510452395
+        },
+        {
+          "day": 26,
+          "mastery": 0.34353763510452395
+        },
+        {
+          "day": 27,
+          "mastery": 0.34353763510452395
+        },
+        {
+          "day": 28,
+          "mastery": 0.34353763510452395
+        },
+        {
+          "day": 29,
+          "mastery": 0.34353763510452395
+        },
+        {
+          "day": 30,
+          "mastery": 0.34353763510452395
+        }
+      ],
+      "advanced_mechanics": [
+        {
+          "day": 6,
+          "mastery": 0.3837157987643425
+        },
+        {
+          "day": 7,
+          "mastery": 0.3837157987643425
+        },
+        {
+          "day": 8,
+          "mastery": 0.3837157987643425
+        },
+        {
+          "day": 9,
+          "mastery": 0.3837157987643425
+        },
+        {
+          "day": 10,
+          "mastery": 0.3837157987643425
+        },
+        {
+          "day": 11,
+          "mastery": 0.3837157987643425
+        },
+        {
+          "day": 12,
+          "mastery": 0.3837157987643425
+        },
+        {
+          "day": 13,
+          "mastery": 0.3837157987643425
+        },
+        {
+          "day": 14,
+          "mastery": 0.3837157987643425
+        },
+        {
+          "day": 15,
+          "mastery": 0.4478381322538564
+        },
+        {
+          "day": 16,
+          "mastery": 0.4478381322538564
+        },
+        {
+          "day": 17,
+          "mastery": 0.4478381322538564
+        },
+        {
+          "day": 18,
+          "mastery": 0.4478381322538564
+        },
+        {
+          "day": 19,
+          "mastery": 0.4478381322538564
+        },
+        {
+          "day": 20,
+          "mastery": 0.4478381322538564
+        },
+        {
+          "day": 21,
+          "mastery": 0.4478381322538564
+        },
+        {
+          "day": 22,
+          "mastery": 0.4478381322538564
+        },
+        {
+          "day": 23,
+          "mastery": 0.4478381322538564
+        },
+        {
+          "day": 24,
+          "mastery": 0.4478381322538564
+        },
+        {
+          "day": 25,
+          "mastery": 0.4478381322538564
+        },
+        {
+          "day": 26,
+          "mastery": 0.4478381322538564
+        },
+        {
+          "day": 27,
+          "mastery": 0.4478381322538564
+        },
+        {
+          "day": 28,
+          "mastery": 0.4478381322538564
+        },
+        {
+          "day": 29,
+          "mastery": 0.4478381322538564
+        },
+        {
+          "day": 30,
+          "mastery": 0.4478381322538564
+        }
+      ],
+      "physics_basics": [
+        {
+          "day": 12,
+          "mastery": 0.4044776119402985
+        },
+        {
+          "day": 13,
+          "mastery": 0.4044776119402985
+        },
+        {
+          "day": 14,
+          "mastery": 0.4044776119402985
+        },
+        {
+          "day": 15,
+          "mastery": 0.4044776119402985
+        },
+        {
+          "day": 16,
+          "mastery": 0.4044776119402985
+        },
+        {
+          "day": 17,
+          "mastery": 0.4044776119402985
+        },
+        {
+          "day": 18,
+          "mastery": 0.4044776119402985
+        },
+        {
+          "day": 19,
+          "mastery": 0.4044776119402985
+        },
+        {
+          "day": 20,
+          "mastery": 0.4044776119402985
+        },
+        {
+          "day": 21,
+          "mastery": 0.4478381322538564
+        },
+        {
+          "day": 22,
+          "mastery": 0.4478381322538564
+        },
+        {
+          "day": 23,
+          "mastery": 0.4478381322538564
+        },
+        {
+          "day": 24,
+          "mastery": 0.4478381322538564
+        },
+        {
+          "day": 25,
+          "mastery": 0.4478381322538564
+        },
+        {
+          "day": 26,
+          "mastery": 0.4478381322538564
+        },
+        {
+          "day": 27,
+          "mastery": 0.4478381322538564
+        },
+        {
+          "day": 28,
+          "mastery": 0.4478381322538564
+        },
+        {
+          "day": 29,
+          "mastery": 0.4478381322538564
+        },
+        {
+          "day": 30,
+          "mastery": 0.4478381322538564
+        }
+      ]
+    },
+    "student_2": {
+      "inorganic_chemistry": [
+        {
+          "day": 1,
+          "mastery": 0.6
+        },
+        {
+          "day": 2,
+          "mastery": 0.6
+        },
+        {
+          "day": 3,
+          "mastery": 0.9390926041019266
+        },
+        {
+          "day": 4,
+          "mastery": 0.9390926041019266
+        },
+        {
+          "day": 5,
+          "mastery": 0.9390926041019266
+        },
+        {
+          "day": 6,
+          "mastery": 0.9390926041019266
+        },
+        {
+          "day": 7,
+          "mastery": 0.9390926041019266
+        },
+        {
+          "day": 8,
+          "mastery": 0.9390926041019266
+        },
+        {
+          "day": 9,
+          "mastery": 0.9390926041019266
+        },
+        {
+          "day": 10,
+          "mastery": 0.9390926041019266
+        },
+        {
+          "day": 11,
+          "mastery": 0.9390926041019266
+        },
+        {
+          "day": 12,
+          "mastery": 0.9390926041019266
+        },
+        {
+          "day": 13,
+          "mastery": 0.9390926041019266
+        },
+        {
+          "day": 14,
+          "mastery": 0.9390926041019266
+        },
+        {
+          "day": 15,
+          "mastery": 0.9390926041019266
+        },
+        {
+          "day": 16,
+          "mastery": 0.9390926041019266
+        },
+        {
+          "day": 17,
+          "mastery": 0.9390926041019266
+        },
+        {
+          "day": 18,
+          "mastery": 0.9390926041019266
+        },
+        {
+          "day": 19,
+          "mastery": 0.9390926041019266
+        },
+        {
+          "day": 20,
+          "mastery": 0.9390926041019266
+        },
+        {
+          "day": 21,
+          "mastery": 0.9390926041019266
+        },
+        {
+          "day": 22,
+          "mastery": 0.9390926041019266
+        },
+        {
+          "day": 23,
+          "mastery": 0.9390926041019266
+        },
+        {
+          "day": 24,
+          "mastery": 0.9390926041019266
+        },
+        {
+          "day": 25,
+          "mastery": 0.9390926041019266
+        },
+        {
+          "day": 26,
+          "mastery": 0.9390926041019266
+        },
+        {
+          "day": 27,
+          "mastery": 0.9390926041019266
+        },
+        {
+          "day": 28,
+          "mastery": 0.9390926041019266
+        },
+        {
+          "day": 29,
+          "mastery": 0.9390926041019266
+        },
+        {
+          "day": 30,
+          "mastery": 0.95
+        }
+      ],
+      "mechanics": [
+        {
+          "day": 1,
+          "mastery": 0.3
+        },
+        {
+          "day": 2,
+          "mastery": 0.3
+        },
+        {
+          "day": 3,
+          "mastery": 0.3
+        },
+        {
+          "day": 4,
+          "mastery": 0.3
+        },
+        {
+          "day": 5,
+          "mastery": 0.3
+        },
+        {
+          "day": 6,
+          "mastery": 0.3
+        },
+        {
+          "day": 7,
+          "mastery": 0.3
+        },
+        {
+          "day": 8,
+          "mastery": 0.3
+        },
+        {
+          "day": 9,
+          "mastery": 0.3
+        },
+        {
+          "day": 10,
+          "mastery": 0.3
+        },
+        {
+          "day": 11,
+          "mastery": 0.3
+        },
+        {
+          "day": 12,
+          "mastery": 0.3
+        },
+        {
+          "day": 13,
+          "mastery": 0.3
+        },
+        {
+          "day": 14,
+          "mastery": 0.3
+        },
+        {
+          "day": 15,
+          "mastery": 0.3
+        },
+        {
+          "day": 16,
+          "mastery": 0.3
+        },
+        {
+          "day": 17,
+          "mastery": 0.3
+        },
+        {
+          "day": 18,
+          "mastery": 0.28955223880597014
+        },
+        {
+          "day": 19,
+          "mastery": 0.28955223880597014
+        },
+        {
+          "day": 20,
+          "mastery": 0.28955223880597014
+        },
+        {
+          "day": 21,
+          "mastery": 0.28955223880597014
+        },
+        {
+          "day": 22,
+          "mastery": 0.28955223880597014
+        },
+        {
+          "day": 23,
+          "mastery": 0.28955223880597014
+        },
+        {
+          "day": 24,
+          "mastery": 0.28955223880597014
+        },
+        {
+          "day": 25,
+          "mastery": 0.28955223880597014
+        },
+        {
+          "day": 26,
+          "mastery": 0.28955223880597014
+        },
+        {
+          "day": 27,
+          "mastery": 0.40160139290882785
+        },
+        {
+          "day": 28,
+          "mastery": 0.40160139290882785
+        },
+        {
+          "day": 29,
+          "mastery": 0.40160139290882785
+        },
+        {
+          "day": 30,
+          "mastery": 0.40160139290882785
+        }
+      ],
+      "calculus": [
+        {
+          "day": 1,
+          "mastery": 0.3
+        },
+        {
+          "day": 2,
+          "mastery": 0.3
+        },
+        {
+          "day": 3,
+          "mastery": 0.3
+        },
+        {
+          "day": 4,
+          "mastery": 0.3
+        },
+        {
+          "day": 5,
+          "mastery": 0.3
+        },
+        {
+          "day": 6,
+          "mastery": 0.3
+        },
+        {
+          "day": 7,
+          "mastery": 0.3
+        },
+        {
+          "day": 8,
+          "mastery": 0.3
+        },
+        {
+          "day": 9,
+          "mastery": 0.34080717488789236
+        },
+        {
+          "day": 10,
+          "mastery": 0.34080717488789236
+        },
+        {
+          "day": 11,
+          "mastery": 0.34080717488789236
+        },
+        {
+          "day": 12,
+          "mastery": 0.34080717488789236
+        },
+        {
+          "day": 13,
+          "mastery": 0.34080717488789236
+        },
+        {
+          "day": 14,
+          "mastery": 0.34080717488789236
+        },
+        {
+          "day": 15,
+          "mastery": 0.34080717488789236
+        },
+        {
+          "day": 16,
+          "mastery": 0.34080717488789236
+        },
+        {
+          "day": 17,
+          "mastery": 0.34080717488789236
+        },
+        {
+          "day": 18,
+          "mastery": 0.39714027149321274
+        },
+        {
+          "day": 19,
+          "mastery": 0.39714027149321274
+        },
+        {
+          "day": 20,
+          "mastery": 0.39714027149321274
+        },
+        {
+          "day": 21,
+          "mastery": 0.39714027149321274
+        },
+        {
+          "day": 22,
+          "mastery": 0.39714027149321274
+        },
+        {
+          "day": 23,
+          "mastery": 0.39714027149321274
+        },
+        {
+          "day": 24,
+          "mastery": 0.39714027149321274
+        },
+        {
+          "day": 25,
+          "mastery": 0.39714027149321274
+        },
+        {
+          "day": 26,
+          "mastery": 0.39714027149321274
+        },
+        {
+          "day": 27,
+          "mastery": 0.3606416462011313
+        },
+        {
+          "day": 28,
+          "mastery": 0.3606416462011313
+        },
+        {
+          "day": 29,
+          "mastery": 0.3606416462011313
+        },
+        {
+          "day": 30,
+          "mastery": 0.3606416462011313
+        }
+      ],
+      "electromagnetism": [
+        {
+          "day": 1,
+          "mastery": 0.2
+        },
+        {
+          "day": 2,
+          "mastery": 0.2
+        },
+        {
+          "day": 3,
+          "mastery": 0.2
+        },
+        {
+          "day": 4,
+          "mastery": 0.2
+        },
+        {
+          "day": 5,
+          "mastery": 0.2
+        },
+        {
+          "day": 6,
+          "mastery": 0.2
+        },
+        {
+          "day": 7,
+          "mastery": 0.2
+        },
+        {
+          "day": 8,
+          "mastery": 0.2
+        },
+        {
+          "day": 9,
+          "mastery": 0.32436548223350253
+        },
+        {
+          "day": 10,
+          "mastery": 0.32436548223350253
+        },
+        {
+          "day": 11,
+          "mastery": 0.32436548223350253
+        },
+        {
+          "day": 12,
+          "mastery": 0.32436548223350253
+        },
+        {
+          "day": 13,
+          "mastery": 0.32436548223350253
+        },
+        {
+          "day": 14,
+          "mastery": 0.32436548223350253
+        },
+        {
+          "day": 15,
+          "mastery": 0.32436548223350253
+        },
+        {
+          "day": 16,
+          "mastery": 0.32436548223350253
+        },
+        {
+          "day": 17,
+          "mastery": 0.32436548223350253
+        },
+        {
+          "day": 18,
+          "mastery": 0.945670090268005
+        },
+        {
+          "day": 19,
+          "mastery": 0.945670090268005
+        },
+        {
+          "day": 20,
+          "mastery": 0.945670090268005
+        },
+        {
+          "day": 21,
+          "mastery": 0.945670090268005
+        },
+        {
+          "day": 22,
+          "mastery": 0.945670090268005
+        },
+        {
+          "day": 23,
+          "mastery": 0.945670090268005
+        },
+        {
+          "day": 24,
+          "mastery": 0.945670090268005
+        },
+        {
+          "day": 25,
+          "mastery": 0.945670090268005
+        },
+        {
+          "day": 26,
+          "mastery": 0.945670090268005
+        },
+        {
+          "day": 27,
+          "mastery": 0.9931012540882524
+        },
+        {
+          "day": 28,
+          "mastery": 0.9931012540882524
+        },
+        {
+          "day": 29,
+          "mastery": 0.9931012540882524
+        },
+        {
+          "day": 30,
+          "mastery": 0.9931012540882524
+        }
+      ],
+      "algebra": [
+        {
+          "day": 1,
+          "mastery": 0.5
+        },
+        {
+          "day": 2,
+          "mastery": 0.5
+        },
+        {
+          "day": 3,
+          "mastery": 0.5
+        },
+        {
+          "day": 4,
+          "mastery": 0.5
+        },
+        {
+          "day": 5,
+          "mastery": 0.5
+        },
+        {
+          "day": 6,
+          "mastery": 0.5
+        },
+        {
+          "day": 7,
+          "mastery": 0.5
+        },
+        {
+          "day": 8,
+          "mastery": 0.5
+        },
+        {
+          "day": 9,
+          "mastery": 0.6158192090395481
+        },
+        {
+          "day": 10,
+          "mastery": 0.6158192090395481
+        },
+        {
+          "day": 11,
+          "mastery": 0.6158192090395481
+        },
+        {
+          "day": 12,
+          "mastery": 0.6158192090395481
+        },
+        {
+          "day": 13,
+          "mastery": 0.6158192090395481
+        },
+        {
+          "day": 14,
+          "mastery": 0.6158192090395481
+        },
+        {
+          "day": 15,
+          "mastery": 0.6158192090395481
+        },
+        {
+          "day": 16,
+          "mastery": 0.6158192090395481
+        },
+        {
+          "day": 17,
+          "mastery": 0.6158192090395481
+        },
+        {
+          "day": 18,
+          "mastery": 0.6158192090395481
+        },
+        {
+          "day": 19,
+          "mastery": 0.6158192090395481
+        },
+        {
+          "day": 20,
+          "mastery": 0.6158192090395481
+        },
+        {
+          "day": 21,
+          "mastery": 0.6158192090395481
+        },
+        {
+          "day": 22,
+          "mastery": 0.6158192090395481
+        },
+        {
+          "day": 23,
+          "mastery": 0.6158192090395481
+        },
+        {
+          "day": 24,
+          "mastery": 0.6158192090395481
+        },
+        {
+          "day": 25,
+          "mastery": 0.6158192090395481
+        },
+        {
+          "day": 26,
+          "mastery": 0.6158192090395481
+        },
+        {
+          "day": 27,
+          "mastery": 0.6158192090395481
+        },
+        {
+          "day": 28,
+          "mastery": 0.6158192090395481
+        },
+        {
+          "day": 29,
+          "mastery": 0.6158192090395481
+        },
+        {
+          "day": 30,
+          "mastery": 0.6158192090395481
+        }
+      ],
+      "organic_chemistry": [
+        {
+          "day": 1,
+          "mastery": 0.7
+        },
+        {
+          "day": 2,
+          "mastery": 0.7
+        },
+        {
+          "day": 3,
+          "mastery": 0.9974248927038626
+        },
+        {
+          "day": 4,
+          "mastery": 0.9974248927038626
+        },
+        {
+          "day": 5,
+          "mastery": 0.9974248927038626
+        },
+        {
+          "day": 6,
+          "mastery": 0.9974248927038626
+        },
+        {
+          "day": 7,
+          "mastery": 0.9974248927038626
+        },
+        {
+          "day": 8,
+          "mastery": 0.9974248927038626
+        },
+        {
+          "day": 9,
+          "mastery": 0.9974248927038626
+        },
+        {
+          "day": 10,
+          "mastery": 0.9974248927038626
+        },
+        {
+          "day": 11,
+          "mastery": 0.9974248927038626
+        },
+        {
+          "day": 12,
+          "mastery": 0.95
+        },
+        {
+          "day": 13,
+          "mastery": 0.95
+        },
+        {
+          "day": 14,
+          "mastery": 0.95
+        },
+        {
+          "day": 15,
+          "mastery": 0.95
+        },
+        {
+          "day": 16,
+          "mastery": 0.95
+        },
+        {
+          "day": 17,
+          "mastery": 0.95
+        },
+        {
+          "day": 18,
+          "mastery": 0.95
+        },
+        {
+          "day": 19,
+          "mastery": 0.95
+        },
+        {
+          "day": 20,
+          "mastery": 0.95
+        },
+        {
+          "day": 21,
+          "mastery": 0.8785714285714284
+        },
+        {
+          "day": 22,
+          "mastery": 0.8785714285714284
+        },
+        {
+          "day": 23,
+          "mastery": 0.8785714285714284
+        },
+        {
+          "day": 24,
+          "mastery": 0.8785714285714284
+        },
+        {
+          "day": 25,
+          "mastery": 0.8785714285714284
+        },
+        {
+          "day": 26,
+          "mastery": 0.8785714285714284
+        },
+        {
+          "day": 27,
+          "mastery": 0.8785714285714284
+        },
+        {
+          "day": 28,
+          "mastery": 0.8785714285714284
+        },
+        {
+          "day": 29,
+          "mastery": 0.8785714285714284
+        },
+        {
+          "day": 30,
+          "mastery": 0.8785714285714284
+        }
+      ],
+      "thermodynamics": [
+        {
+          "day": 1,
+          "mastery": 0.4
+        },
+        {
+          "day": 2,
+          "mastery": 0.4
+        },
+        {
+          "day": 3,
+          "mastery": 0.4
+        },
+        {
+          "day": 4,
+          "mastery": 0.4
+        },
+        {
+          "day": 5,
+          "mastery": 0.4
+        },
+        {
+          "day": 6,
+          "mastery": 0.4
+        },
+        {
+          "day": 7,
+          "mastery": 0.4
+        },
+        {
+          "day": 8,
+          "mastery": 0.4
+        },
+        {
+          "day": 9,
+          "mastery": 0.4
+        },
+        {
+          "day": 10,
+          "mastery": 0.4
+        },
+        {
+          "day": 11,
+          "mastery": 0.4
+        },
+        {
+          "day": 12,
+          "mastery": 0.4
+        },
+        {
+          "day": 13,
+          "mastery": 0.4
+        },
+        {
+          "day": 14,
+          "mastery": 0.4
+        },
+        {
+          "day": 15,
+          "mastery": 0.4
+        },
+        {
+          "day": 16,
+          "mastery": 0.4
+        },
+        {
+          "day": 17,
+          "mastery": 0.4
+        },
+        {
+          "day": 18,
+          "mastery": 0.4
+        },
+        {
+          "day": 19,
+          "mastery": 0.4
+        },
+        {
+          "day": 20,
+          "mastery": 0.4
+        },
+        {
+          "day": 21,
+          "mastery": 0.4
+        },
+        {
+          "day": 22,
+          "mastery": 0.4
+        },
+        {
+          "day": 23,
+          "mastery": 0.4
+        },
+        {
+          "day": 24,
+          "mastery": 0.607068607068607
+        },
+        {
+          "day": 25,
+          "mastery": 0.607068607068607
+        },
+        {
+          "day": 26,
+          "mastery": 0.607068607068607
+        },
+        {
+          "day": 27,
+          "mastery": 0.607068607068607
+        },
+        {
+          "day": 28,
+          "mastery": 0.607068607068607
+        },
+        {
+          "day": 29,
+          "mastery": 0.607068607068607
+        },
+        {
+          "day": 30,
+          "mastery": 0.607068607068607
+        }
+      ],
+      "modern_physics": [
+        {
+          "day": 6,
+          "mastery": 0.7884731899424416
+        },
+        {
+          "day": 7,
+          "mastery": 0.7884731899424416
+        },
+        {
+          "day": 8,
+          "mastery": 0.7884731899424416
+        },
+        {
+          "day": 9,
+          "mastery": 0.7884731899424416
+        },
+        {
+          "day": 10,
+          "mastery": 0.7884731899424416
+        },
+        {
+          "day": 11,
+          "mastery": 0.7884731899424416
+        },
+        {
+          "day": 12,
+          "mastery": 0.7884731899424416
+        },
+        {
+          "day": 13,
+          "mastery": 0.7884731899424416
+        },
+        {
+          "day": 14,
+          "mastery": 0.7884731899424416
+        },
+        {
+          "day": 15,
+          "mastery": 0.95
+        },
+        {
+          "day": 16,
+          "mastery": 0.95
+        },
+        {
+          "day": 17,
+          "mastery": 0.95
+        },
+        {
+          "day": 18,
+          "mastery": 0.95
+        },
+        {
+          "day": 19,
+          "mastery": 0.95
+        },
+        {
+          "day": 20,
+          "mastery": 0.95
+        },
+        {
+          "day": 21,
+          "mastery": 0.95
+        },
+        {
+          "day": 22,
+          "mastery": 0.95
+        },
+        {
+          "day": 23,
+          "mastery": 0.95
+        },
+        {
+          "day": 24,
+          "mastery": 0.95
+        },
+        {
+          "day": 25,
+          "mastery": 0.95
+        },
+        {
+          "day": 26,
+          "mastery": 0.95
+        },
+        {
+          "day": 27,
+          "mastery": 0.95
+        },
+        {
+          "day": 28,
+          "mastery": 0.95
+        },
+        {
+          "day": 29,
+          "mastery": 0.95
+        },
+        {
+          "day": 30,
+          "mastery": 0.95
+        }
+      ],
+      "advanced_mechanics": [
+        {
+          "day": 6,
+          "mastery": 0.6986358479863869
+        },
+        {
+          "day": 7,
+          "mastery": 0.6986358479863869
+        },
+        {
+          "day": 8,
+          "mastery": 0.6986358479863869
+        },
+        {
+          "day": 9,
+          "mastery": 0.6986358479863869
+        },
+        {
+          "day": 10,
+          "mastery": 0.6986358479863869
+        },
+        {
+          "day": 11,
+          "mastery": 0.6986358479863869
+        },
+        {
+          "day": 12,
+          "mastery": 0.6986358479863869
+        },
+        {
+          "day": 13,
+          "mastery": 0.6986358479863869
+        },
+        {
+          "day": 14,
+          "mastery": 0.6986358479863869
+        },
+        {
+          "day": 15,
+          "mastery": 0.5658950368689735
+        },
+        {
+          "day": 16,
+          "mastery": 0.5658950368689735
+        },
+        {
+          "day": 17,
+          "mastery": 0.5658950368689735
+        },
+        {
+          "day": 18,
+          "mastery": 0.5658950368689735
+        },
+        {
+          "day": 19,
+          "mastery": 0.5658950368689735
+        },
+        {
+          "day": 20,
+          "mastery": 0.5658950368689735
+        },
+        {
+          "day": 21,
+          "mastery": 0.5658950368689735
+        },
+        {
+          "day": 22,
+          "mastery": 0.5658950368689735
+        },
+        {
+          "day": 23,
+          "mastery": 0.5658950368689735
+        },
+        {
+          "day": 24,
+          "mastery": 0.45837497986386855
+        },
+        {
+          "day": 25,
+          "mastery": 0.45837497986386855
+        },
+        {
+          "day": 26,
+          "mastery": 0.45837497986386855
+        },
+        {
+          "day": 27,
+          "mastery": 0.45837497986386855
+        },
+        {
+          "day": 28,
+          "mastery": 0.45837497986386855
+        },
+        {
+          "day": 29,
+          "mastery": 0.45837497986386855
+        },
+        {
+          "day": 30,
+          "mastery": 0.45837497986386855
+        }
+      ],
+      "biology": [
+        {
+          "day": 12,
+          "mastery": 0.43650000000000005
+        },
+        {
+          "day": 13,
+          "mastery": 0.43650000000000005
+        },
+        {
+          "day": 14,
+          "mastery": 0.43650000000000005
+        },
+        {
+          "day": 15,
+          "mastery": 0.43650000000000005
+        },
+        {
+          "day": 16,
+          "mastery": 0.43650000000000005
+        },
+        {
+          "day": 17,
+          "mastery": 0.43650000000000005
+        },
+        {
+          "day": 18,
+          "mastery": 0.43650000000000005
+        },
+        {
+          "day": 19,
+          "mastery": 0.43650000000000005
+        },
+        {
+          "day": 20,
+          "mastery": 0.43650000000000005
+        },
+        {
+          "day": 21,
+          "mastery": 0.353565
+        },
+        {
+          "day": 22,
+          "mastery": 0.353565
+        },
+        {
+          "day": 23,
+          "mastery": 0.353565
+        },
+        {
+          "day": 24,
+          "mastery": 0.353565
+        },
+        {
+          "day": 25,
+          "mastery": 0.353565
+        },
+        {
+          "day": 26,
+          "mastery": 0.353565
+        },
+        {
+          "day": 27,
+          "mastery": 0.353565
+        },
+        {
+          "day": 28,
+          "mastery": 0.353565
+        },
+        {
+          "day": 29,
+          "mastery": 0.353565
+        },
+        {
+          "day": 30,
+          "mastery": 0.353565
+        }
+      ],
+      "physics_basics": [
+        {
+          "day": 12,
+          "mastery": 0.23947368421052634
+        },
+        {
+          "day": 13,
+          "mastery": 0.23947368421052634
+        },
+        {
+          "day": 14,
+          "mastery": 0.23947368421052634
+        },
+        {
+          "day": 15,
+          "mastery": 0.23947368421052634
+        },
+        {
+          "day": 16,
+          "mastery": 0.23947368421052634
+        },
+        {
+          "day": 17,
+          "mastery": 0.23947368421052634
+        },
+        {
+          "day": 18,
+          "mastery": 0.23947368421052634
+        },
+        {
+          "day": 19,
+          "mastery": 0.23947368421052634
+        },
+        {
+          "day": 20,
+          "mastery": 0.23947368421052634
+        },
+        {
+          "day": 21,
+          "mastery": 0.4413806706114399
+        },
+        {
+          "day": 22,
+          "mastery": 0.4413806706114399
+        },
+        {
+          "day": 23,
+          "mastery": 0.4413806706114399
+        },
+        {
+          "day": 24,
+          "mastery": 0.4413806706114399
+        },
+        {
+          "day": 25,
+          "mastery": 0.4413806706114399
+        },
+        {
+          "day": 26,
+          "mastery": 0.4413806706114399
+        },
+        {
+          "day": 27,
+          "mastery": 0.4413806706114399
+        },
+        {
+          "day": 28,
+          "mastery": 0.4413806706114399
+        },
+        {
+          "day": 29,
+          "mastery": 0.4413806706114399
+        },
+        {
+          "day": 30,
+          "mastery": 0.3575183431952663
+        }
+      ],
+      "advanced_calculus": [
+        {
+          "day": 15,
+          "mastery": 0.38713567839195984
+        },
+        {
+          "day": 16,
+          "mastery": 0.38713567839195984
+        },
+        {
+          "day": 17,
+          "mastery": 0.38713567839195984
+        },
+        {
+          "day": 18,
+          "mastery": 0.38713567839195984
+        },
+        {
+          "day": 19,
+          "mastery": 0.38713567839195984
+        },
+        {
+          "day": 20,
+          "mastery": 0.38713567839195984
+        },
+        {
+          "day": 21,
+          "mastery": 0.38713567839195984
+        },
+        {
+          "day": 22,
+          "mastery": 0.38713567839195984
+        },
+        {
+          "day": 23,
+          "mastery": 0.38713567839195984
+        },
+        {
+          "day": 24,
+          "mastery": 0.4404148022851745
+        },
+        {
+          "day": 25,
+          "mastery": 0.4404148022851745
+        },
+        {
+          "day": 26,
+          "mastery": 0.4404148022851745
+        },
+        {
+          "day": 27,
+          "mastery": 0.4404148022851745
+        },
+        {
+          "day": 28,
+          "mastery": 0.4404148022851745
+        },
+        {
+          "day": 29,
+          "mastery": 0.4404148022851745
+        },
+        {
+          "day": 30,
+          "mastery": 0.4404148022851745
+        }
+      ]
+    },
+    "student_3": {
+      "inorganic_chemistry": [
+        {
+          "day": 1,
+          "mastery": 0.4
+        },
+        {
+          "day": 2,
+          "mastery": 0.4
+        },
+        {
+          "day": 3,
+          "mastery": 0.4
+        },
+        {
+          "day": 4,
+          "mastery": 0.4
+        },
+        {
+          "day": 5,
+          "mastery": 0.4
+        },
+        {
+          "day": 6,
+          "mastery": 0.4
+        },
+        {
+          "day": 7,
+          "mastery": 0.4
+        },
+        {
+          "day": 8,
+          "mastery": 0.4
+        },
+        {
+          "day": 9,
+          "mastery": 0.4
+        },
+        {
+          "day": 10,
+          "mastery": 0.4
+        },
+        {
+          "day": 11,
+          "mastery": 0.4
+        },
+        {
+          "day": 12,
+          "mastery": 0.4535673407096529
+        },
+        {
+          "day": 13,
+          "mastery": 0.4535673407096529
+        },
+        {
+          "day": 14,
+          "mastery": 0.4535673407096529
+        },
+        {
+          "day": 15,
+          "mastery": 0.4535673407096529
+        },
+        {
+          "day": 16,
+          "mastery": 0.4535673407096529
+        },
+        {
+          "day": 17,
+          "mastery": 0.4535673407096529
+        },
+        {
+          "day": 18,
+          "mastery": 0.4535673407096529
+        },
+        {
+          "day": 19,
+          "mastery": 0.4535673407096529
+        },
+        {
+          "day": 20,
+          "mastery": 0.4535673407096529
+        },
+        {
+          "day": 21,
+          "mastery": 0.4082106066386876
+        },
+        {
+          "day": 22,
+          "mastery": 0.4082106066386876
+        },
+        {
+          "day": 23,
+          "mastery": 0.4082106066386876
+        },
+        {
+          "day": 24,
+          "mastery": 0.4082106066386876
+        },
+        {
+          "day": 25,
+          "mastery": 0.4082106066386876
+        },
+        {
+          "day": 26,
+          "mastery": 0.4082106066386876
+        },
+        {
+          "day": 27,
+          "mastery": 0.4082106066386876
+        },
+        {
+          "day": 28,
+          "mastery": 0.4082106066386876
+        },
+        {
+          "day": 29,
+          "mastery": 0.4082106066386876
+        },
+        {
+          "day": 30,
+          "mastery": 0.3848630984485548
+        }
+      ],
+      "mechanics": [
+        {
+          "day": 1,
+          "mastery": 0.5
+        },
+        {
+          "day": 2,
+          "mastery": 0.5
+        },
+        {
+          "day": 3,
+          "mastery": 0.5
+        },
+        {
+          "day": 4,
+          "mastery": 0.5
+        },
+        {
+          "day": 5,
+          "mastery": 0.5
+        },
+        {
+          "day": 6,
+          "mastery": 0.5
+        },
+        {
+          "day": 7,
+          "mastery": 0.5
+        },
+        {
+          "day": 8,
+          "mastery": 0.5
+        },
+        {
+          "day": 9,
+          "mastery": 0.725252525252525
+        },
+        {
+          "day": 10,
+          "mastery": 0.725252525252525
+        },
+        {
+          "day": 11,
+          "mastery": 0.725252525252525
+        },
+        {
+          "day": 12,
+          "mastery": 0.725252525252525
+        },
+        {
+          "day": 13,
+          "mastery": 0.725252525252525
+        },
+        {
+          "day": 14,
+          "mastery": 0.725252525252525
+        },
+        {
+          "day": 15,
+          "mastery": 0.725252525252525
+        },
+        {
+          "day": 16,
+          "mastery": 0.725252525252525
+        },
+        {
+          "day": 17,
+          "mastery": 0.725252525252525
+        },
+        {
+          "day": 18,
+          "mastery": 0.9890499194847021
+        },
+        {
+          "day": 19,
+          "mastery": 0.9890499194847021
+        },
+        {
+          "day": 20,
+          "mastery": 0.9890499194847021
+        },
+        {
+          "day": 21,
+          "mastery": 0.9890499194847021
+        },
+        {
+          "day": 22,
+          "mastery": 0.9890499194847021
+        },
+        {
+          "day": 23,
+          "mastery": 0.9890499194847021
+        },
+        {
+          "day": 24,
+          "mastery": 0.9890499194847021
+        },
+        {
+          "day": 25,
+          "mastery": 0.9890499194847021
+        },
+        {
+          "day": 26,
+          "mastery": 0.9890499194847021
+        },
+        {
+          "day": 27,
+          "mastery": 0.9890499194847021
+        },
+        {
+          "day": 28,
+          "mastery": 0.9890499194847021
+        },
+        {
+          "day": 29,
+          "mastery": 0.9890499194847021
+        },
+        {
+          "day": 30,
+          "mastery": 0.9890499194847021
+        }
+      ],
+      "calculus": [
+        {
+          "day": 1,
+          "mastery": 0.5
+        },
+        {
+          "day": 2,
+          "mastery": 0.5
+        },
+        {
+          "day": 3,
+          "mastery": 0.5
+        },
+        {
+          "day": 4,
+          "mastery": 0.5
+        },
+        {
+          "day": 5,
+          "mastery": 0.5
+        },
+        {
+          "day": 6,
+          "mastery": 0.5
+        },
+        {
+          "day": 7,
+          "mastery": 0.5
+        },
+        {
+          "day": 8,
+          "mastery": 0.5
+        },
+        {
+          "day": 9,
+          "mastery": 0.5
+        },
+        {
+          "day": 10,
+          "mastery": 0.5
+        },
+        {
+          "day": 11,
+          "mastery": 0.5
+        },
+        {
+          "day": 12,
+          "mastery": 0.5
+        },
+        {
+          "day": 13,
+          "mastery": 0.5
+        },
+        {
+          "day": 14,
+          "mastery": 0.5
+        },
+        {
+          "day": 15,
+          "mastery": 0.5
+        },
+        {
+          "day": 16,
+          "mastery": 0.5
+        },
+        {
+          "day": 17,
+          "mastery": 0.5
+        },
+        {
+          "day": 18,
+          "mastery": 0.9929718875502008
+        },
+        {
+          "day": 19,
+          "mastery": 0.9929718875502008
+        },
+        {
+          "day": 20,
+          "mastery": 0.9929718875502008
+        },
+        {
+          "day": 21,
+          "mastery": 0.9929718875502008
+        },
+        {
+          "day": 22,
+          "mastery": 0.9929718875502008
+        },
+        {
+          "day": 23,
+          "mastery": 0.9929718875502008
+        },
+        {
+          "day": 24,
+          "mastery": 0.9929718875502008
+        },
+        {
+          "day": 25,
+          "mastery": 0.9929718875502008
+        },
+        {
+          "day": 26,
+          "mastery": 0.9929718875502008
+        },
+        {
+          "day": 27,
+          "mastery": 0.7187499999999998
+        },
+        {
+          "day": 28,
+          "mastery": 0.7187499999999998
+        },
+        {
+          "day": 29,
+          "mastery": 0.7187499999999998
+        },
+        {
+          "day": 30,
+          "mastery": 0.7187499999999998
+        }
+      ],
+      "electromagnetism": [
+        {
+          "day": 1,
+          "mastery": 0.5
+        },
+        {
+          "day": 2,
+          "mastery": 0.5
+        },
+        {
+          "day": 3,
+          "mastery": 0.5
+        },
+        {
+          "day": 4,
+          "mastery": 0.5
+        },
+        {
+          "day": 5,
+          "mastery": 0.5
+        },
+        {
+          "day": 6,
+          "mastery": 0.5
+        },
+        {
+          "day": 7,
+          "mastery": 0.5
+        },
+        {
+          "day": 8,
+          "mastery": 0.5
+        },
+        {
+          "day": 9,
+          "mastery": 0.8001687485851872
+        },
+        {
+          "day": 10,
+          "mastery": 0.8001687485851872
+        },
+        {
+          "day": 11,
+          "mastery": 0.8001687485851872
+        },
+        {
+          "day": 12,
+          "mastery": 0.8001687485851872
+        },
+        {
+          "day": 13,
+          "mastery": 0.8001687485851872
+        },
+        {
+          "day": 14,
+          "mastery": 0.8001687485851872
+        },
+        {
+          "day": 15,
+          "mastery": 0.8001687485851872
+        },
+        {
+          "day": 16,
+          "mastery": 0.8001687485851872
+        },
+        {
+          "day": 17,
+          "mastery": 0.8001687485851872
+        },
+        {
+          "day": 18,
+          "mastery": 0.8001687485851872
+        },
+        {
+          "day": 19,
+          "mastery": 0.8001687485851872
+        },
+        {
+          "day": 20,
+          "mastery": 0.8001687485851872
+        },
+        {
+          "day": 21,
+          "mastery": 0.8001687485851872
+        },
+        {
+          "day": 22,
+          "mastery": 0.8001687485851872
+        },
+        {
+          "day": 23,
+          "mastery": 0.8001687485851872
+        },
+        {
+          "day": 24,
+          "mastery": 0.8001687485851872
+        },
+        {
+          "day": 25,
+          "mastery": 0.8001687485851872
+        },
+        {
+          "day": 26,
+          "mastery": 0.8001687485851872
+        },
+        {
+          "day": 27,
+          "mastery": 0.9521018912948684
+        },
+        {
+          "day": 28,
+          "mastery": 0.9521018912948684
+        },
+        {
+          "day": 29,
+          "mastery": 0.9521018912948684
+        },
+        {
+          "day": 30,
+          "mastery": 0.9521018912948684
+        }
+      ],
+      "algebra": [
+        {
+          "day": 1,
+          "mastery": 0.6
+        },
+        {
+          "day": 2,
+          "mastery": 0.6
+        },
+        {
+          "day": 3,
+          "mastery": 0.6
+        },
+        {
+          "day": 4,
+          "mastery": 0.6
+        },
+        {
+          "day": 5,
+          "mastery": 0.6
+        },
+        {
+          "day": 6,
+          "mastery": 0.6
+        },
+        {
+          "day": 7,
+          "mastery": 0.6
+        },
+        {
+          "day": 8,
+          "mastery": 0.6
+        },
+        {
+          "day": 9,
+          "mastery": 0.4294954721862872
+        },
+        {
+          "day": 10,
+          "mastery": 0.4294954721862872
+        },
+        {
+          "day": 11,
+          "mastery": 0.4294954721862872
+        },
+        {
+          "day": 12,
+          "mastery": 0.4294954721862872
+        },
+        {
+          "day": 13,
+          "mastery": 0.4294954721862872
+        },
+        {
+          "day": 14,
+          "mastery": 0.4294954721862872
+        },
+        {
+          "day": 15,
+          "mastery": 0.4294954721862872
+        },
+        {
+          "day": 16,
+          "mastery": 0.4294954721862872
+        },
+        {
+          "day": 17,
+          "mastery": 0.4294954721862872
+        },
+        {
+          "day": 18,
+          "mastery": 0.3865459249676585
+        },
+        {
+          "day": 19,
+          "mastery": 0.3865459249676585
+        },
+        {
+          "day": 20,
+          "mastery": 0.3865459249676585
+        },
+        {
+          "day": 21,
+          "mastery": 0.3865459249676585
+        },
+        {
+          "day": 22,
+          "mastery": 0.3865459249676585
+        },
+        {
+          "day": 23,
+          "mastery": 0.3865459249676585
+        },
+        {
+          "day": 24,
+          "mastery": 0.3865459249676585
+        },
+        {
+          "day": 25,
+          "mastery": 0.3865459249676585
+        },
+        {
+          "day": 26,
+          "mastery": 0.3865459249676585
+        },
+        {
+          "day": 27,
+          "mastery": 0.37527424072958787
+        },
+        {
+          "day": 28,
+          "mastery": 0.37527424072958787
+        },
+        {
+          "day": 29,
+          "mastery": 0.37527424072958787
+        },
+        {
+          "day": 30,
+          "mastery": 0.37527424072958787
+        }
+      ],
+      "organic_chemistry": [
+        {
+          "day": 1,
+          "mastery": 0.3
+        },
+        {
+          "day": 2,
+          "mastery": 0.3
+        },
+        {
+          "day": 3,
+          "mastery": 0.31973684210526315
+        },
+        {
+          "day": 4,
+          "mastery": 0.31973684210526315
+        },
+        {
+          "day": 5,
+          "mastery": 0.31973684210526315
+        },
+        {
+          "day": 6,
+          "mastery": 0.31973684210526315
+        },
+        {
+          "day": 7,
+          "mastery": 0.31973684210526315
+        },
+        {
+          "day": 8,
+          "mastery": 0.31973684210526315
+        },
+        {
+          "day": 9,
+          "mastery": 0.31973684210526315
+        },
+        {
+          "day": 10,
+          "mastery": 0.31973684210526315
+        },
+        {
+          "day": 11,
+          "mastery": 0.31973684210526315
+        },
+        {
+          "day": 12,
+          "mastery": 0.38054226306428385
+        },
+        {
+          "day": 13,
+          "mastery": 0.38054226306428385
+        },
+        {
+          "day": 14,
+          "mastery": 0.38054226306428385
+        },
+        {
+          "day": 15,
+          "mastery": 0.38054226306428385
+        },
+        {
+          "day": 16,
+          "mastery": 0.38054226306428385
+        },
+        {
+          "day": 17,
+          "mastery": 0.38054226306428385
+        },
+        {
+          "day": 18,
+          "mastery": 0.38054226306428385
+        },
+        {
+          "day": 19,
+          "mastery": 0.38054226306428385
+        },
+        {
+          "day": 20,
+          "mastery": 0.38054226306428385
+        },
+        {
+          "day": 21,
+          "mastery": 0.9706611050509865
+        },
+        {
+          "day": 22,
+          "mastery": 0.9706611050509865
+        },
+        {
+          "day": 23,
+          "mastery": 0.9706611050509865
+        },
+        {
+          "day": 24,
+          "mastery": 0.9706611050509865
+        },
+        {
+          "day": 25,
+          "mastery": 0.9706611050509865
+        },
+        {
+          "day": 26,
+          "mastery": 0.9706611050509865
+        },
+        {
+          "day": 27,
+          "mastery": 0.9706611050509865
+        },
+        {
+          "day": 28,
+          "mastery": 0.9706611050509865
+        },
+        {
+          "day": 29,
+          "mastery": 0.9706611050509865
+        },
+        {
+          "day": 30,
+          "mastery": 0.9374309555474037
+        }
+      ],
+      "thermodynamics": [
+        {
+          "day": 1,
+          "mastery": 0.4
+        },
+        {
+          "day": 2,
+          "mastery": 0.4
+        },
+        {
+          "day": 3,
+          "mastery": 0.4
+        },
+        {
+          "day": 4,
+          "mastery": 0.4
+        },
+        {
+          "day": 5,
+          "mastery": 0.4
+        },
+        {
+          "day": 6,
+          "mastery": 0.3777372262773722
+        },
+        {
+          "day": 7,
+          "mastery": 0.3777372262773722
+        },
+        {
+          "day": 8,
+          "mastery": 0.3777372262773722
+        },
+        {
+          "day": 9,
+          "mastery": 0.3777372262773722
+        },
+        {
+          "day": 10,
+          "mastery": 0.3777372262773722
+        },
+        {
+          "day": 11,
+          "mastery": 0.3777372262773722
+        },
+        {
+          "day": 12,
+          "mastery": 0.3777372262773722
+        },
+        {
+          "day": 13,
+          "mastery": 0.3777372262773722
+        },
+        {
+          "day": 14,
+          "mastery": 0.3777372262773722
+        },
+        {
+          "day": 15,
+          "mastery": 0.3777372262773722
+        },
+        {
+          "day": 16,
+          "mastery": 0.3777372262773722
+        },
+        {
+          "day": 17,
+          "mastery": 0.3777372262773722
+        },
+        {
+          "day": 18,
+          "mastery": 0.3777372262773722
+        },
+        {
+          "day": 19,
+          "mastery": 0.3777372262773722
+        },
+        {
+          "day": 20,
+          "mastery": 0.3777372262773722
+        },
+        {
+          "day": 21,
+          "mastery": 0.3777372262773722
+        },
+        {
+          "day": 22,
+          "mastery": 0.3777372262773722
+        },
+        {
+          "day": 23,
+          "mastery": 0.3777372262773722
+        },
+        {
+          "day": 24,
+          "mastery": 0.33096415327564893
+        },
+        {
+          "day": 25,
+          "mastery": 0.33096415327564893
+        },
+        {
+          "day": 26,
+          "mastery": 0.33096415327564893
+        },
+        {
+          "day": 27,
+          "mastery": 0.33096415327564893
+        },
+        {
+          "day": 28,
+          "mastery": 0.33096415327564893
+        },
+        {
+          "day": 29,
+          "mastery": 0.33096415327564893
+        },
+        {
+          "day": 30,
+          "mastery": 0.33096415327564893
+        }
+      ],
+      "biology": [
+        {
+          "day": 3,
+          "mastery": 0.2941328175370729
+        },
+        {
+          "day": 4,
+          "mastery": 0.2941328175370729
+        },
+        {
+          "day": 5,
+          "mastery": 0.2941328175370729
+        },
+        {
+          "day": 6,
+          "mastery": 0.2941328175370729
+        },
+        {
+          "day": 7,
+          "mastery": 0.2941328175370729
+        },
+        {
+          "day": 8,
+          "mastery": 0.2941328175370729
+        },
+        {
+          "day": 9,
+          "mastery": 0.2941328175370729
+        },
+        {
+          "day": 10,
+          "mastery": 0.2941328175370729
+        },
+        {
+          "day": 11,
+          "mastery": 0.2941328175370729
+        },
+        {
+          "day": 12,
+          "mastery": 0.43371018990615534
+        },
+        {
+          "day": 13,
+          "mastery": 0.43371018990615534
+        },
+        {
+          "day": 14,
+          "mastery": 0.43371018990615534
+        },
+        {
+          "day": 15,
+          "mastery": 0.43371018990615534
+        },
+        {
+          "day": 16,
+          "mastery": 0.43371018990615534
+        },
+        {
+          "day": 17,
+          "mastery": 0.43371018990615534
+        },
+        {
+          "day": 18,
+          "mastery": 0.43371018990615534
+        },
+        {
+          "day": 19,
+          "mastery": 0.43371018990615534
+        },
+        {
+          "day": 20,
+          "mastery": 0.43371018990615534
+        },
+        {
+          "day": 21,
+          "mastery": 0.43371018990615534
+        },
+        {
+          "day": 22,
+          "mastery": 0.43371018990615534
+        },
+        {
+          "day": 23,
+          "mastery": 0.43371018990615534
+        },
+        {
+          "day": 24,
+          "mastery": 0.43371018990615534
+        },
+        {
+          "day": 25,
+          "mastery": 0.43371018990615534
+        },
+        {
+          "day": 26,
+          "mastery": 0.43371018990615534
+        },
+        {
+          "day": 27,
+          "mastery": 0.43371018990615534
+        },
+        {
+          "day": 28,
+          "mastery": 0.43371018990615534
+        },
+        {
+          "day": 29,
+          "mastery": 0.43371018990615534
+        },
+        {
+          "day": 30,
+          "mastery": 0.43371018990615534
+        }
+      ],
+      "physics_basics": [
+        {
+          "day": 3,
+          "mastery": 0.3414713541666667
+        },
+        {
+          "day": 4,
+          "mastery": 0.3414713541666667
+        },
+        {
+          "day": 5,
+          "mastery": 0.3414713541666667
+        },
+        {
+          "day": 6,
+          "mastery": 0.3414713541666667
+        },
+        {
+          "day": 7,
+          "mastery": 0.3414713541666667
+        },
+        {
+          "day": 8,
+          "mastery": 0.3414713541666667
+        },
+        {
+          "day": 9,
+          "mastery": 0.3414713541666667
+        },
+        {
+          "day": 10,
+          "mastery": 0.3414713541666667
+        },
+        {
+          "day": 11,
+          "mastery": 0.3414713541666667
+        },
+        {
+          "day": 12,
+          "mastery": 0.3414713541666667
+        },
+        {
+          "day": 13,
+          "mastery": 0.3414713541666667
+        },
+        {
+          "day": 14,
+          "mastery": 0.3414713541666667
+        },
+        {
+          "day": 15,
+          "mastery": 0.3414713541666667
+        },
+        {
+          "day": 16,
+          "mastery": 0.3414713541666667
+        },
+        {
+          "day": 17,
+          "mastery": 0.3414713541666667
+        },
+        {
+          "day": 18,
+          "mastery": 0.3414713541666667
+        },
+        {
+          "day": 19,
+          "mastery": 0.3414713541666667
+        },
+        {
+          "day": 20,
+          "mastery": 0.3414713541666667
+        },
+        {
+          "day": 21,
+          "mastery": 0.33424747696358054
+        },
+        {
+          "day": 22,
+          "mastery": 0.33424747696358054
+        },
+        {
+          "day": 23,
+          "mastery": 0.33424747696358054
+        },
+        {
+          "day": 24,
+          "mastery": 0.33424747696358054
+        },
+        {
+          "day": 25,
+          "mastery": 0.33424747696358054
+        },
+        {
+          "day": 26,
+          "mastery": 0.33424747696358054
+        },
+        {
+          "day": 27,
+          "mastery": 0.33424747696358054
+        },
+        {
+          "day": 28,
+          "mastery": 0.33424747696358054
+        },
+        {
+          "day": 29,
+          "mastery": 0.33424747696358054
+        },
+        {
+          "day": 30,
+          "mastery": 0.7601975633849194
+        }
+      ],
+      "advanced_calculus": [
+        {
+          "day": 6,
+          "mastery": 0.29135164372858946
+        },
+        {
+          "day": 7,
+          "mastery": 0.29135164372858946
+        },
+        {
+          "day": 8,
+          "mastery": 0.29135164372858946
+        },
+        {
+          "day": 9,
+          "mastery": 0.29135164372858946
+        },
+        {
+          "day": 10,
+          "mastery": 0.29135164372858946
+        },
+        {
+          "day": 11,
+          "mastery": 0.29135164372858946
+        },
+        {
+          "day": 12,
+          "mastery": 0.29135164372858946
+        },
+        {
+          "day": 13,
+          "mastery": 0.29135164372858946
+        },
+        {
+          "day": 14,
+          "mastery": 0.29135164372858946
+        },
+        {
+          "day": 15,
+          "mastery": 0.36891899094986647
+        },
+        {
+          "day": 16,
+          "mastery": 0.36891899094986647
+        },
+        {
+          "day": 17,
+          "mastery": 0.36891899094986647
+        },
+        {
+          "day": 18,
+          "mastery": 0.36891899094986647
+        },
+        {
+          "day": 19,
+          "mastery": 0.36891899094986647
+        },
+        {
+          "day": 20,
+          "mastery": 0.36891899094986647
+        },
+        {
+          "day": 21,
+          "mastery": 0.36891899094986647
+        },
+        {
+          "day": 22,
+          "mastery": 0.36891899094986647
+        },
+        {
+          "day": 23,
+          "mastery": 0.36891899094986647
+        },
+        {
+          "day": 24,
+          "mastery": 0.36891899094986647
+        },
+        {
+          "day": 25,
+          "mastery": 0.36891899094986647
+        },
+        {
+          "day": 26,
+          "mastery": 0.36891899094986647
+        },
+        {
+          "day": 27,
+          "mastery": 0.36891899094986647
+        },
+        {
+          "day": 28,
+          "mastery": 0.36891899094986647
+        },
+        {
+          "day": 29,
+          "mastery": 0.36891899094986647
+        },
+        {
+          "day": 30,
+          "mastery": 0.36891899094986647
+        }
+      ],
+      "modern_physics": [
+        {
+          "day": 6,
+          "mastery": 0.33102493074792244
+        },
+        {
+          "day": 7,
+          "mastery": 0.33102493074792244
+        },
+        {
+          "day": 8,
+          "mastery": 0.33102493074792244
+        },
+        {
+          "day": 9,
+          "mastery": 0.33102493074792244
+        },
+        {
+          "day": 10,
+          "mastery": 0.33102493074792244
+        },
+        {
+          "day": 11,
+          "mastery": 0.33102493074792244
+        },
+        {
+          "day": 12,
+          "mastery": 0.33102493074792244
+        },
+        {
+          "day": 13,
+          "mastery": 0.33102493074792244
+        },
+        {
+          "day": 14,
+          "mastery": 0.33102493074792244
+        },
+        {
+          "day": 15,
+          "mastery": 0.7164304285834102
+        },
+        {
+          "day": 16,
+          "mastery": 0.7164304285834102
+        },
+        {
+          "day": 17,
+          "mastery": 0.7164304285834102
+        },
+        {
+          "day": 18,
+          "mastery": 0.7164304285834102
+        },
+        {
+          "day": 19,
+          "mastery": 0.7164304285834102
+        },
+        {
+          "day": 20,
+          "mastery": 0.7164304285834102
+        },
+        {
+          "day": 21,
+          "mastery": 0.7164304285834102
+        },
+        {
+          "day": 22,
+          "mastery": 0.7164304285834102
+        },
+        {
+          "day": 23,
+          "mastery": 0.7164304285834102
+        },
+        {
+          "day": 24,
+          "mastery": 0.985521240245328
+        },
+        {
+          "day": 25,
+          "mastery": 0.985521240245328
+        },
+        {
+          "day": 26,
+          "mastery": 0.985521240245328
+        },
+        {
+          "day": 27,
+          "mastery": 0.985521240245328
+        },
+        {
+          "day": 28,
+          "mastery": 0.985521240245328
+        },
+        {
+          "day": 29,
+          "mastery": 0.985521240245328
+        },
+        {
+          "day": 30,
+          "mastery": 0.985521240245328
+        }
+      ],
+      "advanced_mechanics": [
+        {
+          "day": 15,
+          "mastery": 0.8024752475247525
+        },
+        {
+          "day": 16,
+          "mastery": 0.8024752475247525
+        },
+        {
+          "day": 17,
+          "mastery": 0.8024752475247525
+        },
+        {
+          "day": 18,
+          "mastery": 0.8024752475247525
+        },
+        {
+          "day": 19,
+          "mastery": 0.8024752475247525
+        },
+        {
+          "day": 20,
+          "mastery": 0.8024752475247525
+        },
+        {
+          "day": 21,
+          "mastery": 0.8024752475247525
+        },
+        {
+          "day": 22,
+          "mastery": 0.8024752475247525
+        },
+        {
+          "day": 23,
+          "mastery": 0.8024752475247525
+        },
+        {
+          "day": 24,
+          "mastery": 0.48099121157798086
+        },
+        {
+          "day": 25,
+          "mastery": 0.48099121157798086
+        },
+        {
+          "day": 26,
+          "mastery": 0.48099121157798086
+        },
+        {
+          "day": 27,
+          "mastery": 0.48099121157798086
+        },
+        {
+          "day": 28,
+          "mastery": 0.48099121157798086
+        },
+        {
+          "day": 29,
+          "mastery": 0.48099121157798086
+        },
+        {
+          "day": 30,
+          "mastery": 0.48099121157798086
+        }
+      ]
+    }
+  },
+  "system_performance": {
+    "api_calls": 0,
+    "processing_times": []
+  }
+}

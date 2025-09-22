@@ -1,0 +1,136 @@
+{
+  "analysis_timestamp": "2025-09-21T20:06:26.147959",
+  "components": {
+    "component_1": {
+      "component_name": "Knowledge Tracing System (BKT)",
+      "status": "ERROR",
+      "features_tested": [],
+      "issues": [
+        "Import/execution error: No module named 'pydantic'"
+      ],
+      "documentation_path": "ai_engine/src/knowledge_tracing/bkt/bkt_engine.py",
+      "compliance_score": 0.0
+    },
+    "component_2": {
+      "component_name": "Stress Detection Engine",
+      "status": "EXCELLENT",
+      "features_tested": [
+        "multi-modal inputs",
+        "response time variance analysis",
+        "confidence scoring",
+        "intervention recommendations",
+        "hesitation metrics tracking",
+        "keystroke dynamics analysis"
+      ],
+      "issues": [],
+      "documentation_path": "ai_engine/src/knowledge_tracing/stress/detection_engine.py",
+      "compliance_score": 1.0
+    },
+    "component_3": {
+      "component_name": "Cognitive Load Manager",
+      "status": "EXCELLENT",
+      "features_tested": [
+        "Sweller's CLT framework",
+        "intrinsic load calculation",
+        "extraneous load calculation",
+        "germane load calculation",
+        "overload risk assessment",
+        "mobile-aware multipliers"
+      ],
+      "issues": [],
+      "documentation_path": "ai_engine/src/knowledge_tracing/cognitive/load_manager.py",
+      "compliance_score": 0.8571428571428571
+    },
+    "component_4": {
+      "component_name": "Dynamic Time Allocator",
+      "status": "ERROR",
+      "features_tested": [],
+      "issues": [
+        "Import/execution error: No module named 'pydantic'"
+      ],
+      "documentation_path": "ai_engine/src/knowledge_tracing/pacing/time_allocator.py",
+      "compliance_score": 0.0
+    },
+    "component_5": {
+      "component_name": "Question Selection Engine",
+      "status": "EXCELLENT",
+      "features_tested": [
+        "multi-armed bandit approach",
+        "LinUCB algorithm",
+        "exploration vs exploitation",
+        "diagnostic information",
+        "UCB scoring",
+        "feature vector construction",
+        "context awareness"
+      ],
+      "issues": [],
+      "documentation_path": "ai_engine/src/knowledge_tracing/selection/pressure_linucb.py",
+      "compliance_score": 1.0
+    },
+    "component_6": {
+      "component_name": "Fairness Monitoring System",
+      "status": "EXCELLENT",
+      "features_tested": [
+        "demographic segmentation",
+        "group comparison",
+        "disparity detection",
+        "statistical parity check",
+        "per-exam monitoring",
+        "bias recommendations",
+        "alert thresholds"
+      ],
+      "issues": [],
+      "documentation_path": "ai_engine/src/knowledge_tracing/fairness/monitor.py",
+      "compliance_score": 1.0
+    },
+    "component_7": {
+      "component_name": "Spaced Repetition Scheduler",
+      "status": "EXCELLENT",
+      "features_tested": [
+        "half-life regression algorithm",
+        "difficulty factor consideration",
+        "ability level adjustment",
+        "forgetting curve modeling",
+        "feature-based adjustments",
+        "optimal interval calculation",
+        "just-in-time reviews"
+      ],
+      "issues": [],
+      "documentation_path": "ai_engine/src/knowledge_tracing/spaced_repetition/scheduler.py",
+      "compliance_score": 1.0
+    },
+    "component_8": {
+      "component_name": "Calibration Engine",
+      "status": "EXCELLENT",
+      "features_tested": [
+        "temperature scaling method",
+        "per-exam calibration",
+        "per-subject calibration",
+        "cross-exam isolation",
+        "confidence score reliability",
+        "expected calibration error",
+        "L-BFGS optimization"
+      ],
+      "issues": [],
+      "documentation_path": "ai_engine/src/knowledge_tracing/calibration/calibrator.py",
+      "compliance_score": 1.0
+    }
+  },
+  "overall_status": "GOOD",
+  "documentation_compliance": {
+    "BKT_accuracy_target": "NEEDS_VALIDATION",
+    "response_time_target": "NEEDS_VALIDATION",
+    "stress_detection_modes": "NEEDS_VALIDATION",
+    "cognitive_load_framework": "NEEDS_VALIDATION",
+    "question_selection_algorithm": "NEEDS_VALIDATION",
+    "fairness_monitoring": "NEEDS_VALIDATION",
+    "spaced_repetition_method": "NEEDS_VALIDATION",
+    "calibration_method": "NEEDS_VALIDATION"
+  },
+  "missing_features": [],
+  "implementation_gaps": [
+    "Knowledge Tracing System (BKT): Critical implementation error",
+    "Dynamic Time Allocator: Critical implementation error"
+  ],
+  "overall_compliance_score": 0.75
+}

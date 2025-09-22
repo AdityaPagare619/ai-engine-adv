@@ -171,66 +171,7 @@ services:
       - jee-network
 
   # Existing services remain the same...
-  phase3-frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    container_name: jee_phase3_frontend
-    restart: unless-stopped
-    ports:
-      - "${FRONTEND_PORT:-3000}:80"
-    depends_on:
-      content-processor:
-        condition: service_healthy
-      asset-processor:
-        condition: service_healthy
-    networks:
-      - jee-network
-
-  # API Gateway Service
-  api-gateway:
-    build:
-      context: ./api_gateway
-      dockerfile: Dockerfile
-    container_name: jee_api_gateway
-    restart: unless-stopped
-    environment:
-      - NODE_ENV=${ENVIRONMENT:-development}
-      - PORT=8080
-      - JWT_SECRET=${JWT_SECRET}
-      - JWKS_URI=${JWKS_URI}
-      - REDIS_URL=${REDIS_URL}
-      - LOG_LEVEL=${LOG_LEVEL:-INFO}
-      # Service URLs for proxying
-      - ADMIN_SERVICE_URL=http://admin-service:8000
-      - CONTENT_PROCESSOR_URL=http://content-processor:8002
-      - ASSET_PROCESSOR_URL=http://asset-processor:8003
-      - DATABASE_MANAGER_URL=http://database-manager:8004
-    ports:
-      - "${GATEWAY_PORT:-8080}:8080"
-    depends_on:
-      admin-service:
-        condition: service_healthy
-      content-processor:
-        condition: service_healthy
-      asset-processor:
-        condition: service_healthy
-      database-manager:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
-    networks:
-      - jee-network
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 60s
-
-  # Admin Management Service
-
-admin-service:
+  admin-service:
     build:
       context: ./services/admin-management
       dockerfile: Dockerfile
@@ -259,7 +200,6 @@ admin-service:
       retries: 3
       start_period: 40s
 
-  # Database Manager Service
   database-manager:
     build:
       context: ./services/database-manager
@@ -267,9 +207,9 @@ admin-service:
     container_name: jee_database_manager
     restart: unless-stopped
     environment:
-      - DATABASE_URL=${DATABASE_URL}
-      - REDIS_URL=${REDIS_URL}
-      - ENVIRONMENT=${ENVIRONMENT:-development}
+      - DATABASE_URL=${DATABASE_URL:-postgresql://jee_admin:secure_jee_2025@postgres:5432/jee_smart_platform}
+      - REDIS_URL=${REDIS_URL:-redis://redis:6379}
+      - ENVIRONMENT=${ENVIRONMENT:-production}
       - LOG_LEVEL=${LOG_LEVEL:-INFO}
     expose:
       - "8000"
@@ -288,7 +228,6 @@ admin-service:
       timeout: 10s
       retries: 3
 
-  # Content Processor Service
   content-processor:
     build:
       context: ./services/content-processor
@@ -296,10 +235,10 @@ admin-service:
     container_name: jee_content_processor
     restart: unless-stopped
     environment:
-      - DATABASE_URL=${DATABASE_URL}
-      - REDIS_URL=${REDIS_URL}
+      - DATABASE_URL=${DATABASE_URL:-postgresql://jee_admin:secure_jee_2025@postgres:5432/jee_smart_platform}
+      - REDIS_URL=${REDIS_URL:-redis://redis:6379}
       - UPLOAD_DIR=/data/uploads
-      - ENVIRONMENT=${ENVIRONMENT:-development}
+      - ENVIRONMENT=${ENVIRONMENT:-production}
       - LOG_LEVEL=${LOG_LEVEL:-INFO}
     ports:
       - "8002:8002"
@@ -319,7 +258,6 @@ admin-service:
       retries: 3
       start_period: 40s
 
-  # Asset Processor Service
   asset-processor:
     build:
       context: ./services/asset-processor
@@ -327,9 +265,9 @@ admin-service:
     container_name: jee_asset_processor
     restart: unless-stopped
     environment:
-      - DATABASE_URL=${DATABASE_URL}
+      - DATABASE_URL=${DATABASE_URL:-postgresql://jee_admin:secure_jee_2025@postgres:5432/jee_smart_platform}
       - UPLOAD_DIR=/data/uploads/assets
-      - ENVIRONMENT=${ENVIRONMENT:-development}
+      - ENVIRONMENT=${ENVIRONMENT:-production}
       - LOG_LEVEL=${LOG_LEVEL:-INFO}
     ports:
       - "8003:8003"
@@ -351,7 +289,9 @@ admin-service:
 
 volumes:
   pgdata:
+    driver: local
   redisdata:
+    driver: local
 
 networks:
   jee-network:

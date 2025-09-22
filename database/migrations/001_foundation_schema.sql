@@ -1,6 +1,6 @@
-﻿-- =============================================================================
--- JEE Smart AI Platform - Complete Foundation Database Schema (FIXED)
--- Industry-Grade Educational Assessment System
+-- =============================================================================
+-- JEE Smart AI Platform - Enhanced Foundation Database Schema
+-- Integrates with existing structure + new BKT & time context features
 -- =============================================================================
 
 -- Enable required extensions
@@ -10,163 +10,257 @@ CREATE EXTENSION IF NOT EXISTS "btree_gin";
 CREATE EXTENSION IF NOT EXISTS "pg_trgm";
 
 -- =============================================================================
--- CORE REGISTRY TABLES (Admin Controlled) - WITH ALL REQUIRED COLUMNS
+-- ENHANCED EXAM REGISTRY TABLES (Compatible with existing)
 -- =============================================================================
 
--- Exam Registry (Top Level Container) - COMPLETE VERSION
+-- Enhanced Exam Registry
 CREATE TABLE IF NOT EXISTS exam_registry (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     exam_id VARCHAR(100) UNIQUE NOT NULL,
     display_name VARCHAR(200) NOT NULL,
-    exam_type VARCHAR(50) NOT NULL,
+    exam_type VARCHAR(50) NOT NULL CHECK (exam_type IN ('JEE_MAIN', 'JEE_ADVANCED', 'NEET', 'BOARDS')),
     academic_year INTEGER NOT NULL,
+    
+    -- NEW: Exam scheduling fields
+    exam_date DATE,
+    registration_start DATE,
+    registration_end DATE,
+    
     created_by_admin VARCHAR(100) NOT NULL,
     admin_key_hash VARCHAR(500) NOT NULL DEFAULT 'default_hash',
     status VARCHAR(20) DEFAULT 'ACTIVE' CHECK (status IN ('ACTIVE', 'INACTIVE', 'ARCHIVED')),
-    total_subjects INTEGER DEFAULT 0,  -- ✅ ADDED MISSING COLUMN
-    total_questions INTEGER DEFAULT 0, -- ✅ ADDED MISSING COLUMN
+    
+    total_subjects INTEGER DEFAULT 0,
+    total_questions INTEGER DEFAULT 0,
+    
+    -- NEW: Enhanced metadata
     metadata JSONB DEFAULT '{}',
+    time_context_config JSONB DEFAULT '{"phases_enabled": true, "countdown_enabled": true}',
+    
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-
+    
     -- Constraints
     CONSTRAINT unique_exam_type_year UNIQUE(exam_type, academic_year),
-    CONSTRAINT valid_academic_year CHECK (academic_year >= 2020 AND academic_year <= 2030)
+    CONSTRAINT valid_academic_year CHECK (academic_year >= 2020 AND academic_year <= 2030),
+    CONSTRAINT valid_exam_dates CHECK (exam_date >= registration_start)
 );
 
--- Subject Registry (Within Exams) - COMPLETE VERSION
+-- Enhanced Subject Registry
 CREATE TABLE IF NOT EXISTS subject_registry (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     subject_id VARCHAR(150) UNIQUE NOT NULL,
     exam_id VARCHAR(100) NOT NULL,
     subject_code VARCHAR(10) NOT NULL,
     subject_name VARCHAR(100) NOT NULL,
+    
+    -- NEW: Subject-specific configuration
+    total_concepts INTEGER DEFAULT 0,
+    concept_hierarchy JSONB DEFAULT '{}',
+    
     total_questions INTEGER DEFAULT 0,
     total_sheets INTEGER DEFAULT 0,
     folder_path VARCHAR(500),
     status VARCHAR(20) DEFAULT 'ACTIVE' CHECK (status IN ('ACTIVE', 'INACTIVE')),
+    
     metadata JSONB DEFAULT '{}',
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-
-    -- Foreign key constraint with proper reference
+    
+    -- Foreign key constraint
     CONSTRAINT fk_subject_exam FOREIGN KEY (exam_id) REFERENCES exam_registry(exam_id) ON DELETE CASCADE,
-    -- Constraints
     CONSTRAINT valid_subject_codes CHECK (subject_code IN ('PHY', 'CHE', 'MAT', 'BIO', 'ENG'))
 );
 
--- Question Sheets (CSV Import Tracking) - COMPLETE VERSION
-CREATE TABLE IF NOT EXISTS question_sheets (
+-- =============================================================================
+-- NEW: BKT ENGINE TABLES
+-- =============================================================================
+
+-- BKT Parameters per concept
+CREATE TABLE IF NOT EXISTS bkt_parameters (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    sheet_id VARCHAR(200) UNIQUE NOT NULL,
+    concept_id VARCHAR(200) NOT NULL,
     subject_id VARCHAR(150) NOT NULL,
-    sheet_name VARCHAR(200) NOT NULL,
-    file_path VARCHAR(1000),
-    version INTEGER DEFAULT 1,
-    total_questions INTEGER DEFAULT 0,
-    imported_questions INTEGER DEFAULT 0,
-    failed_questions INTEGER DEFAULT 0,
-    import_status VARCHAR(30) DEFAULT 'PENDING' CHECK (import_status IN ('PENDING', 'PROCESSING', 'COMPLETED', 'FAILED', 'PARTIAL')),
-    file_checksum VARCHAR(128),
-    last_imported_at TIMESTAMP WITH TIME ZONE,
-    metadata JSONB DEFAULT '{}',
+    
+    -- BKT parameters
+    prior_knowledge DECIMAL(5,4) DEFAULT 0.3 CHECK (prior_knowledge BETWEEN 0 AND 1),
+    learn_rate DECIMAL(5,4) DEFAULT 0.25 CHECK (learn_rate BETWEEN 0 AND 1),
+    slip_rate DECIMAL(5,4) DEFAULT 0.1 CHECK (slip_rate BETWEEN 0 AND 1),
+    guess_rate DECIMAL(5,4) DEFAULT 0.2 CHECK (guess_rate BETWEEN 0 AND 1),
+    decay_rate DECIMAL(5,4) DEFAULT 0.05 CHECK (decay_rate BETWEEN 0 AND 1),
+    
+    -- Metadata
+    calibration_data JSONB DEFAULT '{}',
+    last_calibrated TIMESTAMP WITH TIME ZONE,
+    
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-
-    -- Foreign key constraint
-    CONSTRAINT fk_sheet_subject FOREIGN KEY (subject_id) REFERENCES subject_registry(subject_id) ON DELETE CASCADE
+    
+    CONSTRAINT fk_bkt_subject FOREIGN KEY (subject_id) REFERENCES subject_registry(subject_id) ON DELETE CASCADE,
+    CONSTRAINT unique_concept_subject UNIQUE(concept_id, subject_id)
 );
 
--- System Configuration (Admin Settings) - COMPLETE VERSION
-CREATE TABLE IF NOT EXISTS system_configuration (
+-- Student Mastery States
+CREATE TABLE IF NOT EXISTS student_mastery_states (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    config_key VARCHAR(100) UNIQUE NOT NULL,
-    config_value TEXT NOT NULL,
-    config_type VARCHAR(20) NOT NULL CHECK (config_type IN ('STRING', 'INTEGER', 'BOOLEAN', 'JSON')),
-    description TEXT,
-    is_sensitive BOOLEAN DEFAULT FALSE,
-    last_modified_by VARCHAR(100),
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-);
-
--- ID Sequences (For Hierarchical ID Generation) - COMPLETE VERSION
-CREATE TABLE IF NOT EXISTS id_sequences (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    sequence_type VARCHAR(50) NOT NULL,
-    sequence_key VARCHAR(200) NOT NULL,
-    current_value INTEGER NOT NULL DEFAULT 0,
-    prefix VARCHAR(50),
-    suffix VARCHAR(50),
-    format_template VARCHAR(200),
-    metadata JSONB DEFAULT '{}',
+    student_id VARCHAR(100) NOT NULL,
+    concept_id VARCHAR(200) NOT NULL,
+    subject_id VARCHAR(150) NOT NULL,
+    
+    -- Current state
+    mastery_probability DECIMAL(6,5) DEFAULT 0.3 CHECK (mastery_probability BETWEEN 0 AND 1),
+    confidence_level DECIMAL(6,5) DEFAULT 0.5 CHECK (confidence_level BETWEEN 0 AND 1),
+    practice_count INTEGER DEFAULT 0 CHECK (practice_count >= 0),
+    
+    -- Timestamps
+    last_interaction TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-
-    -- Ensure unique sequence per type and key
-    CONSTRAINT unique_sequence_type_key UNIQUE(sequence_type, sequence_key)
+    
+    -- Constraints
+    CONSTRAINT unique_student_concept UNIQUE(student_id, concept_id, subject_id),
+    CONSTRAINT fk_mastery_subject FOREIGN KEY (subject_id) REFERENCES subject_registry(subject_id) ON DELETE CASCADE
 );
 
--- Import Operations (Audit Trail) - COMPLETE VERSION
-CREATE TABLE IF NOT EXISTS import_operations (
+-- BKT Interaction Logs
+CREATE TABLE IF NOT EXISTS bkt_interaction_logs (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    operation_id VARCHAR(100) UNIQUE NOT NULL,
-    operation_type VARCHAR(30) NOT NULL CHECK (operation_type IN ('CSV_IMPORT', 'ASSET_IMPORT', 'BULK_UPDATE', 'SHEET_UPLOAD')),
-    initiated_by VARCHAR(100) NOT NULL,
-    source_file VARCHAR(1000),
-    target_subject_id VARCHAR(150),
-    status VARCHAR(20) DEFAULT 'STARTED' CHECK (status IN ('STARTED', 'IN_PROGRESS', 'COMPLETED', 'FAILED', 'CANCELLED')),
-    total_items INTEGER DEFAULT 0,
-    processed_items INTEGER DEFAULT 0,
-    successful_items INTEGER DEFAULT 0,
-    failed_items INTEGER DEFAULT 0,
-    error_log TEXT,
-    success_log TEXT,
-    performance_metrics JSONB DEFAULT '{}',
-    started_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    completed_at TIMESTAMP WITH TIME ZONE,
-    duration_seconds INTEGER,
-
-    -- Foreign key constraint
-    CONSTRAINT fk_operation_subject FOREIGN KEY (target_subject_id) REFERENCES subject_registry(subject_id) ON DELETE SET NULL
+    student_id VARCHAR(100) NOT NULL,
+    concept_id VARCHAR(200) NOT NULL,
+    question_id VARCHAR(500),
+    
+    -- Response data
+    is_correct BOOLEAN NOT NULL,
+    response_time_ms INTEGER CHECK (response_time_ms >= 0),
+    
+    -- BKT state changes
+    previous_mastery DECIMAL(6,5) CHECK (previous_mastery BETWEEN 0 AND 1),
+    new_mastery DECIMAL(6,5) NOT NULL CHECK (new_mastery BETWEEN 0 AND 1),
+    mastery_change DECIMAL(6,5) GENERATED ALWAYS AS (new_mastery - previous_mastery) STORED,
+    
+    -- Cognitive load data
+    cognitive_load_total DECIMAL(5,3),
+    overload_risk DECIMAL(5,4) CHECK (overload_risk BETWEEN 0 AND 1),
+    
+    -- Context
+    interaction_context JSONB DEFAULT '{}',
+    bkt_parameters_used JSONB DEFAULT '{}',
+    
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
 -- =============================================================================
--- INDEXES FOR PERFORMANCE
+-- NEW: TIME CONTEXT TABLES
 -- =============================================================================
 
--- Exam Registry Indexes
-CREATE INDEX IF NOT EXISTS idx_exam_registry_exam_id ON exam_registry(exam_id);
-CREATE INDEX IF NOT EXISTS idx_exam_registry_type_year ON exam_registry(exam_type, academic_year);
-CREATE INDEX IF NOT EXISTS idx_exam_registry_status ON exam_registry(status);
+-- Exam Schedules (for time context processing)
+CREATE TABLE IF NOT EXISTS exam_schedules (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    exam_id VARCHAR(100) NOT NULL,
+    student_id VARCHAR(100),  -- NULL means applies to all students
+    
+    -- Key dates
+    target_exam_date DATE NOT NULL,
+    preparation_start_date DATE NOT NULL,
+    
+    -- Phase configurations
+    foundation_phase_days INTEGER DEFAULT 90,
+    building_phase_days INTEGER DEFAULT 60,  
+    mastery_phase_days INTEGER DEFAULT 30,
+    confidence_phase_days INTEGER DEFAULT 30,
+    
+    -- Study targets
+    daily_study_hours DECIMAL(3,1) DEFAULT 6.0,
+    phase_configs JSONB DEFAULT '{}',
+    
+    status VARCHAR(20) DEFAULT 'ACTIVE' CHECK (status IN ('ACTIVE', 'COMPLETED', 'PAUSED')),
+    
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    
+    CONSTRAINT fk_schedule_exam FOREIGN KEY (exam_id) REFERENCES exam_registry(exam_id) ON DELETE CASCADE,
+    CONSTRAINT valid_dates CHECK (target_exam_date > preparation_start_date)
+);
 
--- Subject Registry Indexes
-CREATE INDEX IF NOT EXISTS idx_subject_registry_subject_id ON subject_registry(subject_id);
-CREATE INDEX IF NOT EXISTS idx_subject_registry_exam_id ON subject_registry(exam_id);
-CREATE INDEX IF NOT EXISTS idx_subject_registry_code ON subject_registry(subject_code);
+-- Time Context Tracking
+CREATE TABLE IF NOT EXISTS time_context_logs (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    student_id VARCHAR(100) NOT NULL,
+    exam_id VARCHAR(100) NOT NULL,
+    
+    -- Context snapshot
+    days_remaining INTEGER NOT NULL,
+    current_phase VARCHAR(20) NOT NULL CHECK (current_phase IN ('foundation', 'building', 'mastery', 'confidence')),
+    urgency_level VARCHAR(20) NOT NULL CHECK (urgency_level IN ('low', 'medium', 'high', 'critical')),
+    
+    -- Recommendations generated
+    focus_recommendations TEXT[],
+    daily_targets JSONB DEFAULT '{}',
+    risk_assessment JSONB DEFAULT '{}',
+    
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
 
--- Question Sheets Indexes
-CREATE INDEX IF NOT EXISTS idx_question_sheets_sheet_id ON question_sheets(sheet_id);
-CREATE INDEX IF NOT EXISTS idx_question_sheets_subject_id ON question_sheets(subject_id);
-CREATE INDEX IF NOT EXISTS idx_question_sheets_status ON question_sheets(import_status);
+-- =============================================================================
+-- CONCEPT RELATIONSHIPS (for transfer learning)
+-- =============================================================================
 
--- System Configuration Indexes
-CREATE INDEX IF NOT EXISTS idx_system_configuration_key ON system_configuration(config_key);
-CREATE INDEX IF NOT EXISTS idx_system_configuration_type ON system_configuration(config_type);
+CREATE TABLE IF NOT EXISTS concept_relationships (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    source_concept VARCHAR(200) NOT NULL,
+    target_concept VARCHAR(200) NOT NULL,
+    subject_id VARCHAR(150) NOT NULL,
+    
+    -- Relationship strength (0-1)
+    transfer_strength DECIMAL(4,3) NOT NULL CHECK (transfer_strength BETWEEN 0 AND 1),
+    relationship_type VARCHAR(50) DEFAULT 'prerequisite' CHECK (relationship_type IN ('prerequisite', 'related', 'builds_on', 'applies_to')),
+    
+    -- Metadata
+    evidence_strength DECIMAL(4,3) DEFAULT 0.5,
+    validated BOOLEAN DEFAULT FALSE,
+    
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    
+    CONSTRAINT fk_rel_subject FOREIGN KEY (subject_id) REFERENCES subject_registry(subject_id) ON DELETE CASCADE,
+    CONSTRAINT unique_concept_pair UNIQUE(source_concept, target_concept, subject_id)
+);
 
--- ID Sequences Indexes
-CREATE INDEX IF NOT EXISTS idx_id_sequences_type_key ON id_sequences(sequence_type, sequence_key);
+-- =============================================================================
+-- ENHANCED INDEXES FOR PERFORMANCE
+-- =============================================================================
 
--- Import Operations Indexes
-CREATE INDEX IF NOT EXISTS idx_import_operations_operation_id ON import_operations(operation_id);
-CREATE INDEX IF NOT EXISTS idx_import_operations_status ON import_operations(status);
-CREATE INDEX IF NOT EXISTS idx_import_operations_type ON import_operations(operation_type);
+-- BKT Performance Indexes
+CREATE INDEX IF NOT EXISTS idx_bkt_parameters_concept ON bkt_parameters(concept_id);
+CREATE INDEX IF NOT EXISTS idx_bkt_parameters_subject ON bkt_parameters(subject_id);
+
+CREATE INDEX IF NOT EXISTS idx_mastery_states_student ON student_mastery_states(student_id);
+CREATE INDEX IF NOT EXISTS idx_mastery_states_concept ON student_mastery_states(concept_id);
+CREATE INDEX IF NOT EXISTS idx_mastery_states_updated ON student_mastery_states(updated_at DESC);
+
+-- Partitioned index for interaction logs (high volume)
+CREATE INDEX IF NOT EXISTS idx_interaction_logs_student_time ON bkt_interaction_logs(student_id, created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_interaction_logs_concept_time ON bkt_interaction_logs(concept_id, created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_interaction_logs_performance ON bkt_interaction_logs(is_correct, mastery_change);
+
+-- Time Context Indexes
+CREATE INDEX IF NOT EXISTS idx_exam_schedules_student ON exam_schedules(student_id);
+CREATE INDEX IF NOT EXISTS idx_exam_schedules_exam ON exam_schedules(exam_id);
+CREATE INDEX IF NOT EXISTS idx_exam_schedules_date ON exam_schedules(target_exam_date);
+
+CREATE INDEX IF NOT EXISTS idx_time_context_student_exam ON time_context_logs(student_id, exam_id);
+CREATE INDEX IF NOT EXISTS idx_time_context_phase ON time_context_logs(current_phase, urgency_level);
+
+-- Concept Relationships Indexes
+CREATE INDEX IF NOT EXISTS idx_concept_rel_source ON concept_relationships(source_concept);
+CREATE INDEX IF NOT EXISTS idx_concept_rel_target ON concept_relationships(target_concept);
+CREATE INDEX IF NOT EXISTS idx_concept_rel_strength ON concept_relationships(transfer_strength DESC);
 
 -- =============================================================================
 -- TRIGGERS FOR AUTOMATIC UPDATES
 -- =============================================================================
 
--- Update timestamp trigger function
+-- Update timestamp trigger (reuse existing function)
 CREATE OR REPLACE FUNCTION update_updated_at_column()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -175,82 +269,162 @@ BEGIN
 END;
 $$ language 'plpgsql';
 
--- Apply update triggers to all relevant tables
-DROP TRIGGER IF EXISTS update_exam_registry_updated_at ON exam_registry;
-CREATE TRIGGER update_exam_registry_updated_at BEFORE UPDATE ON exam_registry
+-- Apply to new tables
+CREATE TRIGGER update_bkt_parameters_updated_at BEFORE UPDATE ON bkt_parameters
     FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 
-DROP TRIGGER IF EXISTS update_subject_registry_updated_at ON subject_registry;
-CREATE TRIGGER update_subject_registry_updated_at BEFORE UPDATE ON subject_registry
+CREATE TRIGGER update_student_mastery_states_updated_at BEFORE UPDATE ON student_mastery_states
     FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 
-DROP TRIGGER IF EXISTS update_question_sheets_updated_at ON question_sheets;
-CREATE TRIGGER update_question_sheets_updated_at BEFORE UPDATE ON question_sheets
+CREATE TRIGGER update_exam_schedules_updated_at BEFORE UPDATE ON exam_schedules
     FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 
-DROP TRIGGER IF EXISTS update_system_configuration_updated_at ON system_configuration;
-CREATE TRIGGER update_system_configuration_updated_at BEFORE UPDATE ON system_configuration
+CREATE TRIGGER update_concept_relationships_updated_at BEFORE UPDATE ON concept_relationships
     FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 
 -- =============================================================================
--- INITIAL SYSTEM CONFIGURATION
+-- INITIAL DATA SEEDING
 -- =============================================================================
 
-INSERT INTO system_configuration (config_key, config_value, config_type, description) VALUES
-('SYSTEM_VERSION', '1.0.0', 'STRING', 'Current system version'),
-('MAX_QUESTIONS_PER_SHEET', '1000', 'INTEGER', 'Maximum questions allowed per CSV sheet'),
-('SUPPORTED_IMAGE_FORMATS', '["png", "jpg", "jpeg", "webp", "svg"]', 'JSON', 'Supported image formats for assets'),
-('DEFAULT_DIFFICULTY_LEVEL', '0.5', 'STRING', 'Default difficulty level for new questions'),
-('ENABLE_AUTO_VALIDATION', 'true', 'BOOLEAN', 'Enable automatic question validation'),
-('MAX_FILE_SIZE_MB', '50', 'INTEGER', 'Maximum file size for uploads in MB'),
-('ASSET_OPTIMIZATION_LEVEL', 'STANDARD', 'STRING', 'Default asset optimization level'),
-('ID_GENERATION_PREFIX', 'EXM', 'STRING', 'Prefix for exam ID generation'),
-('BACKUP_RETENTION_DAYS', '90', 'INTEGER', 'Number of days to retain backups'),
-('ENABLE_PERFORMANCE_MONITORING', 'true', 'BOOLEAN', 'Enable system performance monitoring'),
-('ADMIN_KEY_VALID', 'jee-admin-2025-secure', 'STRING', 'Valid admin key for authentication')
-ON CONFLICT (config_key) DO UPDATE SET
-    config_value = EXCLUDED.config_value,
+-- Insert default BKT parameters for common concepts
+INSERT INTO bkt_parameters (concept_id, subject_id, prior_knowledge, learn_rate, slip_rate, guess_rate) VALUES
+-- Physics concepts
+('kinematics_1d', 'PHY', 0.3, 0.25, 0.1, 0.2),
+('kinematics_2d', 'PHY', 0.25, 0.22, 0.12, 0.22),
+('dynamics_newton_laws', 'PHY', 0.28, 0.24, 0.11, 0.21),
+('energy_work_power', 'PHY', 0.26, 0.26, 0.09, 0.19),
+('thermodynamics_first_law', 'PHY', 0.22, 0.20, 0.15, 0.25),
+
+-- Chemistry concepts  
+('atomic_structure', 'CHE', 0.35, 0.28, 0.08, 0.18),
+('periodic_table', 'CHE', 0.40, 0.30, 0.07, 0.16),
+('chemical_bonding', 'CHE', 0.25, 0.22, 0.12, 0.23),
+('organic_reactions', 'CHE', 0.20, 0.18, 0.16, 0.28),
+
+-- Mathematics concepts
+('algebra_quadratics', 'MAT', 0.45, 0.35, 0.06, 0.15),
+('calculus_derivatives', 'MAT', 0.30, 0.25, 0.10, 0.20),
+('coordinate_geometry', 'MAT', 0.35, 0.28, 0.08, 0.18)
+
+ON CONFLICT (concept_id, subject_id) DO UPDATE SET
+    prior_knowledge = EXCLUDED.prior_knowledge,
+    learn_rate = EXCLUDED.learn_rate,
+    slip_rate = EXCLUDED.slip_rate,
+    guess_rate = EXCLUDED.guess_rate,
     updated_at = CURRENT_TIMESTAMP;
 
--- Initialize ID sequences for different types
-INSERT INTO id_sequences (sequence_type, sequence_key, current_value, prefix, format_template) VALUES
-('EXAM_ID', 'GLOBAL', 0, 'EXM', 'EXM-{year}-{type}-{seq:03d}'),
-('SUBJECT_ID', 'GLOBAL', 0, 'SUB', '{exam_id}-SUB-{code}'),
-('SHEET_ID', 'GLOBAL', 0, 'SHT', '{subject_id}-SHT-V{version:02d}'),
-('QUESTION_ID', 'GLOBAL', 0, 'Q', '{sheet_id}-Q-{seq:05d}'),
-('ASSET_ID', 'GLOBAL', 0, 'AST', '{question_id}-AST-{type}-{seq:03d}')
-ON CONFLICT (sequence_type, sequence_key) DO UPDATE SET
-    updated_at = CURRENT_TIMESTAMP;
+-- Insert concept relationships for transfer learning
+INSERT INTO concept_relationships (source_concept, target_concept, subject_id, transfer_strength, relationship_type) VALUES
+-- Physics relationships
+('kinematics_1d', 'kinematics_2d', 'PHY', 0.8, 'prerequisite'),
+('kinematics_2d', 'dynamics_newton_laws', 'PHY', 0.7, 'prerequisite'),
+('dynamics_newton_laws', 'energy_work_power', 'PHY', 0.6, 'related'),
 
--- Sample exam registry entries for testing
-INSERT INTO exam_registry (exam_id, display_name, exam_type, academic_year, created_by_admin, admin_key_hash, status, total_subjects) VALUES
-('EXM-2025-JEE_MAIN-001', 'JEE Main 2025 January Session', 'JEE_MAIN', 2025, 'system_admin', crypt('jee-admin-2025-secure', gen_salt('bf')), 'ACTIVE', 3),
-('EXM-2025-JEE_ADV-001', 'JEE Advanced 2025', 'JEE_ADVANCED', 2025, 'system_admin', crypt('jee-admin-2025-secure', gen_salt('bf')), 'ACTIVE', 3),
-('EXM-2025-NEET-001', 'NEET 2025', 'NEET', 2025, 'system_admin', crypt('jee-admin-2025-secure', gen_salt('bf')), 'ACTIVE', 3)
-ON CONFLICT (exam_id) DO UPDATE SET
-    updated_at = CURRENT_TIMESTAMP;
+-- Chemistry relationships
+('atomic_structure', 'periodic_table', 'CHE', 0.9, 'prerequisite'),
+('periodic_table', 'chemical_bonding', 'CHE', 0.8, 'prerequisite'),
+('chemical_bonding', 'organic_reactions', 'CHE', 0.6, 'applies_to'),
 
--- Subject registry for JEE Main
-INSERT INTO subject_registry (subject_id, exam_id, subject_code, subject_name, folder_path) VALUES
-('EXM-2025-JEE_MAIN-001-SUB-PHY', 'EXM-2025-JEE_MAIN-001', 'PHY', 'Physics', 'data/exam-registry/EXM-2025-JEE_MAIN-001/subjects/physics'),
-('EXM-2025-JEE_MAIN-001-SUB-CHE', 'EXM-2025-JEE_MAIN-001', 'CHE', 'Chemistry', 'data/exam-registry/EXM-2025-JEE_MAIN-001/subjects/chemistry'),
-('EXM-2025-JEE_MAIN-001-SUB-MAT', 'EXM-2025-JEE_MAIN-001', 'MAT', 'Mathematics', 'data/exam-registry/EXM-2025-JEE_MAIN-001/subjects/mathematics')
-ON CONFLICT (subject_id) DO UPDATE SET
-    updated_at = CURRENT_TIMESTAMP;
+-- Mathematics relationships
+('algebra_quadratics', 'calculus_derivatives', 'MAT', 0.7, 'prerequisite'),
+('algebra_quadratics', 'coordinate_geometry', 'MAT', 0.8, 'related')
 
--- Update sequence counters
-UPDATE id_sequences SET current_value = 3 WHERE sequence_type = 'EXAM_ID';
-UPDATE id_sequences SET current_value = 9 WHERE sequence_type = 'SUBJECT_ID';
+ON CONFLICT (source_concept, target_concept, subject_id) DO UPDATE SET
+    transfer_strength = EXCLUDED.transfer_strength,
+    relationship_type = EXCLUDED.relationship_type,
+    updated_at = CURRENT_TIMESTAMP;
 
 -- =============================================================================
--- COMPLETION MESSAGE
+-- FUNCTIONS FOR BKT OPERATIONS
 -- =============================================================================
-DO $$
+
+-- Function to get student's current mastery level
+CREATE OR REPLACE FUNCTION get_student_mastery(
+    p_student_id VARCHAR(100),
+    p_concept_id VARCHAR(200)
+) RETURNS DECIMAL(6,5) AS $$
+DECLARE
+    mastery_level DECIMAL(6,5);
 BEGIN
-    RAISE NOTICE 'JEE Smart AI Platform - Foundation Schema Created Successfully';
-    RAISE NOTICE 'Total Tables: 8';
-    RAISE NOTICE 'Total Indexes: 15';
-    RAISE NOTICE 'Total Triggers: 4';
-    RAISE NOTICE 'Extensions Installed: uuid-ossp, pgcrypto, btree_gin, pg_trgm';
-    RAISE NOTICE 'System Ready for Phase 1 Operations';
-END $$;
+    SELECT mastery_probability INTO mastery_level
+    FROM student_mastery_states
+    WHERE student_id = p_student_id AND concept_id = p_concept_id;
+    
+    RETURN COALESCE(mastery_level, 0.3); -- Return default if not found
+END;
+$$ LANGUAGE plpgsql;
+
+-- Function to update mastery after interaction
+CREATE OR REPLACE FUNCTION update_student_mastery(
+    p_student_id VARCHAR(100),
+    p_concept_id VARCHAR(200),
+    p_subject_id VARCHAR(150),
+    p_new_mastery DECIMAL(6,5),
+    p_confidence DECIMAL(6,5) DEFAULT NULL
+) RETURNS VOID AS $$
+BEGIN
+    INSERT INTO student_mastery_states (student_id, concept_id, subject_id, mastery_probability, confidence_level, practice_count)
+    VALUES (p_student_id, p_concept_id, p_subject_id, p_new_mastery, COALESCE(p_confidence, 0.5), 1)
+    ON CONFLICT (student_id, concept_id, subject_id) 
+    DO UPDATE SET
+        mastery_probability = p_new_mastery,
+        confidence_level = COALESCE(p_confidence, student_mastery_states.confidence_level),
+        practice_count = student_mastery_states.practice_count + 1,
+        last_interaction = CURRENT_TIMESTAMP,
+        updated_at = CURRENT_TIMESTAMP;
+END;
+$$ LANGUAGE plpgsql;
+
+-- =============================================================================
+-- PERFORMANCE MONITORING VIEWS
+-- =============================================================================
+
+-- View for BKT performance monitoring
+CREATE OR REPLACE VIEW bkt_performance_summary AS
+SELECT 
+    concept_id,
+    COUNT(DISTINCT student_id) as total_students,
+    AVG(mastery_probability) as avg_mastery,
+    COUNT(*) as total_interactions,
+    AVG(CASE WHEN is_correct THEN 1.0 ELSE 0.0 END) as accuracy_rate,
+    AVG(mastery_change) as avg_mastery_gain,
+    AVG(cognitive_load_total) as avg_cognitive_load
+FROM bkt_interaction_logs bil
+JOIN student_mastery_states sms ON bil.student_id = sms.student_id AND bil.concept_id = sms.concept_id
+WHERE bil.created_at >= CURRENT_DATE - INTERVAL '30 days'
+GROUP BY concept_id
+ORDER BY total_interactions DESC;
+
+-- View for time context monitoring  
+CREATE OR REPLACE VIEW time_context_summary AS
+SELECT 
+    current_phase,
+    urgency_level,
+    COUNT(DISTINCT student_id) as student_count,
+    AVG(days_remaining) as avg_days_remaining,
+    COUNT(*) as context_updates
+FROM time_context_logs
+WHERE created_at >= CURRENT_DATE - INTERVAL '7 days'
+GROUP BY current_phase, urgency_level
+ORDER BY current_phase, urgency_level;
+
+-- =============================================================================
+-- VERIFICATION QUERIES
+-- =============================================================================
+
+-- Verify BKT tables
+SELECT 'bkt_parameters' as table_name, COUNT(*) as rows FROM bkt_parameters
+UNION ALL
+SELECT 'student_mastery_states', COUNT(*) FROM student_mastery_states  
+UNION ALL
+SELECT 'bkt_interaction_logs', COUNT(*) FROM bkt_interaction_logs
+UNION ALL
+SELECT 'concept_relationships', COUNT(*) FROM concept_relationships;
+
+-- Verify time context tables
+SELECT 'exam_schedules' as table_name, COUNT(*) as rows FROM exam_schedules
+UNION ALL  
+SELECT 'time_context_logs', COUNT(*) FROM time_context_logs;
+
+-- Test BKT functions
+SELECT get_student_mastery('test_student', 'kinematics_1d') as test_mastery;

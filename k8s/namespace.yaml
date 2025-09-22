@@ -1,0 +1,9 @@
+# Kubernetes Namespace for JEE Smart AI Platform
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: jee-smart-ai
+  labels:
+    name: jee-smart-ai
+    environment: production
+    project: jee-smart-ai-platform
